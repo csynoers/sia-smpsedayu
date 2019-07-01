@@ -75,7 +75,7 @@ require_once 'layout/header.php';
 if (!isset($_SESSION['username'])) {
 ?>
 <!-- begin download section -->
-<section class="download" id="download">
+<section class="download" id="signIn">
 <div class="container">
 
 <div class="row">
