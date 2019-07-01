@@ -1,6 +1,9 @@
 <?php
-include "db.php";
+require_once('../../config/db.php');
 session_start();
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

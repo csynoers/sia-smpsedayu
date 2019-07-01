@@ -146,8 +146,8 @@
 							 <div class="box-body" style="display: block;">
                                 <div class="school-timetable">
                                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="simpan_pesan3.php">
-						  <input type="hidden" name="nik" value="<?php echo $q['nik']; ?>">
-							<input type="hidden" name="id_forum" value="<?php echo $c['id_forum']; ?>">
+                                        <input type="hidden" name="nik" value="<?php echo $q['nik']; ?>">
+                                        <input type="hidden" name="id_forum" value="<?php echo $c['id_forum']; ?>">
 
                                         <p><?php echo $c['nama']; ?><br><?php echo $c['post']; ?><br><?php echo date('d-m-Y',strtotime($c['tanggal_post'])); ?></p><a href=""><i class="fa fa-comments-o fa-fw"></i>Komentar</a></p>
                                        
