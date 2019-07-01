@@ -1,0 +1,4 @@
+cpanel: http://smpsedayu.com/cpanel
+
+user : smpseday
+pass : JkvAhT3xDmRCg5t

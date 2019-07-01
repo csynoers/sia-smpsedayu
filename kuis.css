@@ -1,0 +1,14 @@
+body{
+	width: 98%;
+    border: 1px solid;
+    border-color: #000;
+}
+
+
+
+table {
+	    margin:15px;
+    float: left;
+    width: 50%;
+}
+
