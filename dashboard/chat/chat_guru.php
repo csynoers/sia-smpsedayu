@@ -130,23 +130,15 @@
                                 </div>
                                 <h3 class="box-title"><i class=""></i>
                                     <span>
-							<?php
-							$o=" SELECT * FROM  guru 
-							where
-							username = '$_SESSION[username]'";
-							$p=mysqli_query($connect, $o) or die ("error : ".mysqli_error($connect));
-							$q=mysqli_fetch_array($p);							
-							?>
-							<?php
-							$o=" SELECT * FROM forum,guru 
-							where guru.nik=forum.nik 
-							and guru.username = '$_SESSION[username]'
-							order by id_forum DESC";
-							$p=mysqli_query($connect, $o) or die ("error : ".mysqli_error($connect));
-							while($c=mysqli_fetch_array($p)){							
-							?>
-                                </span>
-								<h4><img src="../img/<?php echo $t['gambar']; ?>" width="30" height="30" align="left"/> <?php if ($_SESSION['level']=='guru'){?><?php echo $_SESSION['nama']; ?><?php } ?></h4>
+                                    <?php
+                                        $o=" SELECT * FROM forum 
+                                        where nik='{$_SESSION["noinduk"]}'
+                                        order by id_forum DESC";
+                                        $p=mysqli_query($connect, $o) or die ("error : ".mysqli_error($connect));
+                                        while($c=mysqli_fetch_array($p)){							
+                                    ?>
+                                    </span>
+                                    <h4><img src="../img/<?php echo $t['gambar']; ?>" width="30" height="30" align="left"/> <?php if ($_SESSION['level']=='guru'){?><?php echo $_SESSION['nama']; ?><?php } ?></h4>
 							
                                 </h3>
                             </div>
