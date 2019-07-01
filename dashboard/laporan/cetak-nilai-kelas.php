@@ -1,6 +1,5 @@
 <?php
-	mysql_connect("localhost","siaseday_user","sedayu123qwe!!!","siaseday_sie2")or die("Gagal Koneksi");
-	mysql_select_db("siaseday_sie2")or die("Tidak ada Database");
+	require_once('../../config/db.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
