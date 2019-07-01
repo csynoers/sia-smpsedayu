@@ -13,6 +13,7 @@
 		$nama 		= 	$data['users_nama'];
 		$level 		= 	$data['users_level'];
 		$kelas 		=	$data['kelas_id'];
+		$noinduk	= 	$data['users_noinduk'];
 		if($user==$username && $pass=$password){
 			session_start();
 			$_SESSION['id']			=	$id;
@@ -20,6 +21,7 @@
 			$_SESSION['nama']		=	$nama;
 			$_SESSION['level']		=	$level;
 			$_SESSION['kelas']		=	$kelas;
+			$_SESSION['noinduk']	=	$noinduk;
 
 			header('Location: dashboard/');
 		}else {
