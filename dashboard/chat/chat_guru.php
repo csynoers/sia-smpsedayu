@@ -96,7 +96,7 @@
                             <div class="box-body" style="display: block;">
                                 <div class="school-timetable">
                                     <form id="demo-form2"  class="form-horizontal form-label-left" method="POST" action="simpan_pesan.php">
-										<input type="hidden" name="nik" value="<?php echo $t['nik']; ?>">
+										<input type="hidden" name="nik" value="<?php echo $_SESSION['noinduk'] ?>">
                                         <div class="form-group">
                                            <div class="col-md-1 col-md-offset-0">
                                         <textarea rows="5" name="pesan" class="form-control"></textarea>
