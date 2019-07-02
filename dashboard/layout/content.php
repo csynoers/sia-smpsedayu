@@ -219,7 +219,7 @@ elseif (isset($_GET['soal'])) {
 	}
 
 
-		elseif (isset($_GET['nilai'])) {
+	elseif (isset($_GET['nilai'])) {
 		if ($_GET['nilai'] == 'nilai-tugas') {
 			include 'model/nilai_tugas.php';
 		}elseif ($_GET['nilai'] == 'nilai_quis') {
@@ -238,18 +238,16 @@ elseif (isset($_GET['soal'])) {
 			include ('view/nilai_tugas_siswa.php');
 		}
 
-	
+	}elseif (isset($_GET['cetak'])) {
+		if ($_GET['cetak'] == 'laporan-nilai-siswa') {
+			include ('laporan/laporan-siswa.php');
+		}elseif ($_GET['cetak'] == 'laporan-nilai-kelas') {
+			include('laporan/laporan-kelas.php');
+		}elseif ($_GET['cetak'] == 'laporan-nilai-kelas2') {
+			include('laporan/laporan-kelas2.php');
+		}	
 
-		}elseif (isset($_GET['cetak'])) {
-			if ($_GET['cetak'] == 'laporan-nilai-siswa') {
-				include ('laporan/laporan-siswa.php');
-			}elseif ($_GET['cetak'] == 'laporan-nilai-kelas') {
-				include('laporan/laporan-kelas.php');
-			}elseif ($_GET['cetak'] == 'laporan-nilai-kelas2') {
-				include('laporan/laporan-kelas2.php');
-			}	
-
-		}elseif (isset($_GET['jadwal'])) {
+	}elseif (isset($_GET['jadwal'])) {
 		if ($_GET['jadwal'] == 'tampil') {
 			include('view/jadwal_search.php');
 		}elseif ($_GET['jadwal'] == 'tambah') {
