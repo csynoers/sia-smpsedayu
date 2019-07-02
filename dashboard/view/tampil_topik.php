@@ -46,7 +46,7 @@
                                     $no         =   1;
                                     $topik_kuis      =   mysql_query("select * from topik_kuis, pelajaran, kelas where topik_kuis.pelajaran_id=pelajaran.pelajaran_id and topik_kuis.kelas_id=kelas.kelas_id and pelajaran.users_id='$iduser'");
 
-                                    while ($row=mysql_fetch_array($topik_kuis)) {
+                                    while ($row=mysql_fetch_assoc($topik_kuis)) {
                                         echo '
                                             <tr>
                                                 <td>'.$no.'</td>
@@ -103,16 +103,14 @@
                                                                     FROM topik_kuis,
                                                                          kelas,
                                                                          pelajaran,
-                                                                         users,
-                                                                         nilai_quis
+                                                                         users
                                                                           
                                                                     WHERE topik_kuis.kelas_id=kelas.kelas_id
                                                                         AND topik_kuis.pelajaran_id=pelajaran.pelajaran_id 
                                                                         AND kelas.kelas_id=users.kelas_id
-                                                                        AND nilai_quis.id_topik=topik_kuis.id_topik
                                                                         AND users.users_id='$iduser' ");
             
-                                    while ($row=mysql_fetch_array($topik_kuis))
+                                    while ($row=mysql_fetch_assoc($topik_kuis))
                                     {
                                         echo '
                                         <tr>
@@ -127,11 +125,11 @@
                                             <td> 
                                                 <span class="status-metro status-disabled" title="Disabled">
                                                 ';
-                                                // $idtop = $row['id_topik'];
-                                                // $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE nilai_quis.id_topik='$idtop' ");
-                                                // $info_siswa = mysql_fetch_array($cek_siswa);
+                                                $idtop = $row['id_topik'];
+                                                $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE id_topik='{$idtop}' AND user_id='{$iduser}' ");
+                                                $info_siswa = mysql_fetch_assoc($cek_siswa);
                         
-                                                if ($row['dikerjakan'] >= 1 ) {
+                                                if ($info_siswa['dikerjakan'] >= 1 ) {
                                                     echo "Sudah Dikerjakan";
                                                 
                                                 }else{
