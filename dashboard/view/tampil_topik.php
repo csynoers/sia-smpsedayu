@@ -98,10 +98,19 @@
                                 if ($_GET['kuis'] == 'tampil_topik')
                                 {
                                     $iduser = $_SESSION['id'];
-                                    $no         =   1;
-                                    $topik_kuis      =   mysql_query("SELECT * FROM topik_kuis, kelas, pelajaran, users 
-                                                                    WHERE topik_kuis.kelas_id=kelas.kelas_id AND topik_kuis.pelajaran_id=pelajaran.pelajaran_id 
-                                                                    AND kelas.kelas_id=users.kelas_id AND users.users_id='$iduser' ");
+                                    $no     =   1;
+                                    $topik_kuis      =   mysql_query("SELECT *
+                                                                    FROM topik_kuis,
+                                                                         kelas,
+                                                                         pelajaran,
+                                                                         users,
+                                                                         nilai_quis
+                                                                          
+                                                                    WHERE topik_kuis.kelas_id=kelas.kelas_id
+                                                                        AND topik_kuis.pelajaran_id=pelajaran.pelajaran_id 
+                                                                        AND kelas.kelas_id=users.kelas_id
+                                                                        AND nilai_quis.id_topik=topik.id_topik
+                                                                        AND users.users_id='$iduser' ");
             
                                     while ($row=mysql_fetch_array($topik_kuis))
                                     {
@@ -118,11 +127,11 @@
                                             <td> 
                                                 <span class="status-metro status-disabled" title="Disabled">
                                                 ';
-                                                $idtop = $row['id_topik'];
-                                                $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE nilai_quis.id_topik='$idtop' ");
-                                                $info_siswa = mysql_fetch_array($cek_siswa);
+                                                // $idtop = $row['id_topik'];
+                                                // $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE nilai_quis.id_topik='$idtop' ");
+                                                // $info_siswa = mysql_fetch_array($cek_siswa);
                         
-                                                if ($info_siswa['dikerjakan'] >= 1 ) {
+                                                if ($row['dikerjakan'] >= 1 ) {
                                                     echo "Sudah Dikerjakan";
                                                 
                                                 }else{
