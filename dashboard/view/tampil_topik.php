@@ -109,20 +109,8 @@
                                                                     WHERE topik_kuis.kelas_id=kelas.kelas_id
                                                                         AND topik_kuis.pelajaran_id=pelajaran.pelajaran_id 
                                                                         AND kelas.kelas_id=users.kelas_id
-                                                                        AND nilai_quis.id_topik=topik.id_topik
+                                                                        AND nilai_quis.id_topik=topik_kuis.id_topik
                                                                         AND users.users_id='$iduser' ");
-                                    echo "SELECT *
-                                    FROM topik_kuis,
-                                         kelas,
-                                         pelajaran,
-                                         users,
-                                         nilai_quis
-                                          
-                                    WHERE topik_kuis.kelas_id=kelas.kelas_id
-                                        AND topik_kuis.pelajaran_id=pelajaran.pelajaran_id 
-                                        AND kelas.kelas_id=users.kelas_id
-                                        AND nilai_quis.id_topik=topik.id_topik
-                                        AND users.users_id='$iduser' ";
             
                                     while ($row=mysql_fetch_array($topik_kuis))
                                     {
