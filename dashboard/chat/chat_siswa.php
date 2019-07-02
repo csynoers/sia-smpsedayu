@@ -81,19 +81,19 @@ echo '</pre>';
                                 </div>
                                 <h3 class="box-title"><i class=""></i>
                                     <span>
-							<?php
-							$o=" SELECT * FROM siswa 
-							where  siswa.username = '$_SESSION[username]'";
-							$p=mysqli_query($connect, $o) or die ("error : ".mysqli_error($connect));
-							$q=mysqli_fetch_array($p);							
-							?> 
-							<?php
-							$k=" SELECT * FROM forum,guru 
-							where guru.nik=forum.nik";
-							$l=mysqli_query($connect, $k) or die ("error : ".mysqli_error($connect));
-							while($m=mysqli_fetch_array($l)){							
-							?>
-                                </span>
+                                    <?php
+                                        $o=" SELECT * FROM siswa 
+                                        where  siswa.username = '$_SESSION[username]'";
+                                        $p=mysqli_query($connect, $o) or die ("error : ".mysqli_error($connect));
+                                        $q=mysqli_fetch_array($p);							
+                                        ?> 
+                                        <?php
+                                        $k=" SELECT * FROM forum,guru 
+                                        where guru.nik=forum.nik";
+                                        $l=mysqli_query($connect, $k) or die ("error : ".mysqli_error($connect));
+                                        while($m=mysqli_fetch_array($l)){							
+                                    ?>
+                                    </span>
 								 
                                 </h3>
                             </div>

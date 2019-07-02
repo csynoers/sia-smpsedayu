@@ -1,18 +1,16 @@
-
-
 <?php
-session_start();
-error_reporting(0);
+    session_start();
+    error_reporting(0);
 
 if (empty($_SESSION['username']) AND empty($_SESSION['id']) ){
-  echo "<link href='css/screen.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>
-
-
- <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
-  <center>anda harus <b>Login</b> dahulu!<br><br>";
- echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
+    echo "
+        <link href='css/screen.css' rel='stylesheet' type='text/css'>
+        <link href='css/reset.css' rel='stylesheet' type='text/css'>
+        <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
+        <center>anda harus <b>Login</b> dahulu!<br><br>";
+    echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
              </div>";
-  echo "<input type=button class=simplebtn value='LOGIN DI SINI' onclick=location.href='index.php'></a></center>";
+    echo "<input type=button class=simplebtn value='LOGIN DI SINI' onclick=location.href='index.php'></a></center>";
 }
 else{
 ?>
@@ -23,14 +21,15 @@ else{
             <form action='nilai.php' method='post' id='formulir'>
 
 <?php
+die();
 include "../../config/db.php";
 $cek_siswa = mysql_query("SELECT * FROM siswa_mengerjakan WHERE id_topik='$_GET[idtopik]' AND users_id='$_GET[usersid]'");
 $info_siswa = mysql_fetch_array($cek_siswa);
-if ($info_siswa[hits]<= 0){
+if ($info_siswa['hits']<= 0){
     mysql_query("INSERT INTO siswa_mengerjakan (id_topik,users_id,hits)
                                         VALUES ('$_GET[idtopik]','$_GET[usersid]',hits+1)");
 }
-elseif ($info_siswa[hits] > 0){
+elseif ($info_siswa['hits'] > 0){
     
 }
 
