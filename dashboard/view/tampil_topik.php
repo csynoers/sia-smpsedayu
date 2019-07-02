@@ -125,7 +125,7 @@
                                             <td> 
                                                 <span class="status-metro status-disabled" title="Disabled">
                                                 ';
-                                                $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE id_topik='{$row['id_topik']}' AND user_id='{$iduser}' ");
+                                                $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE id_topik='{$row['id_topik']}' AND users_id='{$iduser}' ");
                                                 $info_siswa = mysql_fetch_assoc($cek_siswa);
                                                 print_r($info_siswa);
                         
