@@ -4,88 +4,88 @@ session_start();
 error_reporting(0);
 
 if (empty($_SESSION['username']) AND empty($_SESSION['id']) ){
-  echo "<link href='css/screen.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>
-
-
- <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
-  <center>anda harus <b>Login</b> dahulu!<br><br>";
- echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
+    echo "
+        <link href='css/screen.css' rel='stylesheet' type='text/css'>
+        <link href='css/reset.css' rel='stylesheet' type='text/css'>
+        <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
+        <center>anda harus <b>Login</b> dahulu!<br><br>";
+    echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
              </div>";
-  echo "<input type=button class=simplebtn value='LOGIN DI SINI' onclick=location.href='index.php'></a></center>";
+    echo "<input type=button class=simplebtn value='LOGIN DI SINI' onclick=location.href='index.php'></a></center>";
 }
 else{
 ?>
 
 <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-	     <script type="text/javascript">
-        $(document).ready(function() {
-              /** Membuat Waktu Mulai Hitung Mundur Dengan 
-                * var detik = 0,
-                * var menit = 1,
-                * var jam = 1
-              */
-              var detik = document.getElementById("detik").value;
-              var menit = document.getElementById("menit").value;
-              var jam   = document.getElementById("jam").value;
-              
-             /**
-               * Membuat function hitung() sebagai Penghitungan Waktu
-             */
-            function hitung() {
-                /** setTimout(hitung, 1000) digunakan untuk 
-                    * mengulang atau merefresh halaman selama 1000 (1 detik) 
+<script type="text/javascript">
+    $(document).ready(function() {
+            /** Membuat Waktu Mulai Hitung Mundur Dengan 
+            * var detik = 0,
+            * var menit = 1,
+            * var jam = 1
+            */
+            var detik = document.getElementById("detik").value;
+            var menit = document.getElementById("menit").value;
+            var jam   = document.getElementById("jam").value;
+            
+            /**
+            * Membuat function hitung() sebagai Penghitungan Waktu
+            */
+        function hitung() {
+            /** setTimout(hitung, 1000) digunakan untuk 
+                * mengulang atau merefresh halaman selama 1000 (1 detik) 
+            */
+            setTimeout(hitung,1000);
+
+            /** Jika waktu kurang dari 10 menit maka Timer akan berubah menjadi warna merah */
+            if(menit < 10 && jam == 0){
+                    var peringatan = 'style="color:red"';
+            };
+
+            /** Menampilkan Waktu Timer pada Tag #Timer di HTML yang tersedia */
+            $('#timer').html(
+                    '<h3 align="center"'+peringatan+'>Sisa waktu anda <br />' + jam + ' jam : ' + menit + ' menit : ' + detik + ' detik</h3><hr>'
+            );
+
+            /** Melakukan Hitung Mundur dengan Mengurangi variabel detik - 1 */
+            detik --;
+
+            /** Jika var detik < 0
+                * var detik akan dikembalikan ke 59
+                * Menit akan Berkurang 1
+            */
+            if(detik < 0) {
+                detik = 59;
+                menit --;
+
+                /** Jika menit < 0
+                    * Maka menit akan dikembali ke 59
+                    * Jam akan Berkurang 1
                 */
-                setTimeout(hitung,1000);
-  
-               /** Jika waktu kurang dari 10 menit maka Timer akan berubah menjadi warna merah */
-               if(menit < 10 && jam == 0){
-                     var peringatan = 'style="color:red"';
-               };
- 
-               /** Menampilkan Waktu Timer pada Tag #Timer di HTML yang tersedia */
-               $('#timer').html(
-                      '<h3 align="center"'+peringatan+'>Sisa waktu anda <br />' + jam + ' jam : ' + menit + ' menit : ' + detik + ' detik</h3><hr>'
-                );
-  
-                /** Melakukan Hitung Mundur dengan Mengurangi variabel detik - 1 */
-                detik --;
- 
-                /** Jika var detik < 0
-                    * var detik akan dikembalikan ke 59
-                    * Menit akan Berkurang 1
-                */
-                if(detik < 0) {
-                    detik = 59;
-                    menit --;
- 
-                    /** Jika menit < 0
-                        * Maka menit akan dikembali ke 59
-                        * Jam akan Berkurang 1
+                if(menit < 0) {
+                    menit = 59;
+                    jam --;
+
+                    /** Jika var jam < 0
+                        * clearInterval() Memberhentikan Interval dan submit secara otomatis
                     */
-                    if(menit < 0) {
-                        menit = 59;
-                        jam --;
- 
-                        /** Jika var jam < 0
-                            * clearInterval() Memberhentikan Interval dan submit secara otomatis
-                        */
-                        if(jam < 0) {                                                                 
-                            clearInterval(); 
-							var frmSoal = document.getElementById("frmSoal");
-							frmSoal.submit();							
-                        } 
+                    if(jam < 0) {                                                                 
+                        clearInterval(); 
+                        var frmSoal = document.getElementById("frmSoal");
+                        frmSoal.submit();							
                     } 
                 } 
-            }           
-            /** Menjalankan Function Hitung Waktu Mundur */
-            hitung();
-      }); 
-      // ]]>
-    </script>
+            } 
+        }           
+        /** Menjalankan Function Hitung Waktu Mundur */
+        hitung();
+    }); 
+    // ]]>
+</script>
 
 
 
-<div class="row" style="margin-top:-20px">
+                <div class="row" style="margin-top:-20px">
 
                     <div class="large-12 columns">
                         <div class="box">
@@ -106,19 +106,18 @@ else{
                             <!-- /.box-header -->
                             <div class="box-body " style="display: block;">
                             <?php 
-                            $idpel = $_GET[idpel];
-                            $idkel = $_GET[idkel];
-                            $kelpel=mysql_query("SELECT * FROM Pelajaran, kelas 
-                            							 WHERE Pelajaran.pelajaran_id='$idpel' AND kelas.kelas_id='$idkel' 
-                            							 ");
-                            while ($ro=mysql_fetch_array($kelpel)) {
-                            	
+                                $idpel = $_GET['idpel'];
+                                $idkel = $_GET['idkel'];
+                                $kelpel=mysql_query("SELECT * FROM Pelajaran, kelas 
+                                                            WHERE Pelajaran.pelajaran_id='$idpel' AND kelas.kelas_id='$idkel' 
+                                                            ");
+                                while ($ro=mysql_fetch_array($kelpel)) {
+                                    echo "
+                                        <h5>Nama Pelajaran: {$ro['pelajaran_nama']}</h5>
+                                        <h5> kelas        : {$ro['kelas_nama']}</h5>
+                                    ";
+                                }
                             ?>
-							
-						<h5>Nama Pelajaran: <?php echo $ro['pelajaran_nama']; ?></h5>
-						<h5> kelas        : <?php echo $ro['kelas_nama']; ?></h5>
-
-						<?php } ?>
 						 <div id='timer'></div>
     <div class="container">
         <div class="row">

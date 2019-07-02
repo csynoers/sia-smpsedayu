@@ -10,7 +10,7 @@
                 </span>
             </div>
             <h3 class="box-title"><i class="fontello-th-large-outline"></i>
-                <span>Data Soal Kuis</span>
+                <span>Data Soal Kuis TEEEE</span>
             </h3>
         </div>
         <!-- /.box-header -->
