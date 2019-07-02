@@ -98,8 +98,7 @@ elseif (empty($_POST['soal_pilganda'])){
                 <tbody>
                 <?php 
                 $no         =   1;
-                $nilaiq     =   mysql_query("SELECT * FROM nilai_quis, Kelas,users, pelajaran WHERE nilai_quis.kelas_id=Kelas.kelas_id AND nilai_quis.users_id=users.users_id AND nilai_quis.pelajaran_id=pelajaran.pelajaran_id AND users.users_id='{$_SESSION["id"]}' ");
-                print_r("SELECT * FROM nilai_quis, Kelas,users, pelajaran WHERE nilai_quis.kelas_id=Kelas.kelas_id AND nilai_quis.users_id=users.users_id AND nilai_quis.pelajaran_id=pelajaran.pelajaran_id AND users.users_id='{$_SESSION["id"]}' ");
+                $nilaiq     =   mysql_query("SELECT * FROM nilai_quis, kelas,users, pelajaran WHERE nilai_quis.kelas_id=kelas.kelas_id AND nilai_quis.users_id=users.users_id AND nilai_quis.pelajaran_id=pelajaran.pelajaran_id AND users.users_id='{$_SESSION["id"]}' ");
                 while ($row=mysql_fetch_array($nilaiq)) {
                 ?>
                     <tr>
