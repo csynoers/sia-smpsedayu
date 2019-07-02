@@ -77,7 +77,7 @@ elseif (empty($pilganda)){
 }
 ?>
 <br><p class='garisbawah'></p>
-<h3>Apakah anda sudah yakin dengan jawaban anda dan ingin menyimpannya?  <button type='submit'>Ya</button></h3>
+<h3>Apakah anda sudah yakin dengan jawaban anda dan ingin menyimpannya?  <button type='submit'>Yas</button></h3>
 
 </form>
         </div>
