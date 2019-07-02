@@ -122,7 +122,7 @@
                                                 $cek_siswa = mysql_query("SELECT * FROM nilai_quis WHERE nilai_quis.id_topik='$idtop' ");
                                                 $info_siswa = mysql_fetch_array($cek_siswa);
                         
-                                                if ($info_siswa['dikerjakan'] > 1 ) {
+                                                if ($info_siswa['dikerjakan'] >= 1 ) {
                                                     echo "Sudah Dikerjakan";
                                                 
                                                 }else{
