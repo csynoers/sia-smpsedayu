@@ -1,7 +1,6 @@
 <?php
 session_start();
 error_reporting(0);
-print_r($_SESSION);
 
 if (empty($_SESSION['username']) AND empty($_SESSION['id'])){
   echo "<link href='css/screen.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>
