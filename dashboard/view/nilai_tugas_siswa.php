@@ -1,7 +1,9 @@
 <?php
     session_start();
     if(isset($_POST['cek-nilai'])) {
-
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
     ?>
     <div class="block-flat no-padding">
         <div class="content">
