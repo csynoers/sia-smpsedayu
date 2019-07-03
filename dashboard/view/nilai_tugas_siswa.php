@@ -18,58 +18,32 @@
                             </tr>
                         </thead>
                         ';
-                        echo '<pre>';
-                        print_r($_POST);
-                        print_r($_SESSION);
-                        print_r("
-                        SELECT
-                            nilai.nilai_id,
-                            nilai.nilai_poin,
-                            users.users_nama,
-                            kelas.kelas_nama,
-                            pelajaran.pelajaran_nama,
-                            tahun.tahun_nama
-                        FROM nilai
-                            LEFT JOIN users
-                                ON nilai.users_id=users.users_id
-                            LEFT JOIN kelas
-                                ON users.kelas_id=kelas.kelas_id
-                            LEFT JOIN pelajaran
-                                ON kelas.kelas_id=pelajaran.kelas_id
-                            LEFT JOIN tahun
-                                ON nilai.tahun_id=tahun.tahun_id
-                        WHERE 1=1
-                            AND users.users_id='{$_SESSION["id"]}'
-                            AND pelajaran.pelajaran_id='{$_POST["pelajaran"]}'
-                            AND tahun.tahun_id='{$_POST["tahun"]}'
-                            GROUP BY nilai.nilai_id
-                        ");
-                        echo '</pre>';
-                        $id     =$_SESSION ['id'];
                         $no = 1;
-                    
-                        $pelajarannama = $_POST['pelajaran'];
-                        $jenisnama      =   '1';
-                        $tahunnama = $_POST['tahun'];
-                        $f= mysql_query("select * from users where users_id='$id'");
-                        $g=mysql_fetch_assoc($f);
+                        $sql = "
+                            SELECT
+                                nilai.nilai_id,
+                                nilai.nilai_poin,
+                                users.users_nama,
+                                kelas.kelas_nama,
+                                pelajaran.pelajaran_nama,
+                                tahun.tahun_nama
+                            FROM nilai
+                                LEFT JOIN users
+                                    ON nilai.users_id=users.users_id
+                                LEFT JOIN kelas
+                                    ON users.kelas_id=kelas.kelas_id
+                                LEFT JOIN pelajaran
+                                    ON kelas.kelas_id=pelajaran.kelas_id
+                                LEFT JOIN tahun
+                                    ON nilai.tahun_id=tahun.tahun_id
+                            WHERE 1=1
+                                AND users.users_id='{$_SESSION["id"]}'
+                                AND nilai.pelajaran_id='{$_POST["pelajaran"]}'
+                                AND nilai.tahun_id='{$_POST["tahun"]}'
+                                GROUP BY nilai.nilai_id
+                        ");
 
-                        $sql = mysql_query("SELECT nilai.nilai_id, nilai.nilai_poin, users.users_id, users.users_nama, 
-                                                    kelas.kelas_id, kelas.kelas_nama, pelajaran.pelajaran_id, 
-                                                    pelajaran.pelajaran_nama, 
-                                                    tahun.tahun_id, tahun.tahun_nama, jenis.jenis_id, jenis.jenis_nama
-                                            FROM nilai
-                                            INNER JOIN users ON nilai.users_id=users.users_id
-                                            INNER JOIN kelas ON users.kelas_id=kelas.kelas_id
-                                            INNER JOIN pelajaran ON nilai.pelajaran_id=pelajaran.pelajaran_id
-                                            INNER JOIN tahun ON nilai.tahun_id=tahun.tahun_id
-                                            INNER JOIN jenis ON nilai.jenis_id=jenis.jenis_id
-                                            WHERE kelas.kelas_id='$g[kelas_id]' 
-                                            AND pelajaran.pelajaran_id='$pelajarannama'
-                                            AND tahun.tahun_id='$tahunnama'
-                                            AND users.users_id='$id'
-                                                
-                                            ");
+                        $sql = mysql_query( $sql );
                         while ($data=mysql_fetch_assoc($sql))
                         {
                             echo '
