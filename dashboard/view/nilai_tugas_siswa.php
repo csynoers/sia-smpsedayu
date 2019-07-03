@@ -109,7 +109,6 @@
     <?php 
     }
     else {
-        echo "SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='{$_SESSION["id"]}'";
         echo '
             <div class="large-12 columns">
                 <div class="box">
@@ -132,8 +131,20 @@
                             <div class="form-group"> 
                                 <label>Mata Pelajaran</label>
                                 <select name="pelajaran" class="form-control" required>';
-                                    $iduser = $_SESSION['id'];
-                                    $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='{$iduser}'");
+                                    $pelajaran = mysql_query("
+                                        SELECT
+                                            pelajaran.pelajaran_id,
+                                            pelajaran.pelajaran_nama,
+                                            kelas.kelas_nama
+                                        FROM pelajaran
+                                            INNER JOIN kelas
+                                                ON pelajaran.kelas_id=kelas.kelas_id
+                                            INNER JOIN users
+                                                ON kelas.kelas_id=users.kelas_id
+                                        WHERE 1=1
+                                            AND users.users_id='{$_SESSION["id"]}'
+                                            GROUP BY kelas.kelas_id,pelajaran.pelajaran_id
+                                    ");
                                     while ($row=mysql_fetch_assoc($pelajaran))
                                     {
                                         echo '<option value="'.$row['pelajaran_id'].'"> '.$row['pelajaran_nama'].' Kelas ('.$row['kelas_nama'].')</option>';
