@@ -41,7 +41,7 @@
                                 AND nilai.pelajaran_id='{$_POST["pelajaran"]}'
                                 AND nilai.tahun_id='{$_POST["tahun"]}'
                                 GROUP BY nilai.nilai_id
-                        ");
+                        ";
 
                         $sql = mysql_query( $sql );
                         while ($data=mysql_fetch_assoc($sql))
