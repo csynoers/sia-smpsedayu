@@ -1,11 +1,14 @@
 <?php
     session_start();
     if(isset($_POST['cek-nilai'])) {
+        echo '<pre>';
+        print_r($_POST);
+        print_r($_SESSION);
+        echo '</pre>';
         echo '
             <div class="block-flat no-padding">
                 <div class="content">
                     <table class="no-border blue">
-                        TESdlmfkljsdf
                         <thead class="no-border">
                             <tr>
                                 <th style="width: 5%;" class="text-center">No</th>
@@ -17,98 +20,58 @@
                                 <th style="width: 7%;" class="text-center">Nilai Poin</th>
                                 <th class="text-center" '.($_SESSION['level']=='siswa' ? 'style="display:none;"' : null ).'>Action</th>
                             </tr>
-                        </thead>    
-        
-        ';
-        echo '<pre>';
-        print_r($_POST);
-        echo 'TES';
-        echo '</pre>';
-    ?>
-                <form role="form" method="post">
-                    <?php
-                            $id     =$_SESSION ['id'];
-                            $no = 1;
-                        
-                            $pelajarannama = $_POST['pelajaran'];
-                            $jenisnama      =   '1';
-                            $tahunnama = $_POST['tahun'];
-                            $f= mysql_query("select * from users where users_id='$id'");
-                            $g=mysql_fetch_assoc($f);
-                            $sql = mysql_query("SELECT nilai.nilai_id, nilai.nilai_poin, users.users_id, users.users_nama, 
-                                                        kelas.kelas_id, kelas.kelas_nama, pelajaran.pelajaran_id, 
-                                                        pelajaran.pelajaran_nama, 
-                                                        tahun.tahun_id, tahun.tahun_nama, jenis.jenis_id, jenis.jenis_nama
-                                                FROM nilai
-                                                INNER JOIN users ON nilai.users_id=users.users_id
-                                                INNER JOIN kelas ON users.kelas_id=kelas.kelas_id
-                                                INNER JOIN pelajaran ON nilai.pelajaran_id=pelajaran.pelajaran_id
-                                                INNER JOIN tahun ON nilai.tahun_id=tahun.tahun_id
-                                                INNER JOIN jenis ON nilai.jenis_id=jenis.jenis_id
-                                                WHERE kelas.kelas_id='$g[kelas_id]' 
-                                                AND pelajaran.pelajaran_id='$pelajarannama'
-                                                AND tahun.tahun_id='$tahunnama'
-                                                AND users.users_id='$id'
-                                                    
-                                                ");
-                            while ($data=mysql_fetch_assoc($sql)) {
-                    ?>
-                    <tr>
-                        <td class="text-center"><?php echo $no; ?></td>
-                        <td>                        
-                            <?php 
-                                echo $data['users_nama'];
-                            ?>                      
-                        </td>
-                        <td>
-                            <?php 
-                                echo $data['kelas_nama'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php 
-                                echo $data['pelajaran_nama'];
-                            ?>
-                        </td>
-                        
-                        <td>
-                            <?php 
-                                echo $data['tahun_nama'];
-                            ?>
-                        </td>
-                        <td class="text-center">
-                            <?php  
-                                if ($data['nilai_poin'] == 0) {
-                                    echo "0";
-                                }else {
-                                    echo $data['nilai_poin'];
-                                }
-                            ?>
-                        </td>
+                        </thead>
+                        ';
+                        $id     =$_SESSION ['id'];
+                        $no = 1;
                     
-                        <td class="text-center" width="17%">
-                            <a href="?nilai=Ulangan1&&edit-ulangan1=<?php echo $data['nilai_id']; ?>"
-                            <?php if ($level == 'siswa') {
-                                    echo 'style="display:none;"';
-                                }  ?>
-                            ><span class="fontello-edit"></span> Edit</a>
-                            <a href="?nilai=Ulangan1&&tampil=Ulangan1&&del-ulangan1=<?php echo $data['nilai_id']; ?>"
-                            <?php if ($level == 'siswa') {
-                                    echo 'style="display:none;"';
-                                }  ?>
-                            ><span class="fontello-trash"></span> Delete</a>
-                        </td>
-                    </tr>
-                    <?php 
-                        $no++;  
+                        $pelajarannama = $_POST['pelajaran'];
+                        $jenisnama      =   '1';
+                        $tahunnama = $_POST['tahun'];
+                        $f= mysql_query("select * from users where users_id='$id'");
+                        $g=mysql_fetch_assoc($f);
+                        
+                        $sql = mysql_query("SELECT nilai.nilai_id, nilai.nilai_poin, users.users_id, users.users_nama, 
+                                                    kelas.kelas_id, kelas.kelas_nama, pelajaran.pelajaran_id, 
+                                                    pelajaran.pelajaran_nama, 
+                                                    tahun.tahun_id, tahun.tahun_nama, jenis.jenis_id, jenis.jenis_nama
+                                            FROM nilai
+                                            INNER JOIN users ON nilai.users_id=users.users_id
+                                            INNER JOIN kelas ON users.kelas_id=kelas.kelas_id
+                                            INNER JOIN pelajaran ON nilai.pelajaran_id=pelajaran.pelajaran_id
+                                            INNER JOIN tahun ON nilai.tahun_id=tahun.tahun_id
+                                            INNER JOIN jenis ON nilai.jenis_id=jenis.jenis_id
+                                            WHERE kelas.kelas_id='$g[kelas_id]' 
+                                            AND pelajaran.pelajaran_id='$pelajarannama'
+                                            AND tahun.tahun_id='$tahunnama'
+                                            AND users.users_id='$id'
+                                                
+                                            ");
+                        while ($data=mysql_fetch_assoc($sql))
+                        {
+                            echo '
+                                <tr>
+                                    <td class="text-center">'.$no.'</td>
+                                    <td>'.$data['users_nama'].'</td>
+                                    <td>'.$data['kelas_nama'].'</td>
+                                    <td>'.$data['pelajaran_nama'].'</td>
+                                    <td>'.$data['tahun_nama'].'</td>
+                                    <td class="text-center">'.($data['nilai_poin'] == 0 ? '0' : $data['nilai_poin'] ).'</td>
+                                    <td class="text-center" width="17%">
+                                        <a href="?nilai=Ulangan1&&edit-ulangan1='.$data['nilai_id'].'" '.($_SESSION['level']=='siswa' ? 'style="display:none;"' : null ).'><span class="fontello-edit"></span> Edit</a>
+                                        <a href="?nilai=Ulangan1&&tampil=Ulangan1&&del-ulangan1='.$data['nilai_id'].'" '.($_SESSION['level']=='siswa' ? 'style="display:none;"' : null ).'><span class="fontello-trash"></span> Delete</a>
+                                    </td>
+                                </tr>
+                            ';
+                            $no++;  
                         }
-                    ?>
-                </form>
-            </table>
-            <hr/>        
-        </div>
-    </div>
-    <?php 
+                    echo '
+                    </table>
+                    <hr/>        
+                </div>
+            </div>
+            <!-- end /.block-flat -->
+        ';
     }
     else {
         echo '
