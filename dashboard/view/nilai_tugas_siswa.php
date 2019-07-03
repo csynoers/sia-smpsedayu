@@ -3,6 +3,7 @@
     if(isset($_POST['cek-nilai'])) {
         echo '<pre>';
         print_r($_POST);
+        echo 'TES';
         echo '</pre>';
     ?>
     <div class="block-flat no-padding">
