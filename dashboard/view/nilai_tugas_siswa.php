@@ -43,7 +43,7 @@
                             AND pelajaran.pelajaran_id='{$_POST["pelajaran"]}'
                             AND tahun.tahun_id='{$_POST["tahun"]}'
                             GROUP BY nilai.nilai_id
-                        ")
+                        ");
                         echo '</pre>';
                         $id     =$_SESSION ['id'];
                         $no = 1;
