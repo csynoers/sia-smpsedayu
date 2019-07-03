@@ -1,31 +1,30 @@
 <?php
     session_start();
     if(isset($_POST['cek-nilai'])) {
+        echo '
+            <div class="block-flat no-padding">
+                <div class="content">
+                    <table class="no-border blue">
+                        TESdlmfkljsdf
+                        <thead class="no-border">
+                            <tr>
+                                <th style="width: 5%;" class="text-center">No</th>
+                                <th width="15%">Nama</th>
+                                <th width="5%">Kelas</th>
+                                <th width="7%">Mata Pelajaran</th>
+                                
+                                <th width="7%">Tahun</th>
+                                <th style="width: 7%;" class="text-center">Nilai Poin</th>
+                                <th class="text-center" '.($_SESSION['level']=='siswa' ? 'style="display:none;"' : null ).'>Action</th>
+                            </tr>
+                        </thead>    
+        
+        ';
         echo '<pre>';
         print_r($_POST);
         echo 'TES';
         echo '</pre>';
     ?>
-    <div class="block-flat no-padding">
-        <div class="content">
-            <table class="no-border blue">
-                <thead class="no-border">
-                    <tr>
-                        <th style="width: 5%;" class="text-center">No</th>
-                        <th width="15%">Nama</th>
-                        <th width="5%">Kelas</th>
-                        <th width="7%">Mata Pelajaran</th>
-                        
-                        <th width="7%">Tahun</th>
-                        <th style="width: 7%;" class="text-center">Nilai Poin</th>
-                        <th class="text-center" 
-                        <?php $level  =   $_SESSION['level'];
-                                if ($level == 'siswa') {
-                                    echo 'style="display:none;"';
-                                }  ?>
-                        >Action</th>
-                    </tr>
-                </thead>    
                 <form role="form" method="post">
                     <?php
                             $id     =$_SESSION ['id'];
