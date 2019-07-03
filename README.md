@@ -13,4 +13,6 @@ Sistem Informasi Akademik SMPN Sedayu
     - username : atika
     - password : atika
 
-# Revisi Siswa: Kuis->lihat kuis 3j
+# Revisi
+    - Siswa: Kuis->lihat kuis
+    - Siswa: Nilai->nilai kuis
