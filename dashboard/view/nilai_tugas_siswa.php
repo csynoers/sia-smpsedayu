@@ -109,6 +109,7 @@
     <?php 
     }
     else {
+        echo "SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='{$_SESSION["id"]}'";
         echo '
             <div class="large-12 columns">
                 <div class="box">
