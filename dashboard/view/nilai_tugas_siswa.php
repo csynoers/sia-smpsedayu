@@ -21,6 +21,29 @@
                         echo '<pre>';
                         print_r($_POST);
                         print_r($_SESSION);
+                        print_r("
+                        SELECT
+                            nilai.nilai_id,
+                            nilai.nilai_poin,
+                            users.users_nama,
+                            kelas.kelas_nama,
+                            pelajaran.pelajaran_nama,
+                            tahun.tahun_nama
+                        FROM nilai
+                            LEFT JOIN users
+                                ON nilai.users_id=users.users_id
+                            LEFT JOIN kelas
+                                ON users.kelas_id=kelas.kelas_id
+                            LEFT JOIN pelajaran
+                                ON kelas.kelas_id=pelajaran.kelas_id
+                            LEFT JOIN tahun
+                                ON nilai.tahun_id=tahun.tahun_id
+                        WHERE 1=1
+                            AND users.users_id='{$_SESSION["id"]}'
+                            AND pelajaran.pelajaran_id='{$_POST["pelajaran"]}'
+                            AND tahun.tahun_id='{$_POST["tahun"]}'
+                            GROUP BY nilai.nilai_id
+                        ")
                         echo '</pre>';
                         $id     =$_SESSION ['id'];
                         $no = 1;
