@@ -1,10 +1,6 @@
 <?php
     session_start();
     if(isset($_POST['cek-nilai'])) {
-        echo '<pre>';
-        print_r($_POST);
-        print_r($_SESSION);
-        echo '</pre>';
         echo '
             <div class="block-flat no-padding">
                 <div class="content">
@@ -22,6 +18,10 @@
                             </tr>
                         </thead>
                         ';
+                        echo '<pre>';
+                        print_r($_POST);
+                        print_r($_SESSION);
+                        echo '</pre>';
                         $id     =$_SESSION ['id'];
                         $no = 1;
                     
@@ -30,7 +30,7 @@
                         $tahunnama = $_POST['tahun'];
                         $f= mysql_query("select * from users where users_id='$id'");
                         $g=mysql_fetch_assoc($f);
-                        
+
                         $sql = mysql_query("SELECT nilai.nilai_id, nilai.nilai_poin, users.users_id, users.users_nama, 
                                                     kelas.kelas_id, kelas.kelas_nama, pelajaran.pelajaran_id, 
                                                     pelajaran.pelajaran_nama, 
