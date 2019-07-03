@@ -50,7 +50,7 @@
                         <td></td>
                         <td>
                             <a href="?tahun-edit=<?php echo $row['tahun_id']; ?>"><span class="fontello-edit"></span> Edit</a>
-                            <a href="?tahun-delete=<?php echo $row['tahun_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a>
+                            <!-- <a href="?tahun-delete=<?php echo $row['tahun_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a> -->
                         </td>
                     </tr>
                 <?php

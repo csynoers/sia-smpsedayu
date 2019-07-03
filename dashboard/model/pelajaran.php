@@ -67,7 +67,7 @@
                         </td>
                         <td>
                             <a href="?pelajaran-edit=<?php echo $row['pelajaran_id']; ?>"><span class="fontello-edit"></span> Edit</a>
-                            <a href="?pelajaran-delete=<?php echo $row['pelajaran_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a>
+                            <!-- <a href="?pelajaran-delete=<?php echo $row['pelajaran_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a> -->
                         </td>
                     </tr>
                 <?php
