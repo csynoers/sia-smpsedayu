@@ -21,6 +21,7 @@
     print_r($_POST);
     print_r($_SESSION);
     echo '</pre>';
+    die();
 ?>
 <!DOCTYPE html>
 <html lang="en">
