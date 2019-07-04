@@ -12,6 +12,8 @@
     WHERE 1=1
         AND pelajaran_id='{$_POST["pelajaran"]}'
     ";
+    $result_sql_1	= mysql_query( $sql_1 );
+    $row_1 			= mysql_fetch_assoc( $result_sql_1 );
 
     /* mendapatkan nama guru */
     $row_guru= $_SESSION;
