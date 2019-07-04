@@ -85,21 +85,17 @@
 							?>
 						</tbody>
 					</table>
-					<hr/>
-					<a href="../?cetak=laporan-nilai-kelas" cls="btn" class="btn btn-info"><i class="fa fa-reply"></i> Kembali </a>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="cetak-nilai-kelas.php" cls="btn" onclick="window.print();return false" class="btn btn-primary"><i class="fa fa-print"></i> Cetak </a>
 				</div>
 			</center>
 		</div>
 		<!-- end /#DivIdToPrint -->
 		<script>
-			// var printContents = document.getElementById('DivIdToPrint').innerHTML;
-			// var originalContents = document.body.innerHTML;
-			// document.body.innerHTML = printContents;
-			// window.print();
-			// document.body.innerHTML = originalContents;
-			// setTimeout(function(){window.close();},10);
+			var printContents = document.getElementById('DivIdToPrint').innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+			setTimeout(function(){window.close();},10);
 		</script>
 	</body>
 </html>
