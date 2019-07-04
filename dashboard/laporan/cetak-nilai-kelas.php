@@ -1,6 +1,35 @@
 <?php
 	session_start();
 	require_once('../../config/db.php');
+
+	/* query untuk mendapatkan mata pelajaran dan kelas */
+	$sql_1= "
+		SELECT
+			pelajaran_nama,
+			kelas.kelas_nama
+		FROM pelajaran
+			INNER JOIN kelas
+				ON pelajaran.kelas_id=kelas.kelas_id
+		WHERE 1=1
+			AND pelajaran_id='{$_POST["pelajaran"]}'
+	";
+	$result_sql_1	= mysql_query( $sql_1 );
+	$row_1 			= mysql_fetch_assoc( $result_sql_1 );
+
+	/* query untuk mendapatkan tahun ajaran */
+	$sql_2= "
+		SELECT
+			tahun.tahun_nama
+		FROM tahun
+		WHERE 1=1
+			AND tahun.tahun_id='{$_POST["tahun"]}'
+	";
+	$result_sql_2	= mysql_query( $sql_2 );
+	$row_2 			= mysql_fetch_assoc( $result_sql_2 );
+
+	/* mendapatkan nama guru */
+	$row_guru= $_SESSION;
+
 	echo "<pre>";
 	print_r($_POST);
 	print_r($_SESSION);
@@ -30,7 +59,8 @@
 							<td class="text-center">
 								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
-								<h5><strong>Data Nilai Tugas Siswa Mata Pelajaran: Biologi, Kelas: 7A, Tahun Ajaran : 2018/2019</strong></h5>
+								<h5><strong>Data Nilai Tugas Siswa Mata Pelajaran: <?php echo $row_1["pelajaran_nama"] ?>, Kelas: <?php echo $row_1["kelas_nama"] ?>, Tahun Ajaran : <?php echo $row_2["tahun_nama"] ?></strong></h5>
+								<h5><strong>Nama Guru: <?php echo $row_guru["nama"] ?></strong></h5>
 							</td>
 						</tr>
 					</tbody>
