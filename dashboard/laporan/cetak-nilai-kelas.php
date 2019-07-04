@@ -50,7 +50,7 @@
 				<table class="table">
 					<tbody>
 						<tr>
-							<td><img style="width: 100px;" src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
+							<td style="padding-top: 2em;"><img style="width: 100px;" src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
 							<td class="text-center">
 								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
@@ -141,12 +141,12 @@
 		</div>
 		<!-- end /#DivIdToPrint -->
 		<script>
-			// var printContents = document.getElementById('DivIdToPrint').innerHTML;
-			// var originalContents = document.body.innerHTML;
-			// document.body.innerHTML = printContents;
-			// window.print();
-			// document.body.innerHTML = originalContents;
-			// setTimeout(function(){window.close();},10);
+			var printContents = document.getElementById('DivIdToPrint').innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+			setTimeout(function(){window.close();},10);
 		</script>
 	</body>
 </html>
