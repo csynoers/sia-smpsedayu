@@ -82,9 +82,6 @@
 							<tr>
 								<th >No</th>
 								<th >Nama</th>
-								<th >Kelas</th>
-								<th >Mata Pelajaran</th>
-								<th >Tahun</th>
 								<th >Nilai Poin</th>
 							</tr>
 						</thead>
@@ -125,9 +122,6 @@
 											<tr align="center">
 												<td class="text-center">'.$no.'</td>
 												<td align="left">'.$data['users_nama'].'</td>
-												<td>'.$data['kelas_nama'].'</td>
-												<td>'.$data['pelajaran_nama'].'</td>
-												<td>'.$data['tahun_nama'].'</td>
 												<td class="text-center">'.($data['nilai_poin'] == 0 ? "Data Kosong" : $data['nilai_poin'] ).'</td>
 											</tr>
 										';
