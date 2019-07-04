@@ -23,9 +23,9 @@
 						<tr>
 							<td><img style="width: 100px;" src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
 							<td class="text-center">
-								<h4>SMP NEGERI 1 SEDAYU</h4>
-								<h5>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</h5>
-								<h4><strong>Data Nilai Tugas Siswa Mata Pelajaran: Biologi, Kelas: 7A, Tahun Ajaran : 2018/2019</strong></h4>
+								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
+								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
+								<h5><strong>Data Nilai Tugas Siswa Mata Pelajaran: Biologi, Kelas: 7A, Tahun Ajaran : 2018/2019</strong></h5>
 							</td>
 						</tr>
 					</tbody>
