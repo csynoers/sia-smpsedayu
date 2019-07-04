@@ -1,4 +1,6 @@
 <?php
+    echo 'dsasdasd';
+    die();
     // session_start();
     require_once('../../config/db.php');
     /* query untuk mendapatkan mata pelajaran dan kelas */
