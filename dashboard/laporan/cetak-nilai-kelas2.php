@@ -1,9 +1,21 @@
 <?php
     session_start();
-	require_once('../../config/db.php');
+    require_once('../../config/db.php');
+    /* query untuk mendapatkan mata pelajaran dan kelas */
+	$sql_1= "
+    SELECT
+        pelajaran_nama,
+        kelas.kelas_nama
+    FROM pelajaran
+        INNER JOIN kelas
+            ON pelajaran.kelas_id=kelas.kelas_id
+    WHERE 1=1
+        AND pelajaran_id='{$_POST["pelajaran"]}'
+    ";
     echo '<pre>';
     print_r($_POST);
     print_r($_SESSION);
+    print_r($sql_1);
     echo '</pre>';
 ?>
 <!DOCTYPE html>
