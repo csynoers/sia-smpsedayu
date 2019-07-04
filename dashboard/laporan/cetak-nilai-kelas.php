@@ -29,11 +29,6 @@
 
 	/* mendapatkan nama guru */
 	$row_guru= $_SESSION;
-
-	echo "<pre>";
-	print_r($_POST);
-	print_r($_SESSION);
-	echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
