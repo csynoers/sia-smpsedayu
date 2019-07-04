@@ -54,15 +54,15 @@
 							<td class="text-center">
 								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
-								<table class="table text-left">
-									<tr clas="text-center">
-										<td colspan="4">Data Nilai Tugas Siswa</td>
+								<table class="text-left" width="100%">
+									<tr>
+										<td colspan="4" class="text-center">Data Nilai Tugas Siswa</td>
 									</tr>
 									<tr>
-										<td>Mata Pelajaran</td>
-										<td> : <?php echo $row_1["pelajaran_nama"] ?></td>
-										<td>Tahun Ajaran</td>
-										<td> : <?php echo $row_2["tahun_nama"] ?></td>
+										<td width="20%">Mata Pelajaran</td>
+										<td width="30%"> : <?php echo $row_1["pelajaran_nama"] ?></td>
+										<td width="20%">Tahun Ajaran</td>
+										<td width="30%"> : <?php echo $row_2["tahun_nama"] ?></td>
 									</tr>
 										<td>Kelas</td>
 										<td> : <?php echo $row_1["kelas_nama"] ?></td>
