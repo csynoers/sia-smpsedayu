@@ -74,6 +74,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<!-- end /.table -->
 				<hr>
 				<div class="table-responsive">
 					<table class="table table-striped">
@@ -136,6 +137,7 @@
 							?>
 						</tbody>
 					</table>
+					<!-- end /.table -->
 				</div>
 			</center>
 		</div>
