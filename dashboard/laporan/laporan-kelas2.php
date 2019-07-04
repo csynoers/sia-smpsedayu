@@ -14,7 +14,7 @@
             </h3>
         </div>
     <div class="box-body small-5" style="display: block;">
-		<form data-abide method="POST" action="laporan/cetak-nilai-kelas2.php" role="form" enctype="multipart/form-data"> 
+		<form target="_blank" data-abide method="POST" action="laporan/cetak-nilai-kelas2.php" role="form" enctype="multipart/form-data"> 
 			<div class="name-field"> 
 				<label>Mata Pelajaran</label>
 				<select name="pelajaran" class="form-control" required>
