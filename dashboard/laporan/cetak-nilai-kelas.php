@@ -16,7 +16,7 @@
 		<link href="../assets/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 		<!--======================== Custom styles for this template ========================== -->
-		<link href="../css/style.css" rel="stylesheet" />
+		<link href="../assets/bootstrap/css/style.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div id="DivIdToPrint" class="container">
