@@ -21,10 +21,11 @@
 				<div class="row">
 					<table>
 						<tr>
-							<td><img src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
+							<td><img style="width: 100px;" src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
 							<td>
-								<h2>Laporan Nilai Tugas Siswa</h2><br>
-								<h4>SMPN 1 SEDAYU</h4>
+								<h2>Laporan Nilai Tugas</h2><br>
+								<h4>SMP NEGERI 1 SEDAYU</h4>
+								<h4>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</h4>
 							</td>
 						</tr>
 					</table>
