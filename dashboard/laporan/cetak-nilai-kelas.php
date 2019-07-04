@@ -54,8 +54,8 @@
 							<td class="text-center">
 								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
-								<table class="table">
-									<tr>
+								<table class="table text-left">
+									<tr clas="text-center">
 										<td colspan="4">Data Nilai Tugas Siswa</td>
 									</tr>
 									<tr>
