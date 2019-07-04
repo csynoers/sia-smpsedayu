@@ -13,7 +13,7 @@
 		<title>Informasi Nilai Kelas</title>
 		
 		<!--======================== Bootstrap core CSS ========================== -->
-		<link href="../js/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../../js/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="../js/jquery.gritter/css/jquery.gritter.css" />
 
 		<link rel="stylesheet" href="../fonts/font-awesome-4/css/font-awesome.min.css">
