@@ -17,11 +17,6 @@
 
     /* mendapatkan nama guru */
     $row_guru= $_SESSION;
-    echo '<pre>';
-    print_r($_POST);
-    print_r($_SESSION);
-    print_r($sql_1);
-    echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,5 +124,14 @@
                 </div>
             </center>
         </div>
+		<!-- end /#DivIdToPrint -->
+		<script>
+			var printContents = document.getElementById('DivIdToPrint').innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+			setTimeout(function(){window.close();},10);
+		</script>
     </body>
 </html>
