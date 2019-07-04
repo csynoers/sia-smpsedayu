@@ -54,39 +54,20 @@
 							<td class="text-center">
 								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
-								<table>
-									<tr colspan="2">
-										<td>Data Nilai Tugas Siswa</td>
+								<table class="table">
+									<tr>
+										<td colspan="4">Data Nilai Tugas Siswa</td>
 									</tr>
 									<tr>
-										<td>
-											<table>
-												<tr>
-													<td>Mata Pelajaran</td>
-													<td> : </td>
-													<td><?php echo $row_1["pelajaran_nama"] ?></td>
-												</tr>
-												<tr>
-													<td>Kelas</td>
-													<td> : </td>
-													<td><?php echo $row_1["kelas_nama"] ?></td>
-												</tr>
-											</table>
-										</td>
-										<td>
-											<table>
-												<tr>
-													<td>Tahun Ajaran</td>
-													<td> : </td>
-													<td><?php echo $row_2["tahun_nama"] ?></td>
-												</tr>
-												<tr>
-													<td>Nama Guru</td>
-													<td> : </td>
-													<td><?php echo $row_guru["nama"] ?></td>
-												</tr>
-											</table>
-										</td>
+										<td>Mata Pelajaran</td>
+										<td> : <?php echo $row_1["pelajaran_nama"] ?></td>
+										<td>Tahun Ajaran</td>
+										<td> : <?php echo $row_2["tahun_nama"] ?></td>
+									</tr>
+										<td>Kelas</td>
+										<td> : <?php echo $row_1["kelas_nama"] ?></td>
+										<td>Nama Guru</td>
+										<td> : <?php echo $row_guru["nama"] ?></td>
 									</tr>
 								</table>
 							</td>
