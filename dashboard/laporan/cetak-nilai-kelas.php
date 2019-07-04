@@ -55,28 +55,38 @@
 								<h4><strong>SMP NEGERI 1 SEDAYU</strong></h4>
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
 								<table>
-									<tr colspan="3">
+									<tr colspan="2">
 										<td>Data Nilai Tugas Siswa</td>
 									</tr>
 									<tr>
-										<td>Mata Pelajaran</td>
-										<td> : </td>
-										<td><?php echo $row_1["pelajaran_nama"] ?></td>
-									</tr>
-									<tr>
-										<td>Kelas</td>
-										<td> : </td>
-										<td><?php echo $row_1["kelas_nama"] ?></td>
-									</tr>
-									<tr>
-										<td>Tahun Ajaran</td>
-										<td> : </td>
-										<td><?php echo $row_2["tahun_nama"] ?></td>
-									</tr>
-									<tr>
-										<td>Nama Guru</td>
-										<td> : </td>
-										<td><?php echo $row_guru["nama"] ?></td>
+										<td>
+											<table>
+												<tr>
+													<td>Mata Pelajaran</td>
+													<td> : </td>
+													<td><?php echo $row_1["pelajaran_nama"] ?></td>
+												</tr>
+												<tr>
+													<td>Kelas</td>
+													<td> : </td>
+													<td><?php echo $row_1["kelas_nama"] ?></td>
+												</tr>
+											</table>
+										</td>
+										<td>
+											<table>
+												<tr>
+													<td>Tahun Ajaran</td>
+													<td> : </td>
+													<td><?php echo $row_2["tahun_nama"] ?></td>
+												</tr>
+												<tr>
+													<td>Nama Guru</td>
+													<td> : </td>
+													<td><?php echo $row_guru["nama"] ?></td>
+												</tr>
+											</table>
+										</td>
 									</tr>
 								</table>
 							</td>
@@ -150,12 +160,12 @@
 		</div>
 		<!-- end /#DivIdToPrint -->
 		<script>
-			var printContents = document.getElementById('DivIdToPrint').innerHTML;
-			var originalContents = document.body.innerHTML;
-			document.body.innerHTML = printContents;
-			window.print();
-			document.body.innerHTML = originalContents;
-			setTimeout(function(){window.close();},10);
+			// var printContents = document.getElementById('DivIdToPrint').innerHTML;
+			// var originalContents = document.body.innerHTML;
+			// document.body.innerHTML = printContents;
+			// window.print();
+			// document.body.innerHTML = originalContents;
+			// setTimeout(function(){window.close();},10);
 		</script>
 	</body>
 </html>
