@@ -103,9 +103,6 @@
 			</center>
 		</div>
 		<!-- end /#DivIdToPrint -->
-<?php
-		}
-?>
 		<script>
 			// var printContents = document.getElementById('DivIdToPrint').innerHTML;
 			// var originalContents = document.body.innerHTML;
