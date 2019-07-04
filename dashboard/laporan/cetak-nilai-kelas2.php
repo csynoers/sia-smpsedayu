@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     require_once('../../config/db.php');
     /* query untuk mendapatkan mata pelajaran dan kelas */
 	// $sql_1= "
