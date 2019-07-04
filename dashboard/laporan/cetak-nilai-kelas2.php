@@ -69,6 +69,64 @@
 				</table>
 				<!-- end /.table -->
                 <hr>
+                <div class="table-responsive">
+					<table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                if (isset($_POST['cetak-nilai']))
+                                {
+                                    $no 		=	1;
+                                    $kelas 		=	$_POST['kelas'];
+                                    $pelajaran 	=	$_POST['pelajaran'];
+                                    $sql 		=	mysql_query("
+                                        SELECT
+                                            nilai_quis.id_nq,
+                                            nilai_quis.nilai_point,
+                                            users.users_id,
+                                            users.users_nama, 
+                                            kelas.kelas_id,
+                                            kelas.kelas_nama,
+                                            pelajaran.pelajaran_id, 
+                                            pelajaran.pelajaran_nama
+                                    FROM nilai_quis
+                                        INNER JOIN users
+                                            ON nilai_quis.users_id=users.users_id
+                                        INNER JOIN kelas
+                                            ON users.kelas_id=kelas.kelas_id
+                                        INNER JOIN pelajaran
+                                            ON nilai_quis.pelajaran_id=pelajaran.pelajaran_id
+                                    WHERE 1=1
+                                        AND kelas.kelas_id='$kelas'
+                                        AND pelajaran.pelajaran_id='$pelajaran'
+                                    ");
+                                    while ($data=mysql_fetch_array($sql))
+                                    {
+                                        echo '
+                                            <tr>
+                                                <td>'.$no.'</td>
+                                                <td>'.$data['users_nama'].'</td>
+                                                <td>'.$data['kelas_nama'].'</td>
+                                                <td>'.$data['pelajaran_nama'].'</td>
+                                                <td>'.($data['nilai_point'] == 0 ? "Data Kosong" : $data['nilai_point'] ).'</td>
+                                            </tr>
+                                        ';
+                                        $no++;  
+                                    }
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                    <!-- end /.table -->
+                </div>
             </center>
         </div>
     </body>
