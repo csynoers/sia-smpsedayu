@@ -56,7 +56,7 @@
 								<h6><strong>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</strong></h6>
 								<table class="text-left" width="100%">
 									<tr>
-										<td colspan="4" class="text-center">Data Nilai Tugas Siswa</td>
+										<td colspan="4" class="text-center"><strong>Data Nilai Tugas Siswa :</strong></td>
 									</tr>
 									<tr>
 										<td width="20%">Mata Pelajaran</td>
