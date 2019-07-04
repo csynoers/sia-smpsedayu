@@ -95,7 +95,7 @@
 			document.body.innerHTML = printContents;
 			window.print();
 			document.body.innerHTML = originalContents;
-			setTimeout(function(){window.close();},10);
+			setTimeout(function(){window.close(window.history.go(-1));},10);
 		</script>
 	</body>
 </html>
