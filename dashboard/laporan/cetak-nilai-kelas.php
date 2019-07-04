@@ -18,12 +18,18 @@
 	<body>
 		<div id="DivIdToPrint" class="container">
 			<center>
-				<div class="container" id="pcont">
-					<div class="page-head">
-						<h2>Laporan Nilai Tugas Siswa</h2><br>
-						<h4>SMPN 1 SEDAYU</h4>
-					</div>
+				<div class="row">
+					<table>
+						<tr>
+							<td><img src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
+							<td>
+								<h2>Laporan Nilai Tugas Siswa</h2><br>
+								<h4>SMPN 1 SEDAYU</h4>
+							</td>
+						</tr>
+					</table>
 				</div>
+				<hr>
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead>
@@ -90,12 +96,12 @@
 		</div>
 		<!-- end /#DivIdToPrint -->
 		<script>
-			var printContents = document.getElementById('DivIdToPrint').innerHTML;
-			var originalContents = document.body.innerHTML;
-			document.body.innerHTML = printContents;
-			window.print();
-			document.body.innerHTML = originalContents;
-			setTimeout(function(){window.close();},10);
+			// var printContents = document.getElementById('DivIdToPrint').innerHTML;
+			// var originalContents = document.body.innerHTML;
+			// document.body.innerHTML = printContents;
+			// window.print();
+			// document.body.innerHTML = originalContents;
+			// setTimeout(function(){window.close();},10);
 		</script>
 	</body>
 </html>
