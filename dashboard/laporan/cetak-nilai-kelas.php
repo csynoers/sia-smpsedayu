@@ -18,18 +18,18 @@
 	<body>
 		<div id="DivIdToPrint" class="container">
 			<center>
-				<div class="row">
-					<table>
+				<table class="table">
+					<tbody>
 						<tr>
 							<td><img style="width: 100px;" src="../img/logo.jpg" alt="Logo Smp Negeri 1 Sedayu"></td>
-							<td>
-								<h2>Laporan Nilai Tugas</h2><br>
+							<td class="text-center">
 								<h4>SMP NEGERI 1 SEDAYU</h4>
-								<h4>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</h4>
+								<h5>Jl. Pedes - Nulis, Panggang, Argomulyo, Kec. Sedayu, Bantul, Daerah Istimewa Yogyakarta 55752</h5>
+								<h4><strong>Data Nilai Tugas Siswa Mata Pelajaran: Biologi, Kelas: 7A, Tahun Ajaran : 2018/2019</strong></h4>
 							</td>
 						</tr>
-					</table>
-				</div>
+					</tbody>
+				</table>
 				<hr>
 				<div class="table-responsive">
 					<table class="table table-striped">
