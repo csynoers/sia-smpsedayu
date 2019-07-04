@@ -16,7 +16,7 @@
         <?php
                 $iduser     =$_SESSION['id'];  ?> 
     <div class="box-body small-5" style="display: block;">
-		<form data-abide method="POST" action="laporan/cetak-nilai-kelas.php" role="form" enctype="multipart/form-data"> 
+		<form target="_blank" data-abide method="POST" action="laporan/cetak-nilai-kelas.php" role="form" enctype="multipart/form-data"> 
 			 <div class="form-group"> 
                  <label>Mata Pelajaran</label>
                 <select name="pelajaran" class="form-control" required>
