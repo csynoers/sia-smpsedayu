@@ -93,7 +93,7 @@
                             if ( $rows_1['num_rows'] > 0 ) {
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
                                     $row= [
-                                        'name'=> $value['users_nama'],
+                                        'name'=> $value['users_nama'] ."({$value_1['pelajaran_nama']})",
                                         'post_date'=> $value_1['post_date'],
                                         'post'=> $value_1['post'],
                                     ];
