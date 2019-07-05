@@ -61,12 +61,12 @@
                         $rows= query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
                         echo '<pre>';
                         print_r( $rows['fetch_assoc'] );
-                        print_r( nested_forum() );
+                        
                         echo '</pre>';
-                        // foreach ( $rows["fetch_assoc"] $key => $value)
-                        // {
-                        //     // echo nested_forum();
-                        // }
+                        foreach ( $rows["fetch_assoc"] $key => $value)
+                        {
+                            print_r( nested_forum() );
+                        }
                     ?>
                 </div>
             </div>
