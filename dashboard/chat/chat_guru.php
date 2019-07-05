@@ -59,10 +59,10 @@
                 <div class="panel-body">
                     <?php
                         $rows= query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
-                        echo '<pre>';
-                        print_r( $rows['fetch_assoc'] );
+                        // echo '<pre>';
+                        // print_r( $rows['fetch_assoc'] );
                         
-                        echo '</pre>';
+                        // echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
                             $row= [
