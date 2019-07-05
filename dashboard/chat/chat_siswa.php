@@ -74,16 +74,19 @@
                         echo '<pre>';
                         print_r( $rows );
                         echo '</pre>';
-                        // foreach ( $rows["fetch_assoc"] as $key => $value)
-                        // {
-                        //     // print_r($value);
-                        //     $row= [
-                        //         'name'=> $_SESSION["nama"],
-                        //         'post_date'=> $value['post_date'],
-                        //         'post'=> $value['post'],
-                        //     ];
-                        //     echo nested_forum($row);
-                        // }
+                        foreach ( $rows["fetch_assoc"] as $key => $value)
+                        {
+                            // print_r($value);
+                            echo '<pre>';
+                            query_result( $conn= $connect, $sql= "SELECT * FROM forums WHERE forums.user_id='{$value["users_noinduk"]}' " );
+                            echo '</pre>';
+                            // $row= [
+                            //     'name'=> $_SESSION["nama"],
+                            //     'post_date'=> $value['post_date'],
+                            //     'post'=> $value['post'],
+                            // ];
+                            // echo nested_forum($row);
+                        }
                     ?>
                 </div>
             </div>
