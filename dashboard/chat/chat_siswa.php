@@ -89,13 +89,17 @@
                                     AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
                                     AND pelajaran.pelajaran_nama='{$value["pelajaran_nama"]}'
                             ";
-                            foreach ( query_result( $conn= $connect, $sql= $sql_1 ) as $key_1 => $value_1) {
-                                $row= [
-                                    'name'=> $value['users_nama'],
-                                    'post_date'=> $value['post_date'],
-                                    'post'=> $value['post'],
-                                ];
-                                echo nested_forum($row);
+                            $rows_1= query_result( $conn= $connect, $sql= $sql_1 );
+                            if ( $rows_1['num_rows'] > 0 ) {
+                                foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
+                                    $row= [
+                                        'name'=> $value['users_nama'],
+                                        'post_date'=> $value_1['post_date'],
+                                        'post'=> $value_1['post'],
+                                    ];
+                                    echo nested_forum($row);
+                                }
+                                
                             }
                         }
                     ?>
