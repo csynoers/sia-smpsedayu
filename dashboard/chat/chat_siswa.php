@@ -90,6 +90,9 @@
                                     AND pelajaran.pelajaran_nama='{$value["pelajaran_nama"]}'
                             ";
                             $rows_1= query_result( $conn= $connect, $sql= $sql_1 );
+                            echo '<pre>';
+                            print_r( $rows_1 );
+                            echo '</pre>';
                             if ( $rows_1['num_rows'] > 0 ) {
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
                                     $row= [
