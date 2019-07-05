@@ -17,9 +17,9 @@
             </div>
         ';
     }
-    echo '<pre>';
-    print_r($_SESSION);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($_SESSION);
+    // echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +61,7 @@
                         $rows= query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
                         echo '<pre>';
                         print_r( $rows );
+                        print_r( nested_forum() );
                         echo '</pre>';
                         // foreach ( $rows["fetch_assoc"] $key => $value)
                         // {
