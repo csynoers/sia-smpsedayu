@@ -59,18 +59,16 @@
                 <div class="panel-body">
                     <?php
                         $sql= "
-                            SELECT
-                                pelajaran.pelajaran_id,
+                            SELECT 
                                 pelajaran.pelajaran_nama,
-                                kelas.kelas_nama
+                                users.users_noinduk,
+                                users.users_nama
                             FROM pelajaran
-                                INNER JOIN kelas
-                                    ON pelajaran.kelas_id=kelas.kelas_id
                                 INNER JOIN users
-                                    ON kelas.kelas_id=users.kelas_id
+                                    ON pelajaran.users_id=users.users_id
                             WHERE 1=1
-                                AND users.users_id='{$_SESSION["id"]}'
-                                GROUP BY kelas.kelas_id,pelajaran.pelajaran_id
+                                AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
+                                GROUP BY pelajaran.pelajaran_nama
                         ";
                         $rows= query_result( $conn= $connect, $sql= $sql );
                         echo '<pre>';
