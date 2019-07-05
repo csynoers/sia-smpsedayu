@@ -59,10 +59,10 @@
                 <div class="panel-body">
                     <?php
                         $rows= query_result( $conn= $connect, $sql="SELECT *,DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
-                        // echo '<pre>';
-                        // print_r( $rows['fetch_assoc'] );
+                        echo '<pre>';
+                        print_r( $rows );
                         
-                        // echo '</pre>';
+                        echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
                             print_r($value);
