@@ -86,7 +86,7 @@
                                 WHERE 1=1
                                     AND forums.user_id='{$value["users_id"]}'
                                     AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
-                                    AND pelajaran.pelajaran_nama='{$value["pelajaran_nama]}'
+                                    AND pelajaran.pelajaran_nama='{$value["pelajaran_nama"]}'
                             ";
                             // print_r($value);
                             echo '<pre>';
