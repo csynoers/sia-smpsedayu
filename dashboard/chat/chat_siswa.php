@@ -117,9 +117,6 @@
                             $rows_1= query_result( $conn= $connect, $sql= $sql_1 );
                             if ( $rows_1['num_rows'] > 0 ) {
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
-                                    echo '<pre>';
-                                    print_r( $value_1 );
-                                    echo '</pre>';
                                     $row= [
                                         'forum_id'=> $value_1["forum_id"],
                                         'pelajaran_id'=> $value_1["pelajaran_id"],
@@ -128,17 +125,19 @@
                                         'post'=> $value_1['post'],
                                         'reply'=> TRUE,
                                     ];
-                                    if ( $value_1['rel_id'] > 0 ) {
-                                        $sql_2= "
-                                            SELECT * FROM forums WHERE rel_id='{$value_1["rel_id"]}'
-                                        ";
-                                        echo '<pre>';
-                                        print_r( query_result($connect,$sql_2) );#tes
-                                        echo '</pre>';
-                                        // echo nested_forum($row);
-                                    }else {
-                                        echo nested_forum($row);
-                                    }
+
+                                    /* get nested */
+                                    $sql_2= "
+                                        SELECT * FROM forums WHERE rel_id='{$value_1["forum_id"]}'
+                                    ";
+                                    echo '<pre>';
+                                    print_r( query_result($connect,$sql_2) );#tes
+                                    echo '</pre>';
+                                    // if ( $value_1['rel_id'] > 0 ) {
+                                    //     // echo nested_forum($row);
+                                    // }else {
+                                    //     echo nested_forum($row);
+                                    // }
                                 }
                                 
                             }
