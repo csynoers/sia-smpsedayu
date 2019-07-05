@@ -78,9 +78,19 @@
                         echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
+                            $sql_1= "
+                                SELECT *
+                                FROM forums
+                                    INNER JOIN pelajaran
+                                        ON forums.user_id=pelajaran.users_id
+                                WHERE 1=1
+                                    AND forums.user_id='{$value["users_id"]}'
+                                    AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
+                                    AND pelajaran.pelajaran_nama='{$value["pelajaran_nama]}'
+                            ";
                             // print_r($value);
                             echo '<pre>';
-                            print_r( query_result( $conn= $connect, $sql= "SELECT * FROM forums WHERE forums.user_id='{$value["users_id"]}' " ) );
+                            print_r( query_result( $conn= $connect, $sql= $sql_1 ) );
                             echo '</pre>';
                             // $row= [
                             //     'name'=> $_SESSION["nama"],
