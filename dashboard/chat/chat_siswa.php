@@ -115,11 +115,11 @@
                                     AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
                             ";
                             $rows_1= query_result( $conn= $connect, $sql= $sql_1 );
-                            // echo '<pre>';
-                            // print_r( $rows_1 );
-                            // echo '</pre>';
                             if ( $rows_1['num_rows'] > 0 ) {
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
+                                    echo '<pre>';
+                                    print_r( $value_1 );
+                                    echo '</pre>';
                                     $row= [
                                         'forum_id'=> $value_1["forum_id"],
                                         'pelajaran_id'=> $value_1["pelajaran_id"],
