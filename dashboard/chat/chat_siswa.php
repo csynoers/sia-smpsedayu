@@ -60,7 +60,9 @@
                     <?php
                         $sql= "
                             SELECT 
+                                pelajaran.pelajaran_id,
                                 pelajaran.pelajaran_nama,
+                                users.users_id,
                                 users.users_noinduk,
                                 users.users_nama
                             FROM pelajaran
@@ -78,7 +80,7 @@
                         {
                             // print_r($value);
                             echo '<pre>';
-                            print_r( query_result( $conn= $connect, $sql= "SELECT * FROM forums WHERE forums.user_id='{$value["users_noinduk"]}' " ) );
+                            print_r( query_result( $conn= $connect, $sql= "SELECT * FROM forums WHERE forums.user_id='{$value["user_id"]}' " ) );
                             echo '</pre>';
                             // $row= [
                             //     'name'=> $_SESSION["nama"],
