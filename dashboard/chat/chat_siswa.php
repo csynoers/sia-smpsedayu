@@ -22,6 +22,7 @@
                 <div class="media-body">
                     <h4 class="media-heading">'.$row['name'].' <small><i>Posted on '.$row['post_date'].'</i></small></h4>
                     <p>'.$row['post'].'</p>
+                    '.$form_reply.'
                     '.(empty($nested)? null : $nested ).'
                 </div>
             </div>
