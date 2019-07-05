@@ -63,7 +63,7 @@
                         print_r( $rows['fetch_assoc'] );
                         
                         echo '</pre>';
-                        foreach ( $rows["fetch_assoc"] $key => $value)
+                        foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
                             print_r( nested_forum() );
                         }
