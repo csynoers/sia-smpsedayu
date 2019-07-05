@@ -130,14 +130,15 @@
                                     $sql_2= "
                                         SELECT * FROM forums WHERE rel_id='{$value_1["forum_id"]}'
                                     ";
-                                    echo '<pre>';
-                                    print_r( query_result($connect,$sql_2) );#tes
-                                    echo '</pre>';
-                                    // if ( $value_1['rel_id'] > 0 ) {
-                                    //     // echo nested_forum($row);
-                                    // }else {
-                                    //     echo nested_forum($row);
-                                    // }
+                                    $rows_2= query_result($connect,$sql_2);
+                                    if ( $rows_2['num_rows'] > 0 ) {
+                                        echo '<pre>';
+                                        print_r( $rows_2 );#tes
+                                        echo '</pre>';
+                                    } else {
+                                        echo nested_forum($row);
+                                    }
+
                                 }
                                 
                             }
