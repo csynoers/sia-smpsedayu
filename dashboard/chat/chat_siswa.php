@@ -5,9 +5,21 @@
     {
         if ( $row['reply']==1 ) {
             $form_reply= '
-                <button data-toggle="collapse" data-target="#demo_'.$row["forum_id"].'">Reply</button>
+                <button class="btn btn-block btn-success" data-toggle="collapse" data-target="#demo_'.$row["forum_id"].'">Reply</button>
                 <div id="demo_'.$row["forum_id"].'" class="collapse">
-                Lorem ipsum dolor text....
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <form method="POST" action="simpan_pesan.php">
+                                <input type="hidden" name="user_id" value="'.$_SESSION['id'].'">
+                                <div class="form-group">
+                                    <textarea required="" rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             '; 
         }else {
