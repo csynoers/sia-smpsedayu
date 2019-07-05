@@ -40,11 +40,11 @@
                     <form method="POST" action="simpan_pesan.php">
 						<input type="hidden" name="user_id" value="<?php echo $_SESSION['id'] ?>">
                         <div class="form-group">
-                            <textarea rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
+                            <textarea required="" rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Pilih Mata Pelajaran Yang Diampu</label>
-                            <select name="pelajaran_id" id="" required="">
+                            <select name="pelajaran_id" id="" required="" class="form-control">
                                 <?php
                                     $sql= "
                                         SELECT *
