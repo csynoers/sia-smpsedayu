@@ -134,12 +134,38 @@
                                 'post'=> $value['post'],
                                 'reply'=> TRUE,
                             ];
-                            // $row= [
-                            //     'name'=> $_SESSION["nama"] ." ({$value["pelajaran_nama"]} {$value["kelas_nama"]})",
-                            //     'post_date'=> $value['post_date'],
-                            //     'post'=> $value['post'],
-                            // ];
-                            echo nested_forum($row);
+                            $sql_2= "
+                                SELECT
+                                    forums.*,
+                                    DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date,
+                                    users.users_nama
+                                FROM forums
+                                    INNER JOIN users
+                                        ON forums.user_id=users.users_id
+                                WHERE 1=1
+                                    AND forums.rel_id='{$value["forum_id"]}'
+                            ";
+                            $rows_2= query_result($connect,$sql_2);
+                            if ( $rows_2['num_rows'] > 0 ) {
+                                $nested_row= "";
+                                foreach ($rows_2['fetch_assoc'] as $key_2 => $value_2) {
+                                    $row_2= [
+                                        'forum_id'=> $value_2["forum_id"],
+                                        'pelajaran_id'=> $value_2["pelajaran_id"],
+                                        'name'=> $value_2['users_nama'],
+                                        'post_date'=> $value_2['post_date'],
+                                        'post'=> $value_2['post'],
+                                        'reply'=> FALSE,
+                                    ];
+                                    $nested_row .= nested_forum($row_2);
+                                }
+                                echo nested_forum($row, $nested_row );
+                                // echo '<pre>';
+                                // print_r( $rows_2 );#tes
+                                // echo '</pre>';
+                            } else {
+                                echo nested_forum($row);
+                            }
                         }
                     ?>
                 </div>
