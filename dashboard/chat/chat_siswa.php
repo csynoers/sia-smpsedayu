@@ -133,7 +133,7 @@
                                             SELECT * FROM forums WHERE rel_id='{$value_1["rel_id"]}'
                                         ";
                                         echo '<pre>';
-                                        print_r( query_result($connect,$sql_2) );
+                                        print_r( query_result($connect,$sql_2) );#tes
                                         echo '</pre>';
                                         // echo nested_forum($row);
                                     }else {
