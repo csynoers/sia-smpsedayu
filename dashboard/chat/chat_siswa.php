@@ -58,7 +58,7 @@
 </head>
 <body>
 
-    <section class="forums-content">
+    <section class="forums-content" style="margin-top: 3em;">
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading">Forum Diskusi Anda</div>

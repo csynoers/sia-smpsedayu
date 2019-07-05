@@ -3,6 +3,30 @@
     session_start();
     function nested_forum($row,$nested=null)
     {
+        if ( $row['reply']==1 ) {
+            $form_reply= '
+                <button class="btn btn-block btn-success" data-toggle="collapse" data-target="#demo_'.$row["forum_id"].'">Reply</button>
+                <div id="demo_'.$row["forum_id"].'" class="collapse">
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <form method="POST" action="simpan_pesan.php">
+                                <input type="hidden" name="user_id" value="'.$_SESSION['id'].'">
+                                <input type="hidden" name="pelajaran_id" value="'.$row['pelajaran_id'].'">
+                                <input type="hidden" name="rel_id" value="'.$row['forum_id'].'">
+                                <div class="form-group">
+                                    <textarea required="" rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            '; 
+        }else {
+            $form_reply= null; 
+        }
         return '
             <!-- Nested media object -->
             <div class="media">
@@ -12,6 +36,7 @@
                 <div class="media-body">
                     <h4 class="media-heading">'.$row['name'].' <small><i>Posted on '.$row['post_date'].'</i></small></h4>
                     <p>'.$row['post'].'</p>
+                    '.$form_reply.'
                     '.(empty($nested)? null : $nested ).'
                 </div>
             </div>
@@ -32,7 +57,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <section class="post-new-forum">
+    <section class="post-new-forum" style="margin-top: 3em;">
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading">Post New Forum</div>
@@ -81,6 +106,7 @@
                         $sql = "
                             SELECT
                                 forums.forum_id,
+                                forums.pelajaran_id,
                                 forums.post,
                                 DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date,
                                 pelajaran.pelajaran_nama,
@@ -100,12 +126,19 @@
                         echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
-                            // print_r($value);
                             $row= [
+                                'forum_id'=> $value["forum_id"],
+                                'pelajaran_id'=> $value["pelajaran_id"],
                                 'name'=> $_SESSION["nama"] ." ({$value["pelajaran_nama"]} {$value["kelas_nama"]})",
                                 'post_date'=> $value['post_date'],
                                 'post'=> $value['post'],
+                                'reply'=> TRUE,
                             ];
+                            // $row= [
+                            //     'name'=> $_SESSION["nama"] ." ({$value["pelajaran_nama"]} {$value["kelas_nama"]})",
+                            //     'post_date'=> $value['post_date'],
+                            //     'post'=> $value['post'],
+                            // ];
                             echo nested_forum($row);
                         }
                     ?>
