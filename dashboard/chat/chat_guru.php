@@ -10,7 +10,7 @@
                     <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="media-object" style="width:45px">
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">'.$row['name'].' <small><i>Posted on February 21, 2016</i></small></h4>
+                    <h4 class="media-heading">'.$row['name'].' <small><i>Posted on '.$row['post_date'].'</i></small></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     '.(empty($nested)? null : $nested ).'
                 </div>
@@ -58,7 +58,7 @@
                 <div class="panel-heading">Forum Anda</div>
                 <div class="panel-body">
                     <?php
-                        $rows= query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
+                        $rows= query_result( $conn= $connect, $sql="SELECT *,DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
                         // echo '<pre>';
                         // print_r( $rows['fetch_assoc'] );
                         
@@ -67,6 +67,7 @@
                         {
                             $row= [
                                 'name'=> $_SESSION["nama"],
+                                'post_date'=> $value['post_date'],
                             ];
                             echo nested_forum($row);
                         }
