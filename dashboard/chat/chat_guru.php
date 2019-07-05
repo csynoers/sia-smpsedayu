@@ -65,6 +65,7 @@
                         // echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
+                            print_r($value);
                             $row= [
                                 'name'=> $_SESSION["nama"],
                                 'post_date'=> $value['post_date'],
