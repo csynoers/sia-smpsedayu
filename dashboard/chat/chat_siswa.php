@@ -121,6 +121,7 @@
                                     ";
                                     $rows_2= query_result($connect,$sql_2);
                                     if ( $rows_2['num_rows'] > 0 ) {
+                                        $nested_row= "";
                                         foreach ($rows_2['fetch_assoc'] as $key_2 => $value_2) {
                                             $row_2= [
                                                 'forum_id'=> $value_2["forum_id"],
@@ -130,8 +131,9 @@
                                                 'post'=> $value_2['post'],
                                                 'reply'=> FALSE,
                                             ];
+                                            $nested_row .= nested_forum($row_2);
                                         }
-                                        echo nested_forum($row, nested_forum($row_2) );
+                                        echo nested_forum($row, $nested_row );
                                         // echo '<pre>';
                                         // print_r( $rows_2 );#tes
                                         // echo '</pre>';
