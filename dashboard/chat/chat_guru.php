@@ -11,7 +11,7 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">'.$row['name'].' <small><i>Posted on '.$row['post_date'].'</i></small></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>'.$row['post'].'</p>
                     '.(empty($nested)? null : $nested ).'
                 </div>
             </div>
@@ -61,14 +61,14 @@
                         $rows= query_result( $conn= $connect, $sql="SELECT *,DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
                         echo '<pre>';
                         print_r( $rows );
-                        
                         echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
-                            print_r($value);
+                            // print_r($value);
                             $row= [
                                 'name'=> $_SESSION["nama"],
                                 'post_date'=> $value['post_date'],
+                                'post'=> $value['post'],
                             ];
                             echo nested_forum($row);
                         }
