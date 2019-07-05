@@ -39,22 +39,6 @@
     <section class="forums-content">
         <div class="container">
             <?php
-            function query_result($conn, $sql)
-            {
-                $sql = "SELECT * FROM forums";
-                $result = mysqli_query($conn, $sql);
-
-                # result fetch assoc
-                $fetch_assoc = [];
-                while ( $rows= mysqli_fetch_assoc($result) ) {
-                    $fetch_assoc[]= $rows;
-                }
-
-                return [
-                    'fetch_assoc' => $fetch_assoc,
-                    'num_rows' => mysqli_num_rows( $result ),
-                ];
-            }
             echo '<pre>';
             print_r( query_result( $conn= $connect, $sql="SELECT * FROM forums" ) );
             echo '</pre>';
