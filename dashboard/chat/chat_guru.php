@@ -36,6 +36,26 @@
     </section>
     <!-- end /.post-new-forum -->
 
+    <section class="forums-content">
+        <div class="container">
+            <?php
+            function query_result($conn, $sql)
+            {
+                $sql = "SELECT * FROM forums";
+                $result = mysqli_query($connect, $sql);
+                return [
+                    'fetch_assoc' => mysqli_fetch_assoc($result),
+                    'num_rows' => mysqli_num_rows( $result ),
+                ];
+            }
+            echo '<pre>';
+            print_r( query_result( $conn= $connect, $sql="SELECT * FROM forums" ) );
+            echo '</pre>';
+            ?>
+        </div>
+    </section>
+    <!-- end /.forums-content -->
+
 <div class="container">
   <h2>Dynamic Tabs</h2>
   <p>To make the tabs toggleable, add the data-toggle="tab" attribute to each link. Then add a .tab-pane class with a unique ID for every tab and wrap them inside a div element with class .tab-content.</p>
