@@ -85,14 +85,14 @@
                                 DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date,
                                 pelajaran.pelajaran_nama,
                                 kelas.kelas_nama
-                            FROM forums
-                                LEFT JOIN pelajaran
-                                    ON pelajaran.pelajaran_id=pelajaran.pelajaran_id
-                                LEFT JOIN kelas
-                                    ON pelajaran.kelas_id=kelas.kelas_id
+                            FROM
+                                forums,
+                                pelajaran,
+                                kelas
                             WHERE 1=1
                                 AND forums.user_id='{$_SESSION["id"]}'
-                                GROUP BY forums.forum_id
+                                AND forums.pelajaran_id=pelajaran.pelajaran_id
+                                AND pelajaran.kelas_id=kelas.kelas_id
                         ";
                         $rows= query_result( $conn= $connect, $sql= $sql );
                         echo '<pre>';
