@@ -31,7 +31,7 @@
             <!-- Nested media object -->
             <div class="media">
                 <div class="media-left">
-                    <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="media-object" style="width:45px">
+                    <img src="<img src="https://img.icons8.com/cotton/64/000000/speech-bubble-with-dots.png">" class="media-object" style="width:45px">
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">'.$row['name'].' <small><i>Posted on '.$row['post_date'].'</i></small></h4>
@@ -100,7 +100,7 @@
     <section class="forums-content">
         <div class="container">
             <div class="panel panel-default">
-                <div class="panel-heading">Forum Anda</div>
+                <div class="panel-heading">Forum Diskusi Anda</div>
                 <div class="panel-body">
                     <?php
                         $sql = "
@@ -121,9 +121,9 @@
                                 AND pelajaran.kelas_id=kelas.kelas_id
                         ";
                         $rows= query_result( $conn= $connect, $sql= $sql );
-                        echo '<pre>';
-                        print_r( $rows );
-                        echo '</pre>';
+                        // echo '<pre>';
+                        // print_r( $rows );
+                        // echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
                             $row= [

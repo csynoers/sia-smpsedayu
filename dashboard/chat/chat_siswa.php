@@ -31,7 +31,7 @@
             <!-- Nested media object -->
             <div class="media">
                 <div class="media-left">
-                    <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="media-object" style="width:45px">
+                    <img src="<img src="https://img.icons8.com/cotton/64/000000/speech-bubble-with-dots.png">" class="media-object" style="width:45px">
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">'.$row['name'].' <small><i>Posted on '.$row['post_date'].'</i></small></h4>
