@@ -6,7 +6,7 @@
         if ( $row['reply']==1 ) {
             $form_reply= '
                 <button data-toggle="collapse" data-target="#demo_'.$row["forum_id"].'">Reply</button>
-                <div id="demo_'..$row["forum_id"]..'" class="collapse">
+                <div id="demo_'.$row["forum_id"].'" class="collapse">
                 Lorem ipsum dolor text....
                 </div>
             '; 
