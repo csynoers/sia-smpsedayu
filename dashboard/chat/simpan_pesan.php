@@ -11,5 +11,10 @@
   $query = "INSERT INTO forums
               VALUES('', '{$nik}', '{$pelajaran_id}', '{$pesan}', '{$tanggal}', '{$rel_id}')";
   mysqli_query($connect, $query);
-  header("location:chat_guru.php");
+  echo "
+    <script>
+      window.history.go(-1);
+    </script>
+  ";
+  // header("location:chat_guru.php");
 ?>

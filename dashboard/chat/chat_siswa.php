@@ -11,7 +11,7 @@
                         <div class="panel-body">
                             <form method="POST" action="simpan_pesan.php">
                                 <input type="hidden" name="user_id" value="'.$_SESSION['id'].'">
-                                <input type="hidden" name="pelajaran_id" value="'.$_SESSION['id'].'">
+                                <input type="hidden" name="pelajaran_id" value="'.$row['pelajaran_id'].'">
                                 <div class="form-group">
                                     <textarea required="" rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
                                 </div>
