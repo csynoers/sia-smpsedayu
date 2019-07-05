@@ -42,7 +42,7 @@
             function query_result($conn, $sql)
             {
                 $sql = "SELECT * FROM forums";
-                $result = mysqli_query($connect, $sql);
+                $result = mysqli_query($conn, $sql);
                 return [
                     'fetch_assoc' => mysqli_fetch_assoc($result),
                     'num_rows' => mysqli_num_rows( $result ),
