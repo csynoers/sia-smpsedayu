@@ -54,7 +54,8 @@
                                         WHERE 1=1
                                             AND pelajaran.users_id='{$_SESSION["id"]}'
                                     ";
-                                    foreach ( query_result( $conn= $connect, $sql= $sql ) as $key => $value) {
+                                    $rows= query_result( $conn= $connect, $sql= $sql );
+                                    foreach ( $rows["fetch_assoc"] as $key => $value) {
                                         echo "<option value='{$value["pelajaran_id"]}'>{$value["pelajaran_nama"]} Kelas ({$value["kelas_nama"]})</option>";
                                     }
                                 ?>
