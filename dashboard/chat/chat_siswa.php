@@ -79,7 +79,8 @@
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
                             $sql_1= "
-                                SELECT *
+                                SELECT *,
+                                    DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date
                                 FROM forums
                                     INNER JOIN pelajaran
                                         ON forums.user_id=pelajaran.users_id
@@ -88,16 +89,14 @@
                                     AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
                                     AND pelajaran.pelajaran_nama='{$value["pelajaran_nama"]}'
                             ";
-                            // print_r($value);
-                            echo '<pre>';
-                            print_r( query_result( $conn= $connect, $sql= $sql_1 ) );
-                            echo '</pre>';
-                            // $row= [
-                            //     'name'=> $_SESSION["nama"],
-                            //     'post_date'=> $value['post_date'],
-                            //     'post'=> $value['post'],
-                            // ];
-                            // echo nested_forum($row);
+                            foreach ( query_result( $conn= $connect, $sql= $sql_1 ) as $key_1 => $value_1) {
+                                $row= [
+                                    'name'=> $value['users_nama'],
+                                    'post_date'=> $value['post_date'],
+                                    'post'=> $value['post'],
+                                ];
+                                echo nested_forum($row);
+                            }
                         }
                     ?>
                 </div>
