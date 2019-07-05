@@ -80,7 +80,7 @@
                         {
                             // print_r($value);
                             echo '<pre>';
-                            print_r( query_result( $conn= $connect, $sql= "SELECT * FROM forums WHERE forums.user_id='{$value["user_id"]}' " ) );
+                            print_r( query_result( $conn= $connect, $sql= "SELECT * FROM forums WHERE forums.user_id='{$value["users_id"]}' " ) );
                             echo '</pre>';
                             // $row= [
                             //     'name'=> $_SESSION["nama"],
