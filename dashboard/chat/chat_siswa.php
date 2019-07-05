@@ -3,6 +3,16 @@
     session_start();
     function nested_forum($row,$nested=null)
     {
+        if ( $row['reply']==1 ) {
+            $form_reply= '
+                <button data-toggle="collapse" data-target="#demo_'.$row["forum_id"].'">Reply</button>
+                <div id="demo_'..$row["forum_id"]..'" class="collapse">
+                Lorem ipsum dolor text....
+                </div>
+            '; 
+        }else {
+            $form_reply= null; 
+        }
         return '
             <!-- Nested media object -->
             <div class="media">
@@ -73,9 +83,9 @@
                                 GROUP BY pelajaran.pelajaran_nama
                         ";
                         $rows= query_result( $conn= $connect, $sql= $sql );
-                        echo '<pre>';
-                        print_r( $rows );
-                        echo '</pre>';
+                        // echo '<pre>';
+                        // print_r( $rows );
+                        // echo '</pre>';
                         foreach ( $rows["fetch_assoc"] as $key => $value)
                         {
                             $sql_1= "
@@ -96,9 +106,11 @@
                             if ( $rows_1['num_rows'] > 0 ) {
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
                                     $row= [
-                                        'name'=> $value['users_nama'] ."({$value_1['pelajaran_nama']})",
+                                        'forum_id'=> $value_1["forum_id"],
+                                        'name'=> $value['users_nama'] ." ({$value_1['pelajaran_nama']})",
                                         'post_date'=> $value_1['post_date'],
                                         'post'=> $value_1['post'],
+                                        'reply'=> TRUE,
                                     ];
                                     echo nested_forum($row);
                                 }
