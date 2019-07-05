@@ -10,7 +10,6 @@
 	/* function query with mysqli */
 	function query_result($conn, $sql)
 	{
-		$sql = "SELECT * FROM forums";
 		$result = mysqli_query($conn, $sql);
 
 		# result fetch assoc
