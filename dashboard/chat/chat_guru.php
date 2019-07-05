@@ -1,6 +1,22 @@
 <?php
     require_once('../../config/db.php');
     session_start();
+    function nested_forum($nested=null)
+    {
+        return '
+            <!-- Nested media object -->
+            <div class="media">
+                <div class="media-left">
+                    <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="media-object" style="width:45px">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">John Doe <small><i>Posted on February 21, 2016</i></small></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    '.(empty($nested)? null : $nested ).'
+                </div>
+            </div>
+        ';
+    }
     echo '<pre>';
     print_r($_SESSION);
     echo '</pre>';
@@ -38,11 +54,20 @@
 
     <section class="forums-content">
         <div class="container">
-            <?php
-            echo '<pre>';
-            print_r( query_result( $conn= $connect, $sql="SELECT * FROM forums" ) );
-            echo '</pre>';
-            ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">Forum Anda</div>
+                <div class="panel-body">
+                    <?php
+                        echo '<pre>';
+                        print_r( query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " ) );
+                        echo '</pre>';
+                        $rows= query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
+                        foreach ( $rows["fetch_assoc"] $key => $value) {
+                            echo nested_forum();
+                        }
+                    ?>
+                </div>
+            </div>
         </div>
     </section>
     <!-- end /.forums-content -->
