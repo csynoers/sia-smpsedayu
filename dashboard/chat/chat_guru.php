@@ -58,13 +58,14 @@
                 <div class="panel-heading">Forum Anda</div>
                 <div class="panel-body">
                     <?php
-                        echo '<pre>';
-                        print_r( query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " ) );
-                        echo '</pre>';
                         $rows= query_result( $conn= $connect, $sql="SELECT * FROM forums WHERE user_id='{$_SESSION["noinduk"]}' " );
-                        foreach ( $rows["fetch_assoc"] $key => $value) {
-                            echo nested_forum();
-                        }
+                        echo '<pre>';
+                        print_r( $rows );
+                        echo '</pre>';
+                        // foreach ( $rows["fetch_assoc"] $key => $value)
+                        // {
+                        //     // echo nested_forum();
+                        // }
                     ?>
                 </div>
             </div>
