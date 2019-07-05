@@ -12,6 +12,7 @@
                             <form method="POST" action="simpan_pesan.php">
                                 <input type="hidden" name="user_id" value="'.$_SESSION['id'].'">
                                 <input type="hidden" name="pelajaran_id" value="'.$row['pelajaran_id'].'">
+                                <input type="hidden" name="rel_id" value="'.$row['forum_id'].'">
                                 <div class="form-group">
                                     <textarea required="" rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
                                 </div>
@@ -127,7 +128,17 @@
                                         'post'=> $value_1['post'],
                                         'reply'=> TRUE,
                                     ];
-                                    echo nested_forum($row);
+                                    if ( $value_1['rel_id'] > 0 ) {
+                                        $sql_2= "
+                                            SELECT * FROM forums WHERE rel_id='{$value_1["rel_id"]}'
+                                        ";
+                                        echo '<pre>';
+                                        print_r( query_result($connect,$sql_2) );
+                                        echo '</pre>';
+                                        // echo nested_forum($row);
+                                    }else {
+                                        echo nested_forum($row);
+                                    }
                                 }
                                 
                             }
