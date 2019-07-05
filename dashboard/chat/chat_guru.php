@@ -78,7 +78,23 @@
                 <div class="panel-heading">Forum Anda</div>
                 <div class="panel-body">
                     <?php
-                        $rows= query_result( $conn= $connect, $sql="SELECT *,DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date FROM forums WHERE user_id='{$_SESSION["id"]}' " );
+                        $sql = "
+                            SELECT
+                                forums.forum_id,
+                                forums.post,
+                                DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date,
+                                pelajaran.pelajaran_nama,
+                                kelas.kelas_nama
+                            FROM forums
+                                LEFT JOIN pelajaran
+                                    ON pelajaran.pelajaran_id=pelajaran.pelajaran_id
+                                LEFT JOIN kelas
+                                    ON pelajaran.kelas_id=kelas.kelas_id
+                            WHERE 1=1
+                                AND forums.user_id='{$_SESSION["id"]}'
+                                GROUP BY forums.forum_id
+                        ";
+                        $rows= query_result( $conn= $connect, $sql= $sql );
                         echo '<pre>';
                         print_r( $rows );
                         echo '</pre>';
@@ -86,7 +102,7 @@
                         {
                             // print_r($value);
                             $row= [
-                                'name'=> $_SESSION["nama"],
+                                'name'=> $_SESSION["nama"] ." ({$value["pelajaran_nama"]} {$value["kelas_nama"]})",
                                 'post_date'=> $value['post_date'],
                                 'post'=> $value['post'],
                             ];
