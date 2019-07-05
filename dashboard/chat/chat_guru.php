@@ -43,6 +43,25 @@
                             <textarea rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="">Pilih Mata Pelajaran Yang Diampu</label>
+                            <select name="pelajaran_id" id="" required="">
+                                <?php
+                                    $sql= "
+                                        SELECT *
+                                        FROM pelajaran
+                                            INNER JOIN kelas
+                                                ON pelajaran.kelas_id=kelas.kelas_id
+                                        WHERE 1=1
+                                            AND pelajaran.users_id='{$_SESSION["id"]}'
+                                    ";
+                                    foreach ( query_result( $conn= $connect, $sql= $sql ) as $key => $value) {
+                                        echo "<option value='{$value["pelajaran_id"]}'>{$value["pelajaran_nama"]} Kelas ({$value["kelas_nama"]})</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <button type="submit" class="btn btn-success">Kirim</button>
                         </div>
                     </form>
