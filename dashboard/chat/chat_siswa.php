@@ -11,6 +11,7 @@
                         <div class="panel-body">
                             <form method="POST" action="simpan_pesan.php">
                                 <input type="hidden" name="user_id" value="'.$_SESSION['id'].'">
+                                <input type="hidden" name="pelajaran_id" value="'.$_SESSION['id'].'">
                                 <div class="form-group">
                                     <textarea required="" rows="5" name="post" class="form-control" placeholder="Isi Pesan Disini ..."></textarea>
                                 </div>
@@ -120,6 +121,7 @@
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
                                     $row= [
                                         'forum_id'=> $value_1["forum_id"],
+                                        'pelajaran_id'=> $value_1["pelajaran_id"],
                                         'name'=> $value['users_nama'] ." ({$value_1['pelajaran_nama']})",
                                         'post_date'=> $value_1['post_date'],
                                         'post'=> $value_1['post'],
