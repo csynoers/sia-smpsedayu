@@ -15,11 +15,12 @@
 
 		# result fetch assoc
 		$fetch_assoc = [];
-		while ( $rows= mysqli_fetch_assoc($result) ) {
+		while ( $rows= mysqli_fetch_assoc( $result ) ) {
 			$fetch_assoc[]= $rows;
 		}
 
 		return [
+			'sql' => $sql,
 			'fetch_assoc' => $fetch_assoc,
 			'num_rows' => mysqli_num_rows( $result ),
 		];
