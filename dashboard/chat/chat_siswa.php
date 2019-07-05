@@ -82,17 +82,17 @@
                                 SELECT *,
                                     DATE_FORMAT(tanggal_post, '%a,  %d %b %Y') AS post_date
                                 FROM forums
-                                    INNER JOIN pelajaran
-                                        ON forums.user_id=pelajaran.users_id
+                                    LEFT JOIN pelajaran
+                                        ON forums.pelajaran_id=pelajaran.pelajaran_id
                                 WHERE 1=1
                                     AND forums.user_id='{$value["users_id"]}'
+                                    AND forums.pelajaran_id='{$value["pelajaran_id"]}'
                                     AND pelajaran.kelas_id='{$_SESSION["kelas"]}'
-                                    AND pelajaran.pelajaran_nama='{$value["pelajaran_nama"]}'
                             ";
                             $rows_1= query_result( $conn= $connect, $sql= $sql_1 );
-                            echo '<pre>';
-                            print_r( $rows_1 );
-                            echo '</pre>';
+                            // echo '<pre>';
+                            // print_r( $rows_1 );
+                            // echo '</pre>';
                             if ( $rows_1['num_rows'] > 0 ) {
                                 foreach ( $rows_1["fetch_assoc"]  as $key_1 => $value_1) {
                                     $row= [
