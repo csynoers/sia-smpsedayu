@@ -192,7 +192,7 @@
 		include 'controller/edit.php';
 		include 'view/edit_kuis.php';
 	}elseif (isset($_GET['kuis-delete'])) {
-		echo 'kuis delete 2';
+		// echo 'kuis delete 2';
 		include 'controller/delete.php';
 	} 
 
@@ -221,7 +221,7 @@ elseif (isset($_GET['soal'])) {
 		include 'controller/edit.php';
 		include 'view/soal_edit.php';
 	}elseif (isset($_GET['kuis-delete'])) {
-		echo 'kuis-delete 1';
+		// echo 'kuis-delete 1';
 		include 'controller/delete.php';
 	}
 
