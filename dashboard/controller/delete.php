@@ -134,4 +134,7 @@
 			echo "<meta http-equiv='refresh' content='0;URL= ?nilai=Raport '/>";
 		}
 	}
+	elseif ( isset($_GET['kuis-delete']) ) {
+		echo "<meta http-equiv='refresh' content='0;URL= ?kuis=tampil_topik '/>";
+	}
 ?>
