@@ -1132,6 +1132,10 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	elseif (isset($_GET['topik-edit'])) {
 		$id 	=	$_GET['topik-edit'];
 		if (isset($_POST['edit_kuis'])) {
+			echo '<pre>';
+			print_r($_REQUEST);
+			echo '</pre>';
+			die();
 			$kuis = mysql_query("UPDATE kuis
 									SET
 										soal_kuis= '{$_POST["soal"]}',
