@@ -135,9 +135,7 @@
 		}
 	}
 	elseif ( isset($_GET['kuis-delete']) ) {
-		echo '<pre>';
-		print_r($_REQUEST);
-		echo '</pre>';
-		echo "<script>alert('Data Soal Berhasil Dihapus'); window.history.back();</script>";
+		$delete= mysql_query("DELETE FROM kuis WHERE id_kuis ='{$_GET["kuis-delete"]}' ");
+		echo $delete ? "<script>alert('Data Soal Berhasil Dihapus'); window.history.back();</script>" : echo "<script>alert('Data Soal Gagal Dihapus'); window.history.back();</script>";
 	}
 ?>
