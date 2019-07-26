@@ -150,7 +150,7 @@
 
 
 
-		elseif (isset($_GET['tugas'])) {
+	elseif (isset($_GET['tugas'])) {
 		if ($_GET['tugas'] == 'download_tugas') {
 			include 'model/download_tugas.php';
 		}elseif ($_GET['tugas'] == 'upload_tugas') {
@@ -165,28 +165,28 @@
 	}
 
 
-		elseif (isset($_GET['kuis'])) {
+	elseif (isset($_GET['kuis'])) {
 		if ($_GET['kuis'] == 'tampil_topik') {
 			include 'view/tampil_topik.php';
-		}
+	}
 
-		elseif ($_GET['kuis'] == 'tambah_topik') {
-			include 'controller/create.php';
-			include 'view/upload_topik.php';
-		}
+	elseif ($_GET['kuis'] == 'tambah_topik') {
+		include 'controller/create.php';
+		include 'view/upload_topik.php';
+	}
 		
 
-		elseif ($_GET['kuis'] == 'tampil_soal') {
-			// echo 'tampil soal 1';
-			include 'view/tampil_soal.php';
-		}
-		elseif ($_GET['kuis'] == 'soal_siswa') {
-			include 'view/soal_siswa.php';
-		}
+	elseif ($_GET['kuis'] == 'tampil_soal') {
+		// echo 'tampil soal 1';
+		include 'view/tampil_soal.php';
+	}
+	elseif ($_GET['kuis'] == 'soal_siswa') {
+		include 'view/soal_siswa.php';
+	}
 
-		elseif ($_GET['kuis'] == 'tambah_kuis') {
-			include 'view/tambah_kuis.php';
-		}
+	elseif ($_GET['kuis'] == 'tambah_kuis') {
+		include 'view/tambah_kuis.php';
+	}
 	}elseif (isset($_GET['kuis-edit'])) {
 		echo '1';
 		include 'controller/edit.php';
@@ -266,5 +266,9 @@ elseif (isset($_GET['soal'])) {
 		include 'view/jadwal_edit.php';
 	}elseif (isset($_GET['jadwal-delete'])) {
 		include 'controller/delete.php';
+	}
+	elseif (isset($_GET['topik-edit'])) {
+		include 'controller/edit.php';
+		include 'view/edit_topik.php';
 	}
 ?>
