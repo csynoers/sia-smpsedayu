@@ -143,9 +143,9 @@
 		}
 	}
 	elseif ( isset($_GET['topik-delete']) ) {
-		print_r("DELETE topik_kuis , kuis  FROM topik_kuis  INNER JOIN kuis  
-		WHERE topik_kuis.id_topik= kuis.id_topik and topik_kuis.id_topik = '{$_GET["topik-delete"]}'");
-		die();
+		// print_r("DELETE topik_kuis , kuis  FROM topik_kuis  INNER JOIN kuis  
+		// WHERE topik_kuis.id_topik= kuis.id_topik and topik_kuis.id_topik = '{$_GET["topik-delete"]}'");
+		// die();
 		$delete= mysql_query("
 			DELETE topik_kuis , kuis  FROM topik_kuis  INNER JOIN kuis  
 			WHERE topik_kuis.id_topik= kuis.id_topik and topik_kuis.id_topik = '{$_GET["topik-delete"]}'

@@ -270,5 +270,8 @@ elseif (isset($_GET['soal'])) {
 	elseif ( isset($_GET['topik-edit']) ) {
 		include 'controller/edit.php';
 		include 'view/edit_topik.php';
-	}
+	}elseif (isset($_GET['topik-delete'])) {
+		// echo 'kuis delete 2';
+		include 'controller/delete.php';
+	} 
 ?>
