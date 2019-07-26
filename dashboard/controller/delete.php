@@ -142,4 +142,15 @@
 			echo "<script>alert('Data Soal Gagal Dihapus'); window.history.back();</script>";
 		}
 	}
+	elseif ( isset($_GET['topik-delete']) ) {
+		$delete= mysql_query("
+			DELETE topik_kuis , kuis  FROM topik_kuis  INNER JOIN kuis  
+			WHERE topik_kuis.id_topik= kuis.id_topik and topik_kuis.id_topik = '{$_GET["topik-delete"]}'
+		");
+		if ( $delete ) {
+			echo "<script>alert('Data Topik Kuis dan Soal Berhasil Dihapus'); window.history.back();</script>";
+		} else {
+			echo "<script>alert('Data Topik Kuis dan Soal Gagal Dihapus'); window.history.back();</script>";
+		}
+	}
 ?>
