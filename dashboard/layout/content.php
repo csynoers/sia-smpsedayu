@@ -177,6 +177,7 @@
 		
 
 		elseif ($_GET['kuis'] == 'tampil_soal') {
+			echo 'tampil soal 1';
 			include 'view/tampil_soal.php';
 		}
 		elseif ($_GET['kuis'] == 'soal_siswa') {
@@ -201,19 +202,21 @@
 
 elseif (isset($_GET['soal'])) {
 		if ($_GET['soal'] == 'tampil_soal') {
+			echo 'tampil soal 2';
 			include 'view/tampil_soal.php';
 		}elseif ($_GET['soal'] == 'tambah_soal') {
 			include 'controller/create.php';
 			include 'view/tambah_soal.php';
 		}
 		elseif ($_GET['kuis'] == 'tampil_soal') {
+			echo 'tampil soal 3';
 			include 'view/tampil_soal.php';
 		}
 		elseif ($_GET['soal'] == 'tambah_soal') {
 			include 'view/tambah_soal.php';
 		}
 	}elseif (isset($_GET['kuis-edit'])) {
-		echo '2';
+		// echo '2';
 		include 'controller/edit.php';
 		include 'view/soal_edit.php';
 	}elseif (isset($_GET['kuis-delete'])) {
