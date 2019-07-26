@@ -12,15 +12,14 @@
                     <th width="15%">Nama</th>
                     <th width="5%">Kelas</th>
                     <th width="7%">Mata Pelajaran</th>
-                    
                     <!--<th width="7%">Tahun</th>-->
                     <th style="width: 7%;" class="text-center">Nilai Poin</th>
-                    <th class="text-center" 
+                    <!-- <th class="text-center" 
                     <?php $level  =   $_SESSION['level'];
                             if ($level == 'siswa') {
                                 echo 'style="display:none;"';
                             }  ?>
-                    >Action</th>
+                    >Action</th> -->
                 </tr>
             </thead>    
             <form role="form" method="post" />
