@@ -19,6 +19,14 @@
         <div class="box-body small-5" style="display: block;">
             <!-- tambah topik -->
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
+                <div class="name-field">
+                    <input type="hidden" name="id_topik" value="<?php echo $_GET['idtopik']; ?>">
+                      <input type="hidden" name="pelajaran_id" value="<?php echo $_GET['idpel']; ?>">
+                    <input type="hidden" name="kelas_id" value="<?php echo $_GET['idkel']; ?>">
+                      
+                    
+           <div class="name-field">
+             <input type="hidden" name="users_id" value="<?php echo $_SESSION['id']; ?>">
                 </div>
 
                     <div class="name-field">
@@ -28,33 +36,33 @@
                 </div>
                 <div class="name-field">
                     <label>jawaban A<small> required</small>
-                        <input value="<?php echo $row[0]['pil_a'] ?>" type="text" name="pil_a" required>
+                        <input type="text" name="pil_a" required>
                     </label>
 					</div>
 				<div class="name-field">
                     <label>jawaban B<small> required</small>
-                        <input value="<?php echo $row[0]['pil_b'] ?>" type="text" name="pil_b" required>
+                        <input type="text" name="pil_b" required>
                     </label>
 				</div>
 			<div class="name-field">
                     <label>Jawaban C<small> required</small>
-                        <input value="<?php echo $row[0]['pil_c'] ?>" type="text" name="pil_c" required>
+                        <input type="text" name="pil_c" required>
                     </label>
 			</div>
 			<div class="name-field">
                     <label>Jawaban D<small> required</small>
-                        <input value="<?php echo $row[0]['pil_d'] ?>" type="text" name="pil_d" required>
+                        <input type="text" name="pil_d" required>
                     </label>
 			</div>                    
             <div class="name-field" >
                     <label>Kunci Jawaban</label>
-	                    <input type="radio"   id="pokemonRed" name="kunci" value="A" <?php ($row[0]['kunci']=='A')? 'checked' : NULL ?> >
+	                    <input type="radio"   id="pokemonRed" name="kunci" value="A">
                         <label for="pokemonRed">A</label>
-                        <input type="radio"   id="pokemonBlue" name="kunci" value="B" <?php ($row[0]['kunci']=='B')? 'checked' : NULL ?> >
+                        <input type="radio"   id="pokemonBlue" name="kunci" value="B">
                         <label for="pokemonBlue">B</label>
-	                    <input type="radio"   id="pokemonRed" name="kunci" value="C" <?php ($row[0]['kunci']=='C')? 'checked' : NULL ?>>
+	                    <input type="radio"   id="pokemonRed" name="kunci" value="C">
                         <label for="pokemonRed">C</label>
-                        <input type="radio"   id="pokemonBlue" name="kunci" value="D" <?php ($row[0]['kunci']=='D')? 'checked' : NULL ?>>
+                        <input type="radio"   id="pokemonBlue" name="kunci" value="D">
                         <label for="pokemonBlue">D</label>
                  </div>
              </div>
