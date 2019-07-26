@@ -1129,4 +1129,28 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		$kuis 	= 	mysql_query("SELECT * FROM kuis WHERE id_kuis=$id");
 		$row 	=	mysql_fetch_assoc($kuis);
 	}
+	elseif (isset($_GET['topik-edit'])) {
+		$id 	=	$_GET['topik-edit'];
+
+		if (isset($_POST['edit_kuis'])) {
+			$kuis = mysql_query("UPDATE kuis
+									SET
+										soal_kuis= '{$_POST["soal"]}',
+										pil_a= '{$_POST["pil_a"]}',
+										pil_b= '{$_POST["pil_b"]}',
+										pil_c= '{$_POST["pil_c"]}',
+										pil_d= '{$_POST["pil_d"]}',
+										kunci= '{$_POST["kunci"]}'
+									WHERE id_kuis = $id");
+			$kuis= mysql_query("DELETE FROM kuis WHERE id_kuis ='{$_GET["kuis-delete"]}' ");
+			if ( $kuis ) {
+				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-2);</script>";
+			} else {
+				echo "<script>alert('Data Soal Gagal Diubah'); window.history.back();</script>";
+			}
+		}
+
+		$topik 	= 	mysql_query("SELECT * FROM topik WHERE id_topik=$id");
+		$row 	=	mysql_fetch_assoc($topik);
+	}
 ?>

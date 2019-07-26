@@ -59,8 +59,8 @@
                                                 <td>'.$row['info'].'</td>
                                                 <td> 
                                                     <a href="?soal=tampil_soal&idpel='.$row['pelajaran_id'].'&idkel='.$row['kelas_id'].'&idtopik='.$row['id_topik'].'"><span class="fontello-eye-outline" ></span>lihat soal</a>
-                                                    <a href="?kuis-edit='.$row['pelajaran_id'].'" '.( ($level == 'siswa') ?  'style="display:none;"' : null ).'><span class="fontello-edit"></span>edit</a>
-                                                    <a href="?kuis-delete='.$row['pelajaran_id'].'" '.( ($level == 'siswa') ?  'style="display:none;"' : null ).'><span class="fontello-trash"></span>hapus</a>
+                                                    <a href="?topik-edit='.$row['id_topik'].'" '.( ($level == 'siswa') ?  'style="display:none;"' : null ).'><span class="fontello-edit"></span>edit</a>
+                                                    <a href="?topik-delete='.$row['id_topik'].'" '.( ($level == 'siswa') ?  'style="display:none;"' : null ).'><span class="fontello-trash"></span>hapus</a>
                                                 </td>
                                             </tr>
                                         ';
