@@ -1131,7 +1131,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	}
 	elseif (isset($_GET['topik-edit'])) {
 		$id 	=	$_GET['topik-edit'];
-		if (isset($_POST['edit_kuis'])) {
+		if (isset($_POST['edit_topik'])) {
 			echo '<pre>';
 			print_r($_REQUEST);
 			echo '</pre>';
