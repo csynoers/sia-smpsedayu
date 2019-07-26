@@ -1145,7 +1145,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				WHERE id_topik = $id
 			");
 			if ( $topik ) {
-				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-1);</script>";
+				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-2);</script>";
 			} else {
 				echo "<script>alert('Data Soal Gagal Diubah'); window.history.back();</script>";
 			}
