@@ -1,5 +1,5 @@
 <?php
-print_r($row);
+print_r($row[0]);
 ?>
 <div class="large-12 columns">
     <div class="box">
