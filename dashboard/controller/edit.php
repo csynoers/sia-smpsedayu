@@ -1133,6 +1133,17 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		$id 	=	$_GET['topik-edit'];
 		if (isset($_POST['edit_topik'])) {
 			echo '<pre>';
+			echo "UPDATE topik_kuis
+			SET
+				judul= '{$_POST["judul"]}',
+				pelajaran_id= '{$_POST["pelajaran"]}',
+				kelas_id= '{$_POST["kelas"]}',
+				tanggal_selesai= '{$_POST["tgl_selesai"]}',
+				jam= '{$_POST["jam"]}',
+				menit= '{$_POST["menit"]}',
+				detik= '{$_POST["detik"]}',
+				info= '{$_POST["info"]}'
+			WHERE id_topik = $id";
 			print_r($_REQUEST);
 			echo '</pre>';
 			die();
