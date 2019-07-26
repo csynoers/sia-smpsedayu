@@ -1118,7 +1118,6 @@ if (!empty($_FILES["file"]["tmp_name"]))
 										pil_d= '{$_POST["pil_d"]}',
 										kunci= '{$_POST["kunci"]}'
 									WHERE id_kuis = $id");
-			$kuis= mysql_query("DELETE FROM kuis WHERE id_kuis ='{$_GET["kuis-delete"]}' ");
 			if ( $kuis ) {
 				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-2);</script>";
 			} else {
@@ -1132,33 +1131,21 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	elseif (isset($_GET['topik-edit'])) {
 		$id 	=	$_GET['topik-edit'];
 		if (isset($_POST['edit_topik'])) {
-			echo '<pre>';
-			echo "UPDATE topik_kuis
-			SET
-				judul= '{$_POST["judul"]}',
-				pelajaran_id= '{$_POST["pelajaran"]}',
-				kelas_id= '{$_POST["kelas"]}',
-				tanggal_selesai= '{$_POST["tgl_selesai"]}',
-				jam= '{$_POST["jam"]}',
-				menit= '{$_POST["menit"]}',
-				detik= '{$_POST["detik"]}',
-				info= '{$_POST["info"]}'
-			WHERE id_topik = $id";
-			print_r($_REQUEST);
-			echo '</pre>';
-			die();
-			$kuis = mysql_query("UPDATE kuis
-									SET
-										soal_kuis= '{$_POST["soal"]}',
-										pil_a= '{$_POST["pil_a"]}',
-										pil_b= '{$_POST["pil_b"]}',
-										pil_c= '{$_POST["pil_c"]}',
-										pil_d= '{$_POST["pil_d"]}',
-										kunci= '{$_POST["kunci"]}'
-									WHERE id_kuis = $id");
-			$kuis= mysql_query("DELETE FROM kuis WHERE id_kuis ='{$_GET["kuis-delete"]}' ");
-			if ( $kuis ) {
-				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-2);</script>";
+			$topik = mysql_query("
+				UPDATE topik_kuis
+				SET
+					judul= '{$_POST["judul"]}',
+					pelajaran_id= '{$_POST["pelajaran"]}',
+					kelas_id= '{$_POST["kelas"]}',
+					tanggal_selesai= '{$_POST["tgl_selesai"]}',
+					jam= '{$_POST["jam"]}',
+					menit= '{$_POST["menit"]}',
+					detik= '{$_POST["detik"]}',
+					info= '{$_POST["info"]}'
+				WHERE id_topik = $id
+			");
+			if ( $topik ) {
+				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-1);</script>";
 			} else {
 				echo "<script>alert('Data Soal Gagal Diubah'); window.history.back();</script>";
 			}
