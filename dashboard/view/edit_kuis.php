@@ -69,7 +69,7 @@
              
         </div>
                 <div>
-                <button type="submit" class="tiny radius button bg-black-solid" name="upload_soal" value="upload_soal"><b><span class="fontello-minefield"></span> Upload</b></button>
+                <button type="submit" class="tiny radius button bg-black-solid" name="upload_soal" value="upload_soal"><b><span class="fontello-minefield"></span> Update</b></button>
         </div>        
             </form>
             <!-- end tambah topik -->

@@ -1121,5 +1121,9 @@ if (!empty($_FILES["file"]["tmp_name"]))
 
 		$kuis 	= 	mysql_query("SELECT * FROM kuis WHERE id_kuis=$id");
 		$row 	=	mysql_fetch_assoc($kuis);
+
+		echo '<pre>';
+		print_r($row);
+		echo '</pre>';
 	}
 ?>
