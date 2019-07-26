@@ -138,6 +138,6 @@
 		echo '<pre>';
 		print_r($_REQUEST);
 		echo '</pre>';
-		echo "<script>alert('Data Soal Berhasil Dihapus'); window.history.go(1)</script>";
+		echo "<script>alert('Data Soal Berhasil Dihapus') window.history.go(1);</script>";
 	}
 ?>
