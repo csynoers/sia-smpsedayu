@@ -97,7 +97,7 @@
                             <a href="?kuis-edit=<?php echo $row['id_kuis']; ?>" <?php if ($level == 'guru') {
                                 echo 'style="display:none;"';
                             }  ?>><span class="fontello-edit"></span> Edit</a>
-                            <a href="?kuis-delete=<?php echo $row['id_kuis']; ?>" <?php if ($level == 'guru') {
+                            <a href="?kuis-delete=<?php echo $row['id_kuis'] ?>" <?php if ($level == 'guru') {
                                 echo "style='display:none;'";
                             } ?>><span class="fontello-trash"></span> Delete</a>
                         </td>
