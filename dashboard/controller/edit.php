@@ -1131,7 +1131,8 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	}
 	elseif (isset($_GET['topik-edit'])) {
 		$id 	=	$_GET['topik-edit'];
-
+		echo "SELECT * FROM topik_kuis WHERE id_topik=$id";
+		die();
 		if (isset($_POST['edit_kuis'])) {
 			$kuis = mysql_query("UPDATE kuis
 									SET
