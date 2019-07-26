@@ -1150,7 +1150,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}
 		}
 
-		$topik 	= 	mysql_query("SELECT * FROM topik WHERE id_topik=$id");
+		$topik 	= 	mysql_query("SELECT * FROM topik_kuis WHERE id_topik=$id");
 		$row 	=	mysql_fetch_assoc($topik);
 	}
 ?>
