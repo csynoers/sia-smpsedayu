@@ -62,48 +62,48 @@
                                                             ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
 
                             while ($row=mysql_fetch_array($soal)) {
-                                // print_r($row);
-                ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-                        <td>
-                            <?php
-                                 echo $row['soal_kuis'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $row['pil_a'] ?>
-                        </td>
-                        <td>
-                            <?php echo $row['pil_b'] ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['pil_c'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['pil_d'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['kunci'];
-                            ?>
-                        </td>
-                        <td> 
-                            
-                            <a href="?kuis-edit=<?php echo $row['id_kuis']; ?>" <?php if ($level == 'guru') {
-                                echo 'style="display:none;"';
-                            }  ?>><span class="fontello-edit"></span> Edit</a>
-                            <a href="?kuis-delete=<?php echo $row['id_kuis'] ?>" <?php if ($level == 'guru') {
-                                echo "style='display:none;'";
-                            } ?>><span class="fontello-trash"></span> Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                            $no++;
+                                print_r($row);
+                                ?>
+                                    <tr>
+                                        <td><?php echo $no; ?></td>
+                                        <td>
+                                            <?php
+                                                echo $row['soal_kuis'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['pil_a'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['pil_b'] ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                                echo $row['pil_c'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                                echo $row['pil_d'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                                echo $row['kunci'];
+                                            ?>
+                                        </td>
+                                        <td> 
+                                            
+                                            <a href="?kuis-edit=<?php echo $row['id_kuis']; ?>" <?php if ($level == 'guru') {
+                                                echo 'style="display:none;"';
+                                            }  ?>><span class="fontello-edit"></span> Edit</a>
+                                            <a href="?kuis-delete=<?php echo $row['id_kuis'] ?>" <?php if ($level == 'guru') {
+                                                echo "style='display:none;'";
+                                            } ?>><span class="fontello-trash"></span> Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                $no++;
                             }
                         }
                     }
