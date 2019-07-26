@@ -1105,4 +1105,21 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
 		$row 	=	mysql_fetch_array($nilai);
 	}
+	elseif (isset($_GET['kuis-edit'])) {
+		$id 	=	$_GET['kuis-edit'];
+
+		// if (isset($_POST['edit-kuis'])) {
+		// 	$nilaipoin = $_POST['nilai_poin'];
+
+		// 	$nilai = mysql_query("UPDATE nilai
+		// 							SET `nilai_poin` = $nilaipoin
+		// 							WHERE nilai_id = $id");
+		// 	if ($nilai) {
+		// 	 	echo "<meta http-equiv='refresh' content='0;URL= ?nilai=Raport '/>";
+		// 	 } 
+		// }
+
+		$kuis 	= 	mysql_query("SELECT * FROM kuis WHERE id_kuis=$id");
+		$row 	=	mysql_fetch_assoc($kuis);
+	}
 ?>
