@@ -11,7 +11,7 @@
                 </div>
             </div>
             <h3 class="box-title"><i class="fontello-th-large-outline"></i>
-                <span>Data Soal Kuis</span>
+                <span>Data Soal Kuis tes</span>
             </h3>
               <form>
         </div >
@@ -56,10 +56,10 @@
                         if ($_GET['soal'] == 'tampil_soal') {
                             $idpel = $_GET['idpel'];
                             $no         =   1;
-                        $soal      =   mysql_query("SELECT *, pelajaran.pelajaran_nama, kelas.kelas_nama FROM kuis
-                                                        INNER JOIN pelajaran on pelajaran.pelajaran_id=kuis.pelajaran_id 
-                                                        INNER JOIN kelas on kelas.kelas_id=kuis.kelas_id where pelajaran.pelajaran_id= '$idpel'
-                                                        ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
+                            $soal      =   mysql_query("SELECT *, pelajaran.pelajaran_nama, kelas.kelas_nama FROM kuis
+                                                            INNER JOIN pelajaran on pelajaran.pelajaran_id=kuis.pelajaran_id 
+                                                            INNER JOIN kelas on kelas.kelas_id=kuis.kelas_id where pelajaran.pelajaran_id= '$idpel'
+                                                            ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
 
                             while ($row=mysql_fetch_array($soal)) {
                                 print_r($soal);
