@@ -135,6 +135,8 @@
 		}
 	}
 	elseif ( isset($_GET['kuis-delete']) ) {
-		echo "<meta http-equiv='refresh' content='0;URL= ?kuis=tampil_topik '/>";
+		echo '<pre>';
+		print_r($_REQUEST);
+		echo '</pre>';
 	}
 ?>
