@@ -270,7 +270,6 @@ elseif (isset($_GET['soal'])) {
 	elseif ( isset($_GET['topik-edit']) ) {
 		echo '123';
 		// include 'controller/edit.php';
-		// include 'view/edit_topik.php';
+		include 'view/edit_topik.php';
 	}
-print_r($_REQUEST);
 ?>
