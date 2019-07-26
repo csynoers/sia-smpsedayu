@@ -1108,16 +1108,24 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	elseif (isset($_GET['kuis-edit'])) {
 		$id 	=	$_GET['kuis-edit'];
 
-		// if (isset($_POST['edit-kuis'])) {
-		// 	$nilaipoin = $_POST['nilai_poin'];
+		if (isset($_POST['edit-kuis'])) {
 
-		// 	$nilai = mysql_query("UPDATE nilai
-		// 							SET `nilai_poin` = $nilaipoin
-		// 							WHERE nilai_id = $id");
-		// 	if ($nilai) {
-		// 	 	echo "<meta http-equiv='refresh' content='0;URL= ?nilai=Raport '/>";
-		// 	 } 
-		// }
+			$kuis = mysql_query("UPDATE kuis
+									SET
+										soal_kuis= '{$_POST["soal_kuis"]}',
+										pil_a= '{$_POST["pil_a"]}',
+										pil_b= '{$_POST["pil_b"]}',
+										pil_c= '{$_POST["pil_c"]}',
+										pil_d= '{$_POST["pil_d"]}',
+										kunci= '{$_POST["kunci"]}',
+									WHERE id_kuis = $id");
+			$kuis= mysql_query("DELETE FROM kuis WHERE id_kuis ='{$_GET["kuis-delete"]}' ");
+			if ( $kuis ) {
+				echo "<script>alert('Data Soal Berhasil Diubah'); window.history.go(-2);</script>";
+			} else {
+				echo "<script>alert('Data Soal Gagal Diubah'); window.history.back();</script>";
+			}
+		}
 
 		$kuis 	= 	mysql_query("SELECT * FROM kuis WHERE id_kuis=$id");
 		$row 	=	mysql_fetch_assoc($kuis);

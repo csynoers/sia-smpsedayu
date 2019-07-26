@@ -19,11 +19,7 @@
         <div class="box-body small-5" style="display: block;">
             <!-- tambah topik -->
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
-                <div class="name-field">
-                    <input type="hidden" name="id_topik" value="<?php //echo $_GET['idtopik']; ?>">
-                    <input type="hidden" name="pelajaran_id" value="<?php //echo $_GET['idpel']; ?>">
-                    <input type="hidden" name="kelas_id" value="<?php //echo $_GET['idkel']; ?>">
-                      
+                <div class="name-field">                      
                     
                 <div class="name-field">
                     <input type="hidden" name="users_id" value="<?php echo $_SESSION['id']; ?>">
@@ -69,7 +65,8 @@
              
         </div>
                 <div>
-                <button type="submit" class="tiny radius button bg-black-solid" name="upload_soal" value="upload_soal"><b><span class="fontello-minefield"></span> Update</b></button>
+                <input type="hidden" name="kuis_edit" value="<?php echo $row['id_kuis']; ?>">
+                <button type="submit" class="tiny radius button bg-black-solid" name="edit_kuis" value="edit_kuis"><b><span class="fontello-minefield"></span> Update</b></button>
         </div>        
             </form>
             <!-- end tambah topik -->
