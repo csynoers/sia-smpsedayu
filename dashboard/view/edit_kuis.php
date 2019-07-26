@@ -56,13 +56,13 @@
                 </div>                    
                 <div class="name-field" >
                     <label>Kunci Jawaban</label>
-                    <input <?php ($row['kunci']=='A')? 'checked' : NULL ?> type="radio"   id="pokemonRed" name="kunci" value="A">
+                    <input <?php echo ($row['kunci']=='A')? 'checked' : NULL ?> type="radio"   id="pokemonRed" name="kunci" value="A">
                     <label for="pokemonRed">A</label>
-                    <input <?php ($row['kunci']=='B')? 'checked' : NULL ?> type="radio"   id="pokemonBlue" name="kunci" value="B">
+                    <input <?php echo ($row['kunci']=='B')? 'checked' : NULL ?> type="radio"   id="pokemonBlue" name="kunci" value="B">
                     <label for="pokemonBlue">B</label>
-                    <input <?php ($row['kunci']=='C')? 'checked' : NULL ?> type="radio"   id="pokemonRed" name="kunci" value="C">
+                    <input <?php echo ($row['kunci']=='C')? 'checked' : NULL ?> type="radio"   id="pokemonRed" name="kunci" value="C">
                     <label for="pokemonRed">C</label>
-                    <input <?php ($row['kunci']=='D')? 'checked' : NULL ?> type="radio"   id="pokemonBlue" name="kunci" value="D">
+                    <input <?php echo ($row['kunci']=='D')? 'checked' : NULL ?> type="radio"   id="pokemonBlue" name="kunci" value="D">
                     <label for="pokemonBlue">D</label>
                 </div>
              </div>
