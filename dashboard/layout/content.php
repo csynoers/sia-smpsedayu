@@ -187,6 +187,7 @@
 			include 'view/tambah_kuis.php';
 		}
 	}elseif (isset($_GET['kuis-edit'])) {
+		echo '1';
 		include 'controller/edit.php';
 		include 'view/edit_kuis.php';
 	}elseif (isset($_GET['kuis-delete'])) {
@@ -212,6 +213,7 @@ elseif (isset($_GET['soal'])) {
 			include 'view/tambah_soal.php';
 		}
 	}elseif (isset($_GET['kuis-edit'])) {
+		echo '2';
 		include 'controller/edit.php';
 		include 'view/soal_edit.php';
 	}elseif (isset($_GET['kuis-delete'])) {
