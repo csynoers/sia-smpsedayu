@@ -1109,19 +1109,9 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		$id 	=	$_GET['kuis-edit'];
 
 		if (isset($_POST['edit_kuis'])) {
-			echo "UPDATE kuis
-			SET
-				soal_kuis= '{$_POST["soal"]}',
-				pil_a= '{$_POST["pil_a"]}',
-				pil_b= '{$_POST["pil_b"]}',
-				pil_c= '{$_POST["pil_c"]}',
-				pil_d= '{$_POST["pil_d"]}',
-				kunci= '{$_POST["kunci"]}',
-			WHERE id_kuis = $id";
-			die();
 			$kuis = mysql_query("UPDATE kuis
 									SET
-										soal_kuis= '{$_POST["soal_kuis"]}',
+										soal_kuis= '{$_POST["soal"]}',
 										pil_a= '{$_POST["pil_a"]}',
 										pil_b= '{$_POST["pil_b"]}',
 										pil_c= '{$_POST["pil_c"]}',
