@@ -1,3 +1,6 @@
+<?php
+print_r($row);
+?>
 <div class="large-12 columns">
     <div class="box">
         <div class="box-header bg-transparent">
@@ -20,9 +23,9 @@
             <!-- tambah topik -->
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
                 <div class="name-field">
-                    <input type="hidden" name="id_topik" value="<?php echo $_GET['idtopik']; ?>">
-                      <input type="hidden" name="pelajaran_id" value="<?php echo $_GET['idpel']; ?>">
-                    <input type="hidden" name="kelas_id" value="<?php echo $_GET['idkel']; ?>">
+                    <input type="hidden" name="id_topik" value="<?php //echo $_GET['idtopik']; ?>">
+                      <input type="hidden" name="pelajaran_id" value="<?php //echo $_GET['idpel']; ?>">
+                    <input type="hidden" name="kelas_id" value="<?php //echo $_GET['idkel']; ?>">
                       
                     
            <div class="name-field">
