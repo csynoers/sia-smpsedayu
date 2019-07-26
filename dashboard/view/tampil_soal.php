@@ -56,6 +56,10 @@
                         if ($_GET['soal'] == 'tampil_soal') {
                             $idpel = $_GET['idpel'];
                             $no         =   1;
+                            print_r("SELECT *, pelajaran.pelajaran_nama, kelas.kelas_nama FROM kuis
+                            INNER JOIN pelajaran on pelajaran.pelajaran_id=kuis.pelajaran_id 
+                            INNER JOIN kelas on kelas.kelas_id=kuis.kelas_id where pelajaran.pelajaran_id= '$idpel'
+                            ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
                             $soal      =   mysql_query("SELECT *, pelajaran.pelajaran_nama, kelas.kelas_nama FROM kuis
                                                             INNER JOIN pelajaran on pelajaran.pelajaran_id=kuis.pelajaran_id 
                                                             INNER JOIN kelas on kelas.kelas_id=kuis.kelas_id where pelajaran.pelajaran_id= '$idpel'
