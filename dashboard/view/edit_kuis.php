@@ -1,6 +1,3 @@
-<?php
-print_r($row[0]);
-?>
 <div class="large-12 columns">
     <div class="box">
         <div class="box-header bg-transparent">
@@ -34,7 +31,7 @@ print_r($row[0]);
 
                     <div class="name-field">
                     <label>Soal<small> required</small>
-                        <textarea name="soal" style="margin: 0px 0px 16px; width: 398px; height: 265px;" required><?php echo $row[0]['soal_kuis'] ?></textarea>
+                        <textarea name="soal" style="margin: 0px 0px 16px; width: 398px; height: 265px;" required><?php echo $row['soal_kuis'] ?></textarea>
                     </label>
                 </div>
                 <div class="name-field">
