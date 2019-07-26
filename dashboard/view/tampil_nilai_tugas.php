@@ -75,7 +75,7 @@ while ($data=mysql_fetch_array($sql)) {
                             }
                         ?>
                     </td>
-                    <td class="text-center" width="17%">
+                    <!-- <td class="text-center" width="17%">
                         <a href="?tugas-edit=<?php echo $data['nilai_id']; ?>"
                         <?php if ($level == 'siswa') {
                                 echo 'style="display:none;"';
@@ -86,7 +86,7 @@ while ($data=mysql_fetch_array($sql)) {
                                 echo 'style="display:none;"';
                             }  ?>
                         ><span class="fontello-trash"></span> Delete</a>
-                    </td>
+                    </td> -->
                 </tr>
                 <?php 
                     $no++;  
