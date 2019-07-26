@@ -1108,7 +1108,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	elseif (isset($_GET['kuis-edit'])) {
 		$id 	=	$_GET['kuis-edit'];
 
-		if (isset($_POST['edit-kuis'])) {
+		if (isset($_POST['edit_kuis'])) {
 			echo "UPDATE kuis
 			SET
 				soal_kuis= '{$_POST["soal_kuis"]}',
