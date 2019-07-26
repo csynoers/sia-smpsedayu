@@ -62,7 +62,7 @@
                                                             ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
 
                             while ($row=mysql_fetch_array($soal)) {
-                                print_r($soal);
+                                print_r($row);
                 ?>
                     <tr>
                         <td><?php echo $no; ?></td>
