@@ -56,17 +56,25 @@
                         if ($_GET['soal'] == 'tampil_soal') {
                             $idpel = $_GET['idpel'];
                             $no         =   1;
-                            print_r("SELECT *, pelajaran.pelajaran_nama, kelas.kelas_nama FROM kuis
-                            INNER JOIN pelajaran on pelajaran.pelajaran_id=kuis.pelajaran_id 
-                            INNER JOIN kelas on kelas.kelas_id=kuis.kelas_id where pelajaran.pelajaran_id= '$idpel'
-                            ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
-                            $soal      =   mysql_query("SELECT *, pelajaran.pelajaran_nama, kelas.kelas_nama FROM kuis
-                                                            INNER JOIN pelajaran on pelajaran.pelajaran_id=kuis.pelajaran_id 
-                                                            INNER JOIN kelas on kelas.kelas_id=kuis.kelas_id where pelajaran.pelajaran_id= '$idpel'
-                                                            ORDER BY pelajaran.pelajaran_nama, kelas.kelas_nama ASC");
+                            $soal      =   mysql_query("
+                                SELECT
+                                    *,
+                                    pelajaran.pelajaran_nama,
+                                    kelas.kelas_nama
+                                FROM kuis
+                                    INNER JOIN pelajaran
+                                        ON pelajaran.pelajaran_id=kuis.pelajaran_id
+                                    INNER JOIN kelas
+                                        ON kelas.kelas_id=kuis.kelas_id
+                                WHERE 1=1
+                                    AND pelajaran.pelajaran_id= '{$idpel}'
+                                    AND kuis.id_topik='{$_GET["idtopik"]}'
+                                    ORDER BY pelajaran.pelajaran_nama,
+                                    kelas.kelas_nama ASC
+                            ");
 
                             while ($row=mysql_fetch_array($soal)) {
-                                print_r($row);
+                                // print_r($row);
                                 ?>
                                     <tr>
                                         <td><?php echo $no; ?></td>

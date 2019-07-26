@@ -1,7 +1,7 @@
 <?php
-    echo '<pre>';
-    print_r($row);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($row);
+    // echo '</pre>';
 ?>
 <div class="large-12 columns">
     <div class="box">
