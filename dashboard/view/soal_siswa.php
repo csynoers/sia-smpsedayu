@@ -16,7 +16,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['id']) ){
 else{
 ?>
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {
             /** Membuat Waktu Mulai Hitung Mundur Dengan 
