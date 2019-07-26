@@ -190,7 +190,7 @@
 	}elseif (isset($_GET['kuis-edit'])) {
 		echo '1';
 		include 'controller/edit.php';
-		include 'view/edit_soal.php';
+		include 'view/edit_kuis.php';
 	}elseif (isset($_GET['kuis-delete'])) {
 		// echo 'kuis delete 2';
 		include 'controller/delete.php';
