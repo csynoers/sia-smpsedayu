@@ -15,7 +15,7 @@
                 </span>
             </div>
             <h3 class="box-title"><i class="fontello-th-large-outline"></i>
-                <span>Upload Topik</span>
+                <span>Update Topik Kuis</span>
             </h3>
         </div>
         <!-- /.box-header -->
@@ -26,7 +26,7 @@
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
                 <div class="name-field">
                     <label>Judul Topik<small> required</small>
-                        <input type="text" name="judul" required>
+                        <input value="<?php echo $row['judul'] ?>" type="text" name="judul" required>
                     </label>
                     <small class="error">Nama File Harus Di Isi</small>
                      <label>Mata Pelajaran</label>
@@ -35,9 +35,10 @@
                     $iduser = $_SESSION['id'];
                         $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='$iduser'");
 
-                        while ($row=mysql_fetch_array($pelajaran)) {
+                        while ($rows=mysql_fetch_array($pelajaran)) {
+                            
                     ?>
-                        <option value="<?php echo $row['pelajaran_id']; ?>"><?php echo $row['pelajaran_nama']; ?> Kelas (<?php echo $row['kelas_nama']; ?>)</option>
+                        <option <?php echo ($row['pelajaran_id']==$rows['pelajaran_id'] ? "selected" : NULL )?> value="<?php echo $rows['pelajaran_id']; ?>"><?php echo $rows['pelajaran_nama']; ?> Kelas (<?php echo $rows['kelas_nama']; ?>)</option>
                     <?php
                         }
                     ?>
@@ -49,24 +50,24 @@
                     $idus= $_SESSION['id'];
                         $kelas  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='$idus'");
 
-                        while ($row=mysql_fetch_array($kelas)) {
+                        while ($rows=mysql_fetch_array($kelas)) {
                     ?>
-                        <option value="<?php echo $row['kelas_id']; ?>"><?php echo $row['kelas_nama']; ?></option>
+                        <option <?php echo ($row['kelas_id']==$rows['kelas_id'] ? "selected" : NULL )?> value="<?php echo $rows['kelas_id']; ?>"><?php echo $rows['kelas_nama']; ?></option>
                     <?php
                         }
                     ?>
                 </select>
 				 <label>Tanggal Selesai<small> required</small>
-                        <input type="date" name="tgl_selesai" required>
+                        <input value="<?php echo $row['tanggal_selesai']?>" type="date" name="tgl_selesai" required>
                     </label>
 					 <label>Jam<small> required</small>
-                        <input type="text" name="jam" required>
+                        <input value="<?php echo $row['jam']?>" type="text" name="jam" required>
                     </label>
 					 <label>Menit<small> required</small>
-                        <input type="text" name="menit" required>
+                        <input value="<?php echo $row['menit']?>" type="text" name="menit" required>
                     </label>
 					 <label>Detik<small> required</small>
-                        <input type="text" name="detik" required>
+                        <input value="<?php echo $row['detik']?>" type="text" name="detik" required>
                     </label>
                     <input type="hidden" name="username" value="<?php 
                                                     if (isset($_SESSION['nama'])) {
@@ -77,9 +78,9 @@
         </div>
         <div class="box-body small-12" style="display: block;">
                 <tr><td colspan="2" width="100%" style="padding:10px;">Topik Kuis</td></tr>
-                <tr><td style="padding:50px;"><textarea name="info"></textarea></td></tr>
-
-                <button type="submit" class="tiny radius button bg-black-solid" name="upload_topik"><b><span class="fontello-minefield"></span> Upload</b></button>
+                <tr><td style="padding:50px;"><textarea name="info"><?php echo $row['info'] ?></textarea></td></tr>
+                 <input type="hidden" name="topik_edit" value="<?php echo $row['id_topik'] ?>">                                    
+                <button type="submit" class="tiny radius button bg-black-solid" name="edit_topik" value="edit_topik"><b><span class="fontello-minefield"></span> Update</b></button>
         </div>        
             </form>
             <!-- end tambah topik -->
