@@ -4,7 +4,7 @@
 	//Login Proses
 	if(isset($_POST['signin'])){
 		$user 		= 	$_POST['username'];
-		$pass 		= 	$_POST['password'];
+		$pass 		= 	md5($_POST['password']);
 		$hasil 		= 	mysql_query("SELECT * FROM users WHERE users_username='$user' AND users_password='$pass'");
 		$data 		= 	mysql_fetch_assoc($hasil);
 		$id 		= 	$data['users_id'];
