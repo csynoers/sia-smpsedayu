@@ -25,7 +25,6 @@
                         <th>Telepon</th>
                         <th>E-mail</th>
                         <th>Status</th>
-                        <th>Kelas</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -36,11 +35,9 @@
                         if ($_GET['users'] == 'siswa') {
                             
                             $no         =   1;
-                            $siswa      =   mysql_query("SELECT *, kelas.kelas_id, kelas.kelas_nama FROM users
-                                                        INNER JOIN kelas ON users.kelas_id=kelas.kelas_id
-                                                        WHERE users.users_level='siswa'");
+                            $siswa      =   mysql_query("SELECT * FROM users WHERE users.users_level='siswa'");
 
-                            while ($row=mysql_fetch_array($siswa)) {
+                            while ($row=mysql_fetch_assoc($siswa)) {
                 ?>
                     <tr>
                         <td><?php echo $no; ?></td>
@@ -87,15 +84,6 @@
                                 }
 
                                 echo $row['users_status'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['kelas_id'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['kelas_nama'];
                             ?>
                         </td>
                         <td>
