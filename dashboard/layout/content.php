@@ -15,6 +15,8 @@
 		}
 
 		elseif ($_GET['users'] == 'siswa') {
+			echo 'sadasd';
+			die();
 			include 'model/siswa.php';
 		}elseif ($_GET['users'] == 'siswa-create') {
 			include 'controller/create.php';
