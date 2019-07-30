@@ -9,13 +9,11 @@
 		$data 		= 	mysql_fetch_assoc($hasil);
 		$id 		= 	$data['users_id'];
 		$username 	= 	$data['users_username'];
-		$password 	= 	$data['users_password'];
+		$password 	= 	$_POST['password'];
 		$nama 		= 	$data['users_nama'];
 		$level 		= 	$data['users_level'];
 		$kelas 		=	$data['kelas_id'];
 		$noinduk	= 	$data['users_noinduk'];
-		print_r($_REQUEST);
-		die();
 		if($user==$username && $pass=$password){
 			session_start();
 			$_SESSION['id']			=	$id;
