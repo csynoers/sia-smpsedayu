@@ -6,7 +6,7 @@
 		$user 		= 	$_POST['username'];
 		$pass 		= 	$_POST['password'];
 		$hasil 		= 	mysql_query("SELECT * FROM users WHERE users_username='$user' AND users_password='$pass'");
-		$data 		= 	mysql_fetch_array($hasil);
+		$data 		= 	mysql_fetch_assoc($hasil);
 		$id 		= 	$data['users_id'];
 		$username 	= 	$data['users_username'];
 		$password 	= 	$data['users_password'];
@@ -14,6 +14,8 @@
 		$level 		= 	$data['users_level'];
 		$kelas 		=	$data['kelas_id'];
 		$noinduk	= 	$data['users_noinduk'];
+		print_r($_REQUEST);
+		die();
 		if($user==$username && $pass=$password){
 			session_start();
 			$_SESSION['id']			=	$id;
