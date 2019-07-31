@@ -103,7 +103,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 
 			print_r($sql);
 
-			die();
+			/* die();
 
 			if ($guru) {
 				echo "
@@ -141,7 +141,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 					</div>
 				</div>";
 				echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
-			}	
+			} */	
 		}
 		$dataguru		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
 		$row			=	mysql_fetch_assoc($dataguru);
