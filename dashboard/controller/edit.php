@@ -84,6 +84,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	if ( isset( $_GET['guru-edit'] ) ) {
 		$id= $_GET['guru-edit'];
 		if ( isset( $_POST['guru-update'] ) ) {
+			echo 'jancuk';
 			/* if( empty($_POST['password']) ){ # jika password kosong
 				$sql= "
 					UPDATE
@@ -101,48 +102,9 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				
 			}
 
-			print_r($sql); */
-
-			/* die();
-
-			if ($guru) {
-				echo "
-				<div class='large-12 columns'>
-					<div class='box bg-light-green'>
-						<div class='box-header bg-light-green'>
-							<div class='pull-right box-tools'>
-								<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-							</div>
-							<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-								<span class='text-white'>SUCCESS</span>
-							</h3>
-						</div>
-						<div class='box-body ' style='display: block;'>
-							<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-						</div>
-					</div>
-				</div>";
-				echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
-			}else {
-				echo "
-				<div class='large-12 columns'>
-					<div class='box bg-light-yellow'>
-						<div class='box-header bg-light-yellow'>
-							<div class='pull-right box-tools'>
-								<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-							</div>
-							<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-								<span class='text-white'>Warning</span>
-							</h3>
-						</div>
-						<div class='box-body ' style='display: block;'>
-							<p class='text-white'><strong>Warning!</strong> Best check yo self, you're not looking too good.</p>
-						</div>
-					</div>
-				</div>";
-				echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
-			} */	
+			print_r($sql); */			
 		}
+
 		$dataguru = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
 		$row = mysql_fetch_assoc($dataguru);
 	}
