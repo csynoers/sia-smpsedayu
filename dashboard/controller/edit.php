@@ -74,27 +74,36 @@ if (!empty($_FILES["file"]["tmp_name"]))
 }
 }
 	$dataadmin 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-	$row			=	mysql_fetch_array($dataadmin);
+	$row			=	mysql_fetch_assoc($dataadmin);
 	
 }
 ?>
 
 <?php 
 
-	if (isset($_GET['guru-edit'])) {
-		$id 		=	$_GET['guru-edit'];
-		if (isset($_POST['guru-update'])) {
-			$noinduk 	=	$_POST['noinduk'];
-			$nama 		=	$_POST['nama'];
-			$username	=	$_POST['username'];
-			$email 		=	$_POST['email'];
-			$telp 		=	$_POST['telp'];
-			$alamat 	=	$_POST['alamat'];
+	if ( isset( $_GET['guru-edit'] ) ) {
+		$id 			=	$_GET['guru-edit'];
+		if ( isset( $_POST['guru-update'] ) ) {
+			if( empty($_POST['password']) ){ # jika password kosong
+				$sql= "
+					UPDATE
+						users
+					SET
+						`users_noinduk` = '$noinduk',
+						`users_nama` = '$nama',
+						`users_username` = '$username',
+						`users_telp` = '$telp',
+						`users_alamat` = '$alamat',
+						`users_email` = '$email'
+					WHERE users_id = '$id'");
 
-			$guru 		=	mysql_query("UPDATE users 
-										SET `users_noinduk` = '$noinduk', `users_nama` = '$nama', `users_username` = '$username', 
-										`users_telp` = '$telp', `users_alamat` = '$alamat', `users_email` = '$email'
-										WHERE users_id = '$id'");
+			}else { # jika password terisi
+				
+			}
+
+			print_r($sql);
+
+			die();
 
 			if ($guru) {
 				echo "
@@ -134,8 +143,8 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
 			}	
 		}
-	$dataguru 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-	$row			=	mysql_fetch_array($dataguru);
+		$dataguru		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
+		$row			=	mysql_fetch_assoc($dataguru);
 	}
 ?>
 
@@ -195,7 +204,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$dataguru 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-	$row			=	mysql_fetch_array($dataguru);
+	$row			=	mysql_fetch_assoc($dataguru);
 	}
 ?>
 
@@ -256,7 +265,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datasiswa 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-	$row			=	mysql_fetch_array($datasiswa);
+	$row			=	mysql_fetch_assoc($datasiswa);
 	}
 ?>
 
@@ -319,7 +328,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datasiswa 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-	$row			=	mysql_fetch_array($datasiswa);
+	$row			=	mysql_fetch_assoc($datasiswa);
 	}
 ?>
 
@@ -375,7 +384,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datakelas 		=	mysql_query("SELECT * FROM kelas WHERE kelas_id='$id'");
-	$row			=	mysql_fetch_array($datakelas);
+	$row			=	mysql_fetch_assoc($datakelas);
 	}
 ?>
 
@@ -435,7 +444,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datainstruksi 		=	mysql_query("SELECT * FROM instgs WHERE instgs_id='$id'");
-	$row				=	mysql_fetch_array($datainstruksi);
+	$row				=	mysql_fetch_assoc($datainstruksi);
 	}
 ?>
 
@@ -491,7 +500,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datajam 		=	mysql_query("SELECT * FROM jam WHERE jam_id='$id'");
-	$row			=	mysql_fetch_array($datajam);
+	$row			=	mysql_fetch_assoc($datajam);
 	}
 ?>
 
@@ -566,7 +575,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datainstruksi 		=	mysql_query("SELECT * FROM instgs WHERE kuis='$id'");
-	$row				=	mysql_fetch_array($datakuis);
+	$row				=	mysql_fetch_assoc($datakuis);
 	}
 ?>
 
@@ -625,7 +634,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datapelajaran	=	mysql_query("SELECT * FROM pelajaran, users WHERE pelajaran_id='$id',users_nama='$gupel'");
-	$row			=	mysql_fetch_array($datapelajaran);
+	$row			=	mysql_fetch_assoc($datapelajaran);
 	}
 ?>
 
@@ -680,7 +689,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datasemester	=	mysql_query("SELECT * FROM semester WHERE semester_id='$id'");
-	$row			=	mysql_fetch_array($datasemester);
+	$row			=	mysql_fetch_assoc($datasemester);
 	}
 ?>
 
@@ -735,7 +744,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datatahun	=	mysql_query("SELECT * FROM tahun WHERE tahun_id='$id'");
-	$row			=	mysql_fetch_array($datatahun);
+	$row			=	mysql_fetch_assoc($datatahun);
 	}
 ?>
 
@@ -793,7 +802,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datasekolah 		=	mysql_query("SELECT * FROM sekolah WHERE sekolah_id='$id'");
-	$row				=	mysql_fetch_array($datasekolah);
+	$row				=	mysql_fetch_assoc($datasekolah);
 	}
 ?>
 
@@ -891,7 +900,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	        }	
 		}
 	$datamodul	=	mysql_query("SELECT * FROM modul WHERE id='$id'");
-	$row			=	mysql_fetch_array($datamodul);
+	$row			=	mysql_fetch_assoc($datamodul);
 	}
 ?>
 
@@ -946,7 +955,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datamodul	=	mysql_query("SELECT * FROM modul WHERE id='$id'");
-	$row			=	mysql_fetch_array($datamodul);
+	$row			=	mysql_fetch_assoc($datamodul);
 	}
 ?>
 
@@ -1004,7 +1013,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}	
 		}
 	$datajadwal	=	mysql_query("SELECT * FROM jadwal WHERE jadwal_id='$id'");
-	$row			=	mysql_fetch_array($datajadwal);
+	$row			=	mysql_fetch_assoc($datajadwal);
 	}
 
 	elseif (isset($_GET['edit-ulangan1'])) {
@@ -1022,7 +1031,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
-		$row 	=	mysql_fetch_array($nilai);
+		$row 	=	mysql_fetch_assoc($nilai);
 	}
 	elseif (isset($_GET['edit-ulangan2'])) {
 		$id 	=	$_GET['edit-ulangan2'];
@@ -1039,7 +1048,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
-		$row 	=	mysql_fetch_array($nilai);
+		$row 	=	mysql_fetch_assoc($nilai);
 	}elseif (isset($_GET['edit-ulangan3'])) {
 		$id 	=	$_GET['edit-ulangan3'];
 
@@ -1055,7 +1064,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
-		$row 	=	mysql_fetch_array($nilai);
+		$row 	=	mysql_fetch_assoc($nilai);
 	}elseif (isset($_GET['edit-uts'])) {
 		$id 	=	$_GET['edit-uts'];
 
@@ -1071,7 +1080,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
-		$row 	=	mysql_fetch_array($nilai);
+		$row 	=	mysql_fetch_assoc($nilai);
 	}elseif (isset($_GET['edit-uas'])) {
 		$id 	=	$_GET['edit-uas'];
 
@@ -1087,7 +1096,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
-		$row 	=	mysql_fetch_array($nilai);
+		$row 	=	mysql_fetch_assoc($nilai);
 	}elseif (isset($_GET['edit-raport'])) {
 		$id 	=	$_GET['edit-raport'];
 
@@ -1103,7 +1112,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 
 		$nilai 	= 	mysql_query("SELECT nilai_id, nilai_poin FROM nilai WHERE nilai_id=$id");
-		$row 	=	mysql_fetch_array($nilai);
+		$row 	=	mysql_fetch_assoc($nilai);
 	}
 	elseif (isset($_GET['kuis-edit'])) {
 		$id 	=	$_GET['kuis-edit'];
