@@ -30,16 +30,18 @@
                 </thead>
 
                 <tbody>
-                <?php 
+                <?php
+                    print_r('tes'); 
                     if (isset($_GET['users'])) {
                         if ($_GET['users'] == 'guru') {
                             
                             $no         =   1;
-                            $guru       =   mysql_query("SELECT * FROM users
-                                                        WHERE users_level='guru'
-                                                        ORDER BY users_id ASC");
+                            $guru       =   mysql_query("
+                                SELECT * FROM users
+                                    WHERE users_level='guru'
+                                        ORDER BY users_nama ASC");
 
-                            while ($row=mysql_fetch_array($guru)) {
+                            while ( $row=mysql_fetch_assoc($guru) ) {
                 ?>
                     <tr>
                         <td><?php echo $no; ?></td>
