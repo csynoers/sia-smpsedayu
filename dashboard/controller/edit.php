@@ -84,7 +84,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	if ( isset( $_GET['guru-edit'] ) ) {
 		$id= $_GET['guru-edit'];
 		if ( isset( $_POST['guru-update'] ) ) {
-			if( empty($_POST['password']) ){ # jika password kosong
+			/* if( empty($_POST['password']) ){ # jika password kosong
 				$sql= "
 					UPDATE
 						users
@@ -101,7 +101,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				
 			}
 
-			print_r($sql);
+			print_r($sql); */
 
 			/* die();
 
