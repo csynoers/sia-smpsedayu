@@ -84,37 +84,57 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	if ( isset( $_GET['guru-edit'] ) ) {
 		$id= $_GET['guru-edit'];
 		if ( isset( $_POST['guru-update'] ) ) {
-			if( empty($_POST['password']) ){ # jika password kosong
-				$sql= ("
-					UPDATE
-						users
-					SET
-						`users_noinduk` = '{$_POST['noinduk']}',
-						`users_nama` = '{$_POST['nama']}',
-						`users_username` = '{$_POST['username']}',
-						`users_telp` = '{$_POST['telp']}',
-						`users_alamat` = '{$_POST['alamat']}',
-						`users_email` = '{$_POST['email']}'
-					WHERE users_id = '{$id}'
-				");
+			$sql= ("
+				SELECT * 
+				FROM users
+				WHERE users_username='{$_POST['username']}'
+					AND users_id != '{$id}'
+			");
 
-			}else { # jika password terisi
-				$sql= ("
-					UPDATE
-						users
-					SET
-						`users_noinduk` = '{$_POST['noinduk']}',
-						`users_nama` = '{$_POST['nama']}',
-						`users_username` = '{$_POST['username']}',
-						`users_password` = '".md5($_POST['password'])."',
-						`users_telp` = '{$_POST['telp']}',
-						`users_alamat` = '{$_POST['alamat']}',
-						`users_email` = '{$_POST['email']}'
-					WHERE users_id = '{$id}'
-				");
-			}
+			if ( count(query_result($connect, $sql)['fetch_assoc']) > 0 ) {
+				echo "<script>alert('Maaf username sudah digunakan'); window.history.back();</script>";
 
-			print_r($sql);			
+			} else {
+
+				if( empty($_POST['password']) ){ # jika password kosong
+					$sql= ("
+						UPDATE
+							users
+						SET
+							`users_noinduk` = '{$_POST['noinduk']}',
+							`users_nama` = '{$_POST['nama']}',
+							`users_username` = '{$_POST['username']}',
+							`users_telp` = '{$_POST['telp']}',
+							`users_alamat` = '{$_POST['alamat']}',
+							`users_email` = '{$_POST['email']}'
+						WHERE users_id = '{$id}'
+					");
+	
+				}else { # jika password terisi
+					$sql= ("
+						UPDATE
+							users
+						SET
+							`users_noinduk` = '{$_POST['noinduk']}',
+							`users_nama` = '{$_POST['nama']}',
+							`users_username` = '{$_POST['username']}',
+							`users_password` = '".md5($_POST['password'])."',
+							`users_telp` = '{$_POST['telp']}',
+							`users_alamat` = '{$_POST['alamat']}',
+							`users_email` = '{$_POST['email']}'
+						WHERE users_id = '{$id}'
+					");
+				}
+
+				$query= mysql_query($sql);
+				if ( $query ) {
+					echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
+				} else {
+					echo "<script>alert('Maaf data gagal diubah'); window.history.back();</script>";
+				}
+				
+
+			}		
 		}
 
 		$dataguru = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
