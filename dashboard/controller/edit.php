@@ -82,7 +82,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 <?php 
 
 	if ( isset( $_GET['guru-edit'] ) ) {
-		$id 			=	$_GET['guru-edit'];
+		$id= $_GET['guru-edit'];
 		if ( isset( $_POST['guru-update'] ) ) {
 			if( empty($_POST['password']) ){ # jika password kosong
 				$sql= "
@@ -143,8 +143,8 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
 			} */	
 		}
-		$dataguru		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-		$row			=	mysql_fetch_assoc($dataguru);
+		$dataguru = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
+		$row = mysql_fetch_assoc($dataguru);
 	}
 ?>
 
