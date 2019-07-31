@@ -37,77 +37,25 @@
                         WHERE users_level='guru'
                             ORDER BY users_nama ASC
                     ");
-                    print_r(query_result($connect,$sql)); 
-                    if (isset($_GET['users'])) {
-                        if ($_GET['users'] == 'guru') {
-                            
-                            $no         =   1;
-                            $guru       =   mysql_query("
-                                SELECT * FROM users
-                                    WHERE users_level='guru'
-                                        ORDER BY users_nama ASC");
-
-                            while ( $row=mysql_fetch_assoc($guru) ) {
-                ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-
-                        <td>
-                            <?php
-                                if ($row['users_noinduk'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['users_noinduk'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['users_nama'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['users_nama'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['users_telp'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['users_telp'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['users_email'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['users_email'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['users_status'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['users_status'];
-                            ?>
-                        </td>
-                        <td>
-                            <a href="?guru-edit=<?php echo $row['users_id']; ?>"><span class="fontello-edit"></span> Edit</a>
-                            <!-- <a href="?guru-delete=<?php echo $row['users_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a> -->
-                        </td>
-                    </tr>
-                <?php
-                            $no++;
-                            }
-                        }
+                    $no= 1;
+                    foreach ( query_result($connect,$sql)['fetch_assoc'] as $key => $value) {
+                        echo "
+                            <tr>
+                                <td>{$no}</td>
+                                <td>{$value['users_noinduk']}</td>
+                                <td>{$value['users_nama']}</td>
+                                <td>{$value['users_telp']}</td>
+                                <td>{$value['users_email']}</td>
+                                <td>{$value['users_status']}</td>
+                                <td>
+                                    <a href='?guru-edit={$value['users_id']}'><span class='fontello-edit'></span> Edit</a>
+                                    <!-- <a href='?guru-delete={$value['users_id']' onclick='return confirm (\'Apakah anda yakin ingin menghapus?\')'><span class='fontello-trash'></span> Delete</a> -->
+                                </td>
+                            </tr>
+                        ";
+                        $no++;
                     }
-                ?>                    
+                ?>                 
                 </tbody>
             </table>
         </div>
