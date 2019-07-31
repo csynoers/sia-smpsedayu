@@ -53,7 +53,7 @@
                         //         </td>
                         //     </tr>
                         // ";
-                        print_r($value->users_noinduk);
+                        print_r($value['users_noinduk']);
                         $no++;
                     }
                 ?>                 
