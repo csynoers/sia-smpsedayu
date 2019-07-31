@@ -31,7 +31,13 @@
 
                 <tbody>
                 <?php
-                    print_r('tes'); 
+                    $sql = ("
+                        SELECT *
+                            FROM users
+                        WHERE users_level='guru'
+                            ORDER BY users_nama ASC
+                    ");
+                    print_r(query_result($connect,$sql)); 
                     if (isset($_GET['users'])) {
                         if ($_GET['users'] == 'guru') {
                             
