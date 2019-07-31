@@ -55,11 +55,13 @@
     <script type="text/javascript">
     (function($) {
         "use strict";
-        $('#example').dataTable({
-            "order": [
-                [3, "desc"]
-            ]
-        });
+        $('#example').dataTable(
+            // {
+            //     "order": [
+            //         [3, "desc"]
+            //     ]
+            // }
+        );
         $('#example1').dataTable({
             "order": [
                 [3, "desc"]
