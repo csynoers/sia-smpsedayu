@@ -1,7 +1,4 @@
 <?php 
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
 	if (isset($_GET['users'])) {
 		if ($_GET['users'] == 'admin') {
 			include 'model/admin.php';
