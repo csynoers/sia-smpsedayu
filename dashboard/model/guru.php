@@ -39,20 +39,21 @@
                     ");
                     $no= 1;
                     foreach ( query_result($connect,$sql)['fetch_assoc'] as $key => $value) {
-                        echo "
-                            <tr>
-                                <td>{$no}</td>
-                                <td>{$value['users_noinduk']}</td>
-                                <td>{$value['users_nama']}</td>
-                                <td>{$value['users_telp']}</td>
-                                <td>{$value['users_email']}</td>
-                                <td>{$value['users_status']}</td>
-                                <td>
-                                    <a href='?guru-edit={$value['users_id']}'><span class='fontello-edit'></span> Edit</a>
-                                    <!-- <a href='?guru-delete={$value['users_id']' onclick='return confirm (\'Apakah anda yakin ingin menghapus?\')'><span class='fontello-trash'></span> Delete</a> -->
-                                </td>
-                            </tr>
-                        ";
+                        // echo "
+                        //     <tr>
+                        //         <td>{$no}</td>
+                        //         <td>{$value['users_noinduk']}</td>
+                        //         <td>{$value['users_nama']}</td>
+                        //         <td>{$value['users_telp']}</td>
+                        //         <td>{$value['users_email']}</td>
+                        //         <td>{$value['users_status']}</td>
+                        //         <td>
+                        //             <a href='?guru-edit={$value['users_id']}'><span class='fontello-edit'></span> Edit</a>
+                        //             <!-- <a href='?guru-delete={$value['users_id']' onclick='return confirm (\'Apakah anda yakin ingin menghapus?\')'><span class='fontello-trash'></span> Delete</a> -->
+                        //         </td>
+                        //     </tr>
+                        // ";
+                        print_r($value);
                         $no++;
                     }
                 ?>                 
