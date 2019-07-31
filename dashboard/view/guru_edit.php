@@ -61,11 +61,13 @@
                 </div>
 
                 <?php
-                if (isset($_SESSION['level'])) {
-                    if ( $_SESSION['level'] == 'guru' ) {
-                        echo '<button type="submit" class="tiny radius button bg-black-solid" name="gwedit"><b><span class="fontello-minefield"></span> Update</b></button>';
-                    }elseif ( $_SESSION['level'] == 'admin' ) {
-                        echo '<button type="submit" class="tiny radius button bg-black-solid" name="guru-update"><b><span class="fontello-minefield"></span> Update</b></button>';
+                    if (isset($_SESSION['level']))
+                    {
+                        if ( $_SESSION['level'] == 'guru' ) {
+                            echo '<button type="submit" class="tiny radius button bg-black-solid" name="gwedit"><b><span class="fontello-minefield"></span> Update</b></button>';
+                        }elseif ( $_SESSION['level'] == 'admin' ) {
+                            echo '<button type="submit" class="tiny radius button bg-black-solid" name="guru-update"><b><span class="fontello-minefield"></span> Update</b></button>';
+                        }
                     }
                 ?>
 
