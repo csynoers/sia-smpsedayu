@@ -31,7 +31,7 @@
                 </div>
                 <div class="name-field">
                     <label>Username <small>required</small>
-                        <input type="text" name="username" value="<?php echo $row['users_username']; ?>" required="" readonly="">
+                        <input type="text" name="username" value="<?php echo $row['users_username']; ?>" required="">
                     </label>
                     <small class="error">Username Harus Di Isi</small>
                 </div>
