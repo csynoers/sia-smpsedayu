@@ -14,6 +14,7 @@
             </h3>
         </div>
         <!-- /.box-header -->
+
         <div class="box-body small-5" style="display: block;">
             <form data-abide method="POST" action="" role="form"> 
                 <div class="name-field">
@@ -59,19 +60,14 @@
                     <small class="error">Alamat Harus Di Isi</small>
                 </div>
 
-<?php 
+                <?php
                 if (isset($_SESSION['level'])) {
-                    if ($_SESSION['level'] == 'guru') {
-            ?>
-<button type="submit" class="tiny radius button bg-black-solid" name="gwedit"><b><span class="fontello-minefield"></span> Update</b></button>
-            <?php }} ?>
-
-<?php 
-                if (isset($_SESSION['level'])) {
-                    if ($_SESSION['level'] == 'admin') {
-            ?>
-<button type="submit" class="tiny radius button bg-black-solid" name="guru-update"><b><span class="fontello-minefield"></span> Update</b></button>
-            <?php }} ?>
+                    if ( $_SESSION['level'] == 'guru' ) {
+                        echo '<button type="submit" class="tiny radius button bg-black-solid" name="gwedit"><b><span class="fontello-minefield"></span> Update</b></button>';
+                    }elseif ( $_SESSION['level'] == 'admin' ) {
+                        echo '<button type="submit" class="tiny radius button bg-black-solid" name="guru-update"><b><span class="fontello-minefield"></span> Update</b></button>';
+                    }
+                ?>
 
             </form>
         </div>

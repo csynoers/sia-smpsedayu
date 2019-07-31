@@ -1,0 +1,14 @@
+FIX(CLEAR)
+- login admin:
+    username: admin
+    password: admin
+
+- login guru:
+    username: nip
+    password: nip
+
+- login siswa:
+    username: nis
+    password: nis
+
+- 
