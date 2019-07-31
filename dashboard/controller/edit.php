@@ -106,7 +106,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						`users_noinduk` = '{$_POST['noinduk']}',
 						`users_nama` = '{$_POST['nama']}',
 						`users_username` = '{$_POST['username']}',
-						`users_password` = '{$_POST['password']}',
+						`users_password` = '".md5($_POST['password'])."',
 						`users_telp` = '{$_POST['telp']}',
 						`users_alamat` = '{$_POST['alamat']}',
 						`users_email` = '{$_POST['email']}'
