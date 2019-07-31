@@ -37,7 +37,7 @@
                 </div>
                 <div class="name-field">
                     <label>Password <small>optional jika tidak diganti dikosongkan saja</small>
-                        <input type="password" name="username" value="">
+                        <input type="password" name="username" value="" placeholder="**********">
                     </label>
                 </div>
                 <div class="name-field">
