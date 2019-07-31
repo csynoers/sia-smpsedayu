@@ -84,25 +84,37 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	if ( isset( $_GET['guru-edit'] ) ) {
 		$id= $_GET['guru-edit'];
 		if ( isset( $_POST['guru-update'] ) ) {
-			echo 'jancuk';
-			/* if( empty($_POST['password']) ){ # jika password kosong
-				$sql= "
+			if( empty($_POST['password']) ){ # jika password kosong
+				$sql= ("
 					UPDATE
 						users
 					SET
-						`users_noinduk` = '$noinduk',
-						`users_nama` = '$nama',
-						`users_username` = '$username',
-						`users_telp` = '$telp',
-						`users_alamat` = '$alamat',
-						`users_email` = '$email'
-					WHERE users_id = '$id'");
+						`users_noinduk` = '{$_POST['noinduk']}',
+						`users_nama` = '{$_POST['nama']}',
+						`users_username` = '{$_POST['username']}',
+						`users_telp` = '{$_POST['telp']}',
+						`users_alamat` = '{$_POST['alamat']}',
+						`users_email` = '{$_POST['email']}'
+					WHERE users_id = '{$id}'
+				");
 
 			}else { # jika password terisi
-				
+				$sql= ("
+					UPDATE
+						users
+					SET
+						`users_noinduk` = '{$_POST['noinduk']}',
+						`users_nama` = '{$_POST['nama']}',
+						`users_username` = '{$_POST['username']}',
+						`users_password` = '{$_POST['password']}',
+						`users_telp` = '{$_POST['telp']}',
+						`users_alamat` = '{$_POST['alamat']}',
+						`users_email` = '{$_POST['email']}'
+					WHERE users_id = '{$id}'
+				");
 			}
 
-			print_r($sql); */			
+			print_r($sql);			
 		}
 
 		$dataguru = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
