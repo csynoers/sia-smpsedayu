@@ -19,27 +19,26 @@
             <form data-abide method="POST" action="" role="form"> 
                 <div class="name-field">
                     <label>No Induk <small>required</small>
-                        <input type="text" name="noinduk" value="<?php echo $row['users_noinduk']; ?>" required>
+                        <input type="text" name="noinduk" value="<?php echo $row['users_noinduk']; ?>" required="" readonly="">
                     </label>
                     <small class="error">No Induk Harus Di Isi</small>
                 </div>
                 <div class="name-field">
                     <label>Nama <small>required</small>
-                        <input type="text" name="nama" value="<?php echo $row['users_nama']; ?>" required>
+                        <input type="text" name="nama" value="<?php echo $row['users_nama']; ?>" required="">
                     </label>
                     <small class="error">Nama Harus Di Isi</small>
                 </div>
                 <div class="name-field">
                     <label>Username <small>required</small>
-                        <input type="text" name="username" value="<?php echo $row['users_username']; ?>" required>
+                        <input type="text" name="username" value="<?php echo $row['users_username']; ?>" required="" readonly="">
                     </label>
                     <small class="error">Username Harus Di Isi</small>
                 </div>
                 <div class="name-field">
-                    <label>Password <small>required</small>
-                        <input type="password" name="username" value="<?php echo $row['users_password']; ?>" required>
+                    <label>Password <small>optional jika tidak diganti dikosongkan saja</small>
+                        <input type="password" name="username" value="">
                     </label>
-                    <small class="error">Username Harus Di Isi</small>
                 </div>
                 <div class="name-field">
                     <label>E-mail <small>required</small>
