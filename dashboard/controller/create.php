@@ -132,7 +132,7 @@ if (isset($_POST['siswa-create'])) {
 			'{$_POST['nama']}',
 			'{$_POST['username']}',
 			md5('{$_POST['password']}'),
-			'guru',
+			'siswa',
 			'{$_POST['telp']}',
 			'{$_POST['alamat']}',
 			'{$_POST['email']}',
