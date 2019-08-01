@@ -37,7 +37,7 @@
                 </div>
                 <div class="name-field">
                     <label>Password <small>optional jika tidak diubah kosongkan saja</small>
-                        <input type="password" name="username" value="" placeholder="**********">
+                        <input type="password" name="password" value="" placeholder="**********">
                     </label>
                     <small class="error">Password Harus Di Isi</small>
                 </div>
