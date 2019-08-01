@@ -147,7 +147,58 @@ if (!empty($_FILES["file"]["tmp_name"]))
 	if (isset($_GET['siswa-edit'])) {
 		$id = $_GET['siswa-edit'];
 		if (isset($_POST['siswa-update'])) {
-			
+			$sql= ("
+				SELECT * 
+				FROM users
+				WHERE users_username='{$_POST['username']}'
+					AND users_id != '{$id}'
+			");
+
+			if ( count(query_result($connect, $sql)['fetch_assoc']) > 0 ) {
+				echo "<script>alert('Maaf username sudah digunakan'); window.history.back();</script>";
+
+			} else {
+
+				if( empty($_POST['password']) ){ # jika password kosong
+					$sql= ("
+						UPDATE
+							users
+						SET
+							`users_noinduk` = '{$_POST['noinduk']}',
+							`users_nama` = '{$_POST['nama']}',
+							`users_username` = '{$_POST['username']}',
+							`users_telp` = '{$_POST['telp']}',
+							`users_alamat` = '{$_POST['alamat']}',
+							`users_email` = '{$_POST['email']}',
+							`users_status` = '{$_POST['status']}'
+						WHERE users_id = '{$id}'
+					");
+	
+				}else { # jika password terisi
+					$sql= ("
+						UPDATE
+							users
+						SET
+							`users_noinduk` = '{$_POST['noinduk']}',
+							`users_nama` = '{$_POST['nama']}',
+							`users_username` = '{$_POST['username']}',
+							`users_password` = '".md5($_POST['password'])."',
+							`users_telp` = '{$_POST['telp']}',
+							`users_alamat` = '{$_POST['alamat']}',
+							`users_email` = '{$_POST['email']}',
+							`users_status` = '{$_POST['status']}'
+						WHERE users_id = '{$id}'
+					");
+				}
+
+				$query= mysql_query($sql);
+				if ( $query ) {
+					echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
+				} else {
+					echo "<script>alert('Maaf data gagal diubah'); window.history.back();</script>";
+				}
+				
+			}
 		}
 
 		$datasiswa = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
