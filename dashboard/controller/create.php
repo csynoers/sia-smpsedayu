@@ -92,7 +92,36 @@
 		if ( count(query_result($connect, $sql)['fetch_assoc']) > 0  ) {
 			echo "<script>alert('Maaf no induk pengajar dan username sudah dipakai'); window.history.back();</script>";
 		} else {
-			echo "<script>alert('Data informasi guru berhasil ditambahkan'); window.history.go(-2);</script>";
+			$sql= ("
+			INSERT INTO users (
+				users_noinduk,
+				users_nama, 
+				users_username,
+				users_password,
+				users_level,
+				users_telp,
+				users_alamat,
+				users_email,
+				users_status,) 
+			VALUES (
+				'{$_POST['noinduk']}',
+				'{$_POST['nama']}',
+				'{$_POST['username']}',
+				'{$_POST['username']}',
+				md5('{$_POST['password']}'),
+				'guru',
+				'{$_POST['telp']}',
+				'{$_POST['alamat']}',
+				'{$_POST['email']}',
+				$_POST['status']
+				)
+			");
+			$query= mysql_query($sql);
+			if($query){
+				echo "<script>alert('Data informasi guru berhasil ditambahkan'); window.history.go(-2);</script>";
+			}else {
+				echo "<script>alert('Data informasi guru gagal ditambahkan'); window.history.back();</script>";
+			}
 		}
 		
 
