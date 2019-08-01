@@ -66,22 +66,6 @@
                         </select>
                     </label>
                     <small class="error">Status Harus Di Isi</small>
-                </div>                
-                <div class="name-field">
-                    <label>Kelas <small>required</small>
-                        <select name="kelas" requires>
-                            <?php 
-                                $kelas      =   mysql_query("SELECT * FROM kelas ORDER BY kelas_nama ASC");
-
-                                while ($row=mysql_fetch_array($kelas)) {
-                            ?>
-                            <option value="<?php echo $row['kelas_id']; ?>"><?php echo $row['kelas_nama']; ?></option>
-                            <?php
-                                }
-                            ?>
-                        </select>
-                    </label>
-                    <small class="error">Kelas Harus Di Isi</small>
                 </div>
                 <!-- <div class="name-field">
                     <label>Pilih Foto <small>required</small>

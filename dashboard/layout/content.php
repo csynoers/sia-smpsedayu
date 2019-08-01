@@ -24,10 +24,11 @@
 
 		elseif ($_GET['users'] == 'swedit') {
 			include 'view/swedit.php';
-		}elseif ($_GET['users'] == 'siswa-create') {
+		}
+		/* elseif ($_GET['users'] == 'siswa-create') {
 			include 'controller/create.php';
 			include 'view/siswa_create.php';
-		}
+		} */
 		elseif ($_GET['users'] == 'awedit') {
 			include 'view/uadmin_edit.php';
 		}
