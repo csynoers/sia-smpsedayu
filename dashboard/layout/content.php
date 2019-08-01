@@ -10,7 +10,7 @@
 		elseif ($_GET['users'] == 'guru') {
 			include 'model/guru.php';
 		}elseif ($_GET['users'] == 'guru-create') {	
-			include 'controller/create.php';
+			// include 'controller/create.php';
 			include 'view/guru_create.php';
 		}
 
