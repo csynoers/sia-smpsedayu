@@ -60,29 +60,7 @@
 ?>
 
 <?php 
-	if (isset($_POST['guru-create'])) {
-		/* $noinduk 	=	$_POST['noinduk'];
-		$nama 		=	$_POST['nama'];
-		$username	=	$_POST['username'];
-		$password 	=	$_POST['password'];
-		$email 		=	$_POST['email'];
-		$telp 		=	$_POST['telp'];
-		$alamat 	=	$_POST['alamat'];
-		$status 	=	$_POST['status'];
-		$gambar=$_FILES['gambar']['name'];
-		$file=$_FILES['gambar'];
-		$file_name=explode(".", $file['name']);
-		$file_extension=$file_name[count($file_name)-1];
-		$namabaru=$noinduk.'_'.$nama.'.'.$file_extension;
-		if(strlen($gambar)>0){
-		if(is_uploaded_file($_FILES['gambar']['tmp_name'])){
-		move_uploaded_file($_FILES['gambar']
-		['tmp_name'],"img/".$namabaru);
-		} }
-		
-		# Upload ke folder foto
-		move_uploaded_file($tmp_name, $link); */
-		
+	if (isset($_POST['guru-create'])) {		
 		# cek already exist
 		$sql= ("
 			SELECT * FROM users
@@ -102,7 +80,7 @@
 				users_telp,
 				users_alamat,
 				users_email,
-				users_status,) 
+				users_status) 
 			VALUES (
 				'{$_POST['noinduk']}',
 				'{$_POST['nama']}',
@@ -113,7 +91,7 @@
 				'{$_POST['telp']}',
 				'{$_POST['alamat']}',
 				'{$_POST['email']}',
-				$_POST['status']
+				'{$_POST['status']}'
 				)
 			");
 			$query= mysql_query($sql);
@@ -123,50 +101,6 @@
 				echo "<script>alert('Data informasi guru gagal ditambahkan'); window.history.back();</script>";
 			}
 		}
-		
-
-		/* $guru 		=	mysql_query("INSERT INTO users (`users_id`, `users_noinduk`, `users_nama`, 
-									`users_username`, `users_password`, `users_level`, `users_telp`, `users_alamat`, 
-									`users_email`, `users_status`,`users_foto`,`kelas_id`) 
-									VALUES (NULL, '$noinduk', '$nama', '$username', '$password', 'guru', '$telp', '$alamat', '$email', '$status','$namabaru',  NULL)");
-
-		if ($guru) {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-green'>
-					<div class='box-header bg-light-green'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-							<span class='text-white'>SUCCESS</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
-		}else {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-yellow'>
-					<div class='box-header bg-light-yellow'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-							<span class='text-white'>Warning</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Warning!</strong> Best check yo self, you're not looking too good.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
-		} */
 	}
 
 ?>
