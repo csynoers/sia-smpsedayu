@@ -145,67 +145,19 @@ if (!empty($_FILES["file"]["tmp_name"]))
 <?php 
 
 	if (isset($_GET['siswa-edit'])) {
-		$id 		=	$_GET['siswa-edit'];
+		$id = $_GET['siswa-edit'];
 		if (isset($_POST['siswa-update'])) {
-			$noinduk 	=	$_POST['noinduk'];
-			$nama 		=	$_POST['nama'];
-			$username	=	$_POST['username'];
-			$email 		=	$_POST['email'];
-			$telp 		=	$_POST['telp'];
-			$alamat 	=	$_POST['alamat'];
-			$kelas 	 	=	$_POST['kelas'];
-			$status	 	=	$_POST['status'];
-			$siswa 		=	mysql_query("UPDATE users 
-										SET `users_noinduk` = '$noinduk', `users_nama` = '$nama', `users_username` = '$username', 
-										`users_telp` = '$telp', `users_alamat` = '$alamat', `users_status` = '$status', `users_email` = '$email', `kelas_id` = '$kelas'
-										WHERE users_id = '$id'");
-
-			if ($siswa) {
-				echo "
-				<div class='large-12 columns'>
-					<div class='box bg-light-green'>
-						<div class='box-header bg-light-green'>
-							<div class='pull-right box-tools'>
-								<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-							</div>
-							<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-								<span class='text-white'>SUCCESS</span>
-							</h3>
-						</div>
-						<div class='box-body ' style='display: block;'>
-							<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-						</div>
-					</div>
-				</div>";
-				echo "<meta http-equiv='refresh' content='1;URL=?users=siswa'>";
-			}else {
-				echo "
-				<div class='large-12 columns'>
-					<div class='box bg-light-yellow'>
-						<div class='box-header bg-light-yellow'>
-							<div class='pull-right box-tools'>
-								<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-							</div>
-							<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-								<span class='text-white'>Warning</span>
-							</h3>
-						</div>
-						<div class='box-body ' style='display: block;'>
-							<p class='text-white'><strong>Warning!</strong> Best check yo self, you're not looking too good.</p>
-						</div>
-					</div>
-				</div>";
-				echo "<meta http-equiv='refresh' content='1;URL=?users=siswa'>";
-			}	
+			
 		}
-	$datasiswa 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
-	$row			=	mysql_fetch_assoc($datasiswa);
+
+		$datasiswa = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
+		$row = mysql_fetch_assoc($datasiswa);
 	}
 ?>
 
 <?php 
 
-	if (isset($_GET['siswa-edit'])) {
+	/* if (isset($_GET['siswa-edit'])) {
 		$id 		=	$_GET['siswa-edit'];
 
 		if (isset($_POST['swedit'])) {
@@ -263,7 +215,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		}
 	$datasiswa 		=	mysql_query("SELECT * FROM users WHERE users_id='$id'");
 	$row			=	mysql_fetch_assoc($datasiswa);
-	}
+	} */
 ?>
 
 <?php 

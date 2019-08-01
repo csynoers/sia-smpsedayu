@@ -62,8 +62,8 @@
                 <div class="name-field">
                     <label>Status <small>required</small>
                     <select name="status" required>
-                        <option>Aktif</option>
-                        <option>Non Aktif</option>
+                        <option value="Aktif">Aktif</option>
+                        <option value="Non Aktif">Non Aktif</option>
                     </select>
                     </label>
                     <small class="error">Status Harus Di Isi</small>
