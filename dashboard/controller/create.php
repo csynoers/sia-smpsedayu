@@ -61,7 +61,7 @@
 
 <?php 
 	if (isset($_POST['guru-create'])) {
-		$noinduk 	=	$_POST['noinduk'];
+		/* $noinduk 	=	$_POST['noinduk'];
 		$nama 		=	$_POST['nama'];
 		$username	=	$_POST['username'];
 		$password 	=	$_POST['password'];
@@ -80,10 +80,23 @@
 		['tmp_name'],"img/".$namabaru);
 		} }
 		
-		//Upload ke folder foto
-        move_uploaded_file($tmp_name, $link);
+		# Upload ke folder foto
+		move_uploaded_file($tmp_name, $link); */
+		
+		# cek already exist
+		$sql= ("
+			SELECT * FROM users
+			WHERE users_noinduk='{$_POST['noinduk']}' OR users_username='{$_POST['username']}'
+		");
 
-		$guru 		=	mysql_query("INSERT INTO users (`users_id`, `users_noinduk`, `users_nama`, 
+		if ( count(query_result($connect, $sql)['fetch_assoc']) > 0  ) {
+			echo "<script>alert('Maaf no induk pengajar dan username sudah dipakai'); window.history.back();</script>";
+		} else {
+			echo "<script>alert('Data informasi guru berhasil ditambahkan'); window.history.go(-2);</script>";
+		}
+		
+
+		/* $guru 		=	mysql_query("INSERT INTO users (`users_id`, `users_noinduk`, `users_nama`, 
 									`users_username`, `users_password`, `users_level`, `users_telp`, `users_alamat`, 
 									`users_email`, `users_status`,`users_foto`,`kelas_id`) 
 									VALUES (NULL, '$noinduk', '$nama', '$username', '$password', 'guru', '$telp', '$alamat', '$email', '$status','$namabaru',  NULL)");
@@ -124,7 +137,7 @@
 				</div>
 			</div>";
 			echo "<meta http-equiv='refresh' content='1;URL=?users=guru'>";
-		}
+		} */
 	}
 
 ?>
