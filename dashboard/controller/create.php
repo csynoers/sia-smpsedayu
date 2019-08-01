@@ -85,7 +85,6 @@
 				'{$_POST['noinduk']}',
 				'{$_POST['nama']}',
 				'{$_POST['username']}',
-				'{$_POST['username']}',
 				md5('{$_POST['password']}'),
 				'guru',
 				'{$_POST['telp']}',
@@ -108,62 +107,46 @@
 <?php 
 
 if (isset($_POST['siswa-create'])) {
-$noinduk 	=	$_POST['noinduk'];
-$nama 		=	$_POST['nama'];
-$username	=	$_POST['username'];
-$password 	=	$_POST['password'];
-$email 		=	$_POST['email'];
-$telp 		=	$_POST['telp'];
-$alamat 	=	$_POST['alamat'];
-$status 	=	$_POST['status'];
-$kelas 	 	=	$_POST['kelas'];
+	# cek already exist
+	$sql= ("
+	SELECT * FROM users
+	WHERE users_noinduk='{$_POST['noinduk']}' OR users_username='{$_POST['username']}'
+	");
 
-//Upload ke folder foto
-move_uploaded_file($tmp_name, $link);
-
-$siswa 		=	mysql_query("INSERT INTO users (`users_id`, `users_noinduk`, `users_nama`, 
-`users_username`, `users_password`, `users_level`, `users_telp`, `users_alamat`, 
-`users_email`, `users_status`, `kelas_id`) 
-VALUES (NULL, '$noinduk', '$nama', '$username', '$password', 'siswa', '$telp', '$alamat', '$email', '$status',  '$kelas')");
-
-		if ($siswa) {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-green'>
-					<div class='box-header bg-light-green'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-							<span class='text-white'>SUCCESS</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?users=siswa'>";
+	if ( count(query_result($connect, $sql)['fetch_assoc']) > 0  ) {
+		echo "<script>alert('Maaf no induk siswa dan username sudah dipakai'); window.history.back();</script>";
+	} else {
+		$sql= ("
+		INSERT INTO users (
+			users_noinduk,
+			users_nama,
+			users_username,
+			users_password,
+			users_level,
+			users_telp,
+			users_alamat,
+			users_email,
+			users_status) 
+		VALUES (
+			'{$_POST['noinduk']}',
+			'{$_POST['nama']}',
+			'{$_POST['username']}',
+			md5('{$_POST['password']}'),
+			'guru',
+			'{$_POST['telp']}',
+			'{$_POST['alamat']}',
+			'{$_POST['email']}',
+			'{$_POST['status']}'
+			)
+		");
+		$query= mysql_query($sql);
+		if($query){
+			echo "<script>alert('Data informasi guru berhasil ditambahkan'); window.history.go(-2);</script>";
 		}else {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-yellow'>
-					<div class='box-header bg-light-yellow'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-							<span class='text-white'>Warning</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Warning!</strong> Best check yo self, you're not looking too good.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?users=siswa'>";
+			echo "<script>alert('Data informasi guru gagal ditambahkan'); window.history.back();</script>";
 		}
-	}
+	}	
+}
 ?>
 
 <?php 
