@@ -1,14 +1,14 @@
-    <!-- konfirmasi kedatabase -->
-        <?php
-            
-            session_start();
-            error_reporting(0);
-            if (!isset($_SESSION['username'])) {
-                header('Location: ../index.php');
-            }
-            require_once '../config/db.php';
-            require_once 'layout/header.php';
-        ?>
+<!-- konfirmasi kedatabase -->
+<?php
+    
+    session_start();
+    error_reporting(0);
+    if (!isset($_SESSION['username'])) {
+        header('Location: ../index.php');
+    }
+    require_once '../config/db.php';
+    require_once 'layout/header.php';
+?>
         <!-- end konfirmasi -->
             <div class="wrap-fluid" id="paper-bg">
                 <!-- top nav -->
@@ -35,8 +35,7 @@
        
 
        
-        <form role="form" method="POST"> 
-            
+            <form role="form" method="POST"> 
                 <label>
                 <!-- tampil pada ucapan selamat datang nama user -->
                     <th>
@@ -45,8 +44,15 @@
                         </h5>
                      </th>
                 </label>
-          
-        </form>
+                <?php
+                echo '<pre>';
+                print_r([
+                    'get'=> $_GET,
+                    'post'=> $_POST,
+                ]);
+                echo '</pre>';
+                ?>
+            </form>
 		
 		 <?php 
                 //$_SESSION['id']         =   $id;
@@ -80,10 +86,10 @@
 </div>
         
                
-                <div class="row">
-                    <?php 
-                        require_once 'layout/content.php';
-                    ?>
-                </div>
+<div class="row">
+    <?php 
+        require_once 'layout/content.php';
+    ?>
+</div>
 
 <?php require_once 'layout/footer.php'; ?>
