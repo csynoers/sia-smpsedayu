@@ -1,6 +1,6 @@
 <?php 
 	if( count($_GET) < 1){
-		echo 'fsadfasf';
+		include_once('view/dashboard.php');
 	}
 	if (isset($_GET['users'])) {
 		if ($_GET['users'] == 'admin') {
