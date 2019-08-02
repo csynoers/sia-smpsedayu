@@ -125,7 +125,7 @@
                         ?>
                     </div>
                 </div>
-                <button type="submit">Update Kelas</button>
+                <button type="submit" name="update-kelas-siswa">Update Kelas</button>
             </form>
         </div>
         <!-- end .timeline -->

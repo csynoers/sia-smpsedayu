@@ -1222,7 +1222,18 @@ if (isset($_POST['raport-proses'])) {
 		}
 	}
 }
-		
+
+if (isset($_POST['update-kelas-siswa'])) {
+	$sukses=[];
+	$gagal=[];
+	foreach ($_POST['user_id'] as $key => $value) {
+		$sql= ("SELECT * FROM pbm WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
+		// query_result($connect, $sql)['fetch_assoc'];
+		echo '<pre>';
+		print_r(query_result($connect, $sql));
+		echo '</pre>';
+	}
+}
 ?>
 
 <?php
