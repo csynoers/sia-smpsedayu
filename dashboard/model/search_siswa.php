@@ -108,7 +108,7 @@
                             FROM tahun
                             WHERE 1=1
                                 AND tahun_nama LIKE '%".date('Y')."%'
-                                AND semester='".(date('n') <= 6? 1 : 2 )."'
+                                AND semester='".(date('n') <= 6? 2 : 1 )."'
                                 LIMIT 1
                         ");
                         // print_r($sql);
