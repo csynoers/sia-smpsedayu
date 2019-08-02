@@ -49,8 +49,8 @@
                         foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                             echo '
                                 <tr>
-                                    <td>'.$no.'</td>
-                                    <td><input type="checkbox"></td>
+                                    <td for="checkbox'.$no.'">'.$no.'</td>
+                                    <td><input id="checkbox'.$no.'" type="checkbox"></td>
                                     <td>'.$value['users_noinduk'].'</td>
                                     <td>'.$value['users_nama'].'</td>
                                     <td>'.$value['tahun_nama'].'</td>
