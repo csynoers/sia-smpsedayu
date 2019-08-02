@@ -51,7 +51,7 @@
 	}elseif (isset($_GET['siswa-delete'])) {
 		include 'controller/delete.php';
 	}
-	
+
 	elseif (isset($_GET['akademik'])) {
 		if ($_GET['akademik'] == 'kelas') {
 			include 'model/kelas.php';
@@ -84,6 +84,10 @@
 			include 'controller/create.php';
 			include 'view/jam_create.php';
 		}
+	}
+	# search siswa
+	elseif (isset($_GET['search-siswa'])) {
+		include_once('model/search_siswa.php');
 	}
 
 	elseif (isset($_GET['jam-edit'])) {
