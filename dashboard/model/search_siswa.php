@@ -100,7 +100,17 @@
                     </select>
                 </div>
                 <div class="small-6 columns">
-                    <label for="">Pilih Tahun Ajaran</label>
+                    <label for="">Tahun Ajaran</label>
+                    <?php
+                        $sql= ("
+                            SELECT *
+                            FROM tahun
+                            WHERE 1=1
+                                AND tahun_nama LIKE '%".date('Y')."%'
+                                AND semester='".(date(n) <= 6? 1 : 2 )."'
+                        ");
+                        print_r($sql);
+                    ?>
                     <select>
                         <option value="husker">Husker</option>
                         <option value="starbuck">Starbuck</option>
