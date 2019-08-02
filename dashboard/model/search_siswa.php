@@ -45,11 +45,10 @@
                                 AND pbm.kelas_id='{$_GET['search-siswa']}'
                             ORDER BY tahun.tahun_nama DESC
                         ");
-                        print_r($sql);
                         foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                             echo '
-                                <tr>
-                                    <td for="checkbox'.$no.'">'.$no.'</td>
+                                <tr for="checkbox'.$no.'">
+                                    <td>'.$no.'</td>
                                     <td><input id="checkbox'.$no.'" type="checkbox"></td>
                                     <td>'.$value['users_noinduk'].'</td>
                                     <td>'.$value['users_nama'].'</td>

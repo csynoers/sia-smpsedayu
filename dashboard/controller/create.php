@@ -141,9 +141,9 @@ if (isset($_POST['siswa-create'])) {
 		");
 		$query= mysql_query($sql);
 		if($query){
-			echo "<script>alert('Data informasi guru berhasil ditambahkan'); window.history.go(-2);</script>";
+			echo "<script>alert('Data informasi siswa berhasil ditambahkan'); window.history.go(-2);</script>";
 		}else {
-			echo "<script>alert('Data informasi guru gagal ditambahkan'); window.history.back();</script>";
+			echo "<script>alert('Data informasi siswa gagal ditambahkan'); window.history.back();</script>";
 		}
 	}	
 }
