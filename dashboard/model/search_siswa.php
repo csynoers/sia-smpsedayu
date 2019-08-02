@@ -58,6 +58,30 @@
                             ';
                             $no++;
                         }
+
+                        # mencari data siswa belum punya kelas
+                        $sql= ("
+                        SELECT *,
+                            (SELECT COUNT(*) FROM pbm WHERE pbm.user_id=users.users_id) AS count_pbm
+                        FROM users
+                        WHERE 1=1
+                            AND users.users_level='siswa'
+                            HAVING count_pbm < 1
+                        ");
+                        foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                            echo '
+                                <tr for="checkbox'.$no.'">
+                                    <td>'.$no.'</td>
+                                    <td><input id="checkbox'.$no.'" type="checkbox"></td>
+                                    <td>'.$value['users_noinduk'].'</td>
+                                    <td>'.$value['users_nama'].'</td>
+                                    <td> - </td>
+                                    <td> - </td>
+                                </tr>
+                            ';
+                            $no++;
+                        }
+
                     }
                 ?>                    
                 </tbody>
