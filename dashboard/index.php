@@ -30,7 +30,7 @@
 
                <br><br><br>
                 <!-- end of breadcrumbs -->
-                <div class="large-12 columns">
+                <div class="large-12 columns" style="top: 1rem">
     <div class="box">
        
 
