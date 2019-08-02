@@ -88,6 +88,12 @@
                 ?>                    
                 </tbody>
             </table>
+            <select>
+                <option value="husker">Husker</option>
+                <option value="starbuck">Starbuck</option>
+                <option value="hotdog">Hot Dog</option>
+                <option value="apollo">Apollo</option>
+            </select>
             <button type="submit">Update Kelas</button>
         </div>
         <!-- end .timeline -->
