@@ -31,17 +31,20 @@
                     if (isset($_GET['akademik'])) {
                         if ($_GET['akademik'] == 'tahun') {
                             $no         =   1;
-                            $sql= ("SELECT * FROM tahun ORDER BY tahun_nama ASC");
+                            $sql= ("SELECT *,IF(semester='1', 'Ganjil','Genap') AS semester_mod FROM tahun ORDER BY tahun_nama ASC");
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                                 echo '
-                                    <td>'.$no.'</td>
-                                    <td>'.$value['tahun_nama'].'</td>
-                                    <td>
-                                        <a href="?tahun-edit='.$value['tahun_id'].'"><span class="fontello-edit"></span> Edit</a>
-                                        <!-- <a href="?tahun-delete='.$value['tahun_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
-                                    </td>
-
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$value['tahun_nama'].'</td>
+                                        <td>'.$value['semester_mod'].'</td>
+                                        <td>
+                                            <a href="?tahun-edit='.$value['tahun_id'].'"><span class="fontello-edit"></span> Edit</a>
+                                            <!-- <a href="?tahun-delete='.$value['tahun_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
+                                        </td>
+                                    </tr>
                                 ';
+                                $no++;
                             }
                         }
                     }
