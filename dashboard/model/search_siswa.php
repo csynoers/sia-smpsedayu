@@ -10,7 +10,7 @@
                 </span>
             </div>
             <h3 class="box-title"><i class="fontello-th-large-outline"></i>
-                <span>Data Siswa Kelas <?php echo $_GET['q'] ?></span>
+                <span>Data Informasi Siswa Kelas <?php echo $_GET['q'] ?></span>
             </h3>
         </div>
         <!-- /.box-header -->
@@ -27,23 +27,33 @@
 
                 <tbody>
                 <?php 
-                    if (isset($_GET['akademik'])) {
-                        if ($_GET['akademik'] == 'kelas') {
-                            $no = 1;
-                            $sql = ("SELECT * FROM kelas WHERE kelas_nama");
-                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo '
-                                    <tr>
-                                        <td>'.$no.'</td>
-                                        <td>'.$value['kelas_nama'].'</td>
-                                        <td>
-                                            <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Edit</a>&nbsp||&nbsp<a href="?search-siswa='.$value['kelas_id'].'"><span class="fontello-search"></span> Lihat Siswa Kelas Ini</a>
-                                            <!-- <a href="?kelas-delete='.$value['kelas_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
-                                        </td>
-                                    </tr>
-                                ';
-                                $no++;
-                            }
+                    if (isset($_GET['search_siswa'])) {
+                        $no = 1;
+                        $sql = ("
+                            SELECT
+                                *,
+                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
+                            FROM users
+                                INNER JOIN pbm
+                                    ON pbm.user_id=users.users_id
+                                INNER JOIN tahun
+                                    ON tahun.tahun_id=pbm.tahun_id
+                            WHERE 1=1
+                                AND users.users_level='siswa'
+                            ORDER BY tahun.tahun_nama DESC
+                        ");
+                        foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                            echo '
+                                <tr>
+                                    <td>'.$no.'</td>`
+                                    <td>'.$value['kelas_nama'].'</td>
+                                    <td>
+                                        <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Edit</a>&nbsp||&nbsp<a href="?search-siswa='.$value['kelas_id'].'"><span class="fontello-search"></span> Lihat Siswa Kelas Ini</a>
+                                        <!-- <a href="?kelas-delete='.$value['kelas_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
+                                    </td>
+                                </tr>
+                            ';
+                            $no++;
                         }
                     }
                 ?>                    
