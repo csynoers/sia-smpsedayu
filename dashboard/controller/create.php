@@ -1235,7 +1235,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 
 		$query= query_result($connect, $sql);
 		if ( $query['num_rows'] > 0 ) {
-			array_push($gagal, "{$query['fetch_assoc'][0]['users_nama']} ({$query['fetch_assoc'][0]['users_noinduk']})");
+			array_push($gagal, "{$query['fetch_assoc']['0']['users_nama']}");
 		} else {
 			array_push($sukses, 'sukses');
 		}
