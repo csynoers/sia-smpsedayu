@@ -1240,7 +1240,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 			array_push($sukses, "{$query['users_nama']} ({$query['users_noinduk']})");
 			mysql_query("
 				INSERT INTO pbm('user_id','kelas_id','tahun_id')
-				VALUES ('{$_POST['user_id']}','{$_POST['kelas_id']}','{$_POST['tahun_id']}')
+				VALUES ('{$value']}','{$_POST['kelas_id']}','{$_POST['tahun_id']}')
 			");
 		}
 		
