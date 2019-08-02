@@ -2,7 +2,7 @@
 <?php
     
     session_start();
-    error_reporting(0);
+    error_reporting(1);
     if (!isset($_SESSION['username'])) {
         header('Location: ../index.php');
     }
@@ -55,7 +55,6 @@
             </form>
 		
 		 <?php 
-                //$_SESSION['id']         =   $id;
                 $v_user = $_SESSION['id'];
                
                             $no         =   1;
