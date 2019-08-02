@@ -111,10 +111,11 @@
                                 AND semester='".(date(n) <= 6? 1 : 2 )."'
                                 LIMIT 1
                         ");
-                        foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                            echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
-                            echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
-                        }
+                        print_r($sql);
+                        // foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                        //     echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
+                        //     echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
+                        // }
                     ?>
                 </div>
             </div>
