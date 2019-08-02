@@ -51,7 +51,8 @@
 	}elseif (isset($_GET['siswa-delete'])) {
 		include 'controller/delete.php';
 	}
-		elseif (isset($_GET['akademik'])) {
+	
+	elseif (isset($_GET['akademik'])) {
 		if ($_GET['akademik'] == 'kelas') {
 			include 'model/kelas.php';
 		}elseif ($_GET['akademik'] == 'kelas-create') {

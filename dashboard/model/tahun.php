@@ -21,7 +21,7 @@
                     <tr>
                         <th width="3%">No</th>
                         <th>Nama</th>
-                        <th></th>
+                        <th>Semester</th>
                         <th width="20%">Action</th>
                     </tr>
                 </thead>
@@ -30,31 +30,18 @@
                 <?php 
                     if (isset($_GET['akademik'])) {
                         if ($_GET['akademik'] == 'tahun') {
-                            
                             $no         =   1;
-                            $tahun      =   mysql_query("SELECT * FROM tahun ORDER BY tahun_nama ASC");
+                            $sql= ("SELECT * FROM tahun ORDER BY tahun_nama ASC");
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo '
+                                    <td>'.$no.'</td>
+                                    <td>'.$value['tahun_nama'].'</td>
+                                    <td>
+                                        <a href="?tahun-edit='.$value['tahun_id'].'"><span class="fontello-edit"></span> Edit</a>
+                                        <!-- <a href="?tahun-delete='.$value['tahun_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
+                                    </td>
 
-                            while ($row=mysql_fetch_array($tahun)) {
-                ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-                        <td>
-                            <?php
-                                if ($row['tahun_nama'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['tahun_nama'];
-                            ?>
-                        </td>
-                        <td></td>
-                        <td>
-                            <a href="?tahun-edit=<?php echo $row['tahun_id']; ?>"><span class="fontello-edit"></span> Edit</a>
-                            <!-- <a href="?tahun-delete=<?php echo $row['tahun_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a> -->
-                        </td>
-                    </tr>
-                <?php
-                            $no++;
+                                ';
                             }
                         }
                     }
