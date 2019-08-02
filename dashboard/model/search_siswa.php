@@ -15,7 +15,6 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body " style="display: block;">
-            <a href="?akademik=kelas-create" class="tiny radius button bg-black-solid"><b><span class="fontello-minefield"></span> Create</b></a>
             <table id="example" class="display">
                 <thead>
                     <tr>
@@ -62,6 +61,7 @@
                 ?>                    
                 </tbody>
             </table>
+            <a class="tiny radius button bg-black-solid"><b><span class="fontello-minefield"></span><button type="submit">Update Kelas</button></b></a>
         </div>
         <!-- end .timeline -->
     </div>
