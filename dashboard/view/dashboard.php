@@ -1,5 +1,5 @@
 <?php
-    $sql= ("SELECT *,IFNULL(users_foto,'no_image.png') AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
+    $sql= ("SELECT *,IF(users_foto='','no_image.png',users_foto) AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
     foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
         echo '
             <div class="large-12 columns">
