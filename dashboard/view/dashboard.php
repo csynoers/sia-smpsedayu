@@ -25,27 +25,31 @@
                             <tbody>
                                 <tr>
                                     <td rowspan="4">
-                                        <center><img src="img/'.$value['users_foto_mod'].'" width="200" height="100"></center>
+                                        <center><img src="img/'.$value['users_foto_mod'].'" height="200px"></center>
                                     </td>
-                                    <td>Nama</td>
-                                    <td>New member registered.</td>
+                                    <td><b>Nama</b></td>
+                                    <td>: '.$value['users_nama'].'</td>
                                 </tr>
                                 <tr>
-                                    <td>Alamat</td>
-                                    <td>Verified</td>
+                                    <td><b>Alamat</b></td>
+                                    <td>: '.$value['users_alamat'].'</td>
                                 </tr>
                                 <tr>
-                                    <td>Telepon</td>
-                                    <td>Pending</td>
+                                    <td><b>Telepon</b></td>
+                                    <td>: '.$value['users_telp'].'</td>
                                 </tr>
                                 <tr>
-                                    <td>E-mail</td>
-                                    <td>Pending</td>
+                                    <td><b>E-mail</b></td>
+                                    <td>: '.$value['users_email'].'</td>
                                 </tr>
                                 <tr>
-                                    <td><a href="?guru-edit='.$value['users_id'].'"><span class="tiny radius fontello-edit button bg-black-solid" >Edit</span> </a></td>
-                                    <td>Status</td>
-                                    <td>Pending</td>
+                                    <td>
+                                        <center>
+                                            <a href="?guru-edit='.$value['users_id'].'"><span class="tiny radius fontello-edit button bg-black-solid" >Edit</span> </a>
+                                        </center>
+                                    </td>
+                                    <td><b>Status</b></td>
+                                    <td>: '.$value['users_status'].'</td>
                                 </tr>
                             </tbody>
                         </table>
