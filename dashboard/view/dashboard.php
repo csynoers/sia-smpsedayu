@@ -1,5 +1,5 @@
 <?php
-    $sql= ("SELECT * FROM users WHERE users_id = '{$_SESSION['id']}'");
+    $sql= ("SELECT *,IFNULL(users_foto,'no_image.png') AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
     foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
         echo '
             <div class="large-12 columns">
@@ -24,7 +24,9 @@
 
                             <tbody>
                                 <tr>
-                                    <td rowspan="4">Noel A. Rilley</td>
+                                    <td rowspan="4">
+                                        <center><img src="img/'.$value['users_foto_mod'].'" width="200" height="100"></center>
+                                    </td>
                                     <td>Nama</td>
                                     <td>New member registered.</td>
                                 </tr>
