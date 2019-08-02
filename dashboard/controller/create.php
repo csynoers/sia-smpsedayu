@@ -1228,11 +1228,9 @@ if (isset($_POST['update_kelas_siswa'])) {
 	$gagal=[];
 	foreach ($_POST['user_id'] as $key => $value) {
 		$sql= ("
-			SELECT *
+			SELECT *,
 				(SELECT COUNT(*) FROM pbm WHERE user_id=users.users_id AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}') AS count_pbm
 			FROM users
-				INNER JOIN users
-					ON users.users_id=pbm.user_id
 			WHERE users_id='{$value}'");
 		print_r($sql);
 		$query= query_result($connect, $sql)['fetch_assoc'][0];
