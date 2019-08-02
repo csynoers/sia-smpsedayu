@@ -28,7 +28,7 @@ require_once 'layout/header.php';
 	<h3>SMP N 1 Sedayu</h3>
 	<ul class="list-inline" style="padding-top:30px; ">
 		<li>
-			<a href="#signIn" class="btn btn-custom">
+			<a href="index.php#signIn" class="btn btn-custom">
 				<i class="fa fa-user"></i>
 				Silahkan Masuk!
 			</a>
