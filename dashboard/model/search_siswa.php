@@ -34,7 +34,8 @@
                         $sql = ("
                             SELECT
                                 *,
-                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
+                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
+                                IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 )
                             FROM users
                                 INNER JOIN pbm
                                     ON pbm.user_id=users.users_id
