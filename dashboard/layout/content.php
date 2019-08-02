@@ -87,8 +87,8 @@
 	}
 	# search siswa
 	elseif (isset($_GET['search-siswa'])) {
-		include_once('controller/create.php');
-		include_once('model/search_siswa.php');
+		include 'controller/create.php';
+		include 'model/search_siswa.php';
 	}
 
 	elseif (isset($_GET['jam-edit'])) {
