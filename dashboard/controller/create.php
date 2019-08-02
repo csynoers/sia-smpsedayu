@@ -1230,7 +1230,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 		$sql= ("
 			SELECT * FROM pbm
 				INNER JOIN users
-					ON users_id=pbm.users_id
+					ON users.users_id=pbm.user_id
 			WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
 
 		$query= query_result($connect, $sql);
