@@ -41,7 +41,7 @@
 
     <div class="off-canvas-wrap" data-offcanvas>
         <!-- Right sidemenu -->
-            <div id="skin-select">
+            <div id="skin-select" class="fixed-nest">
                 <!--      Toggle sidemenu icon button -->
                 <a id="toggle">
                     <span class="fa icon-menu"></span>
