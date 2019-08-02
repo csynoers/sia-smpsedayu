@@ -104,19 +104,18 @@
                     <?php
                         $sql= ("
                             SELECT *
+                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
                             FROM tahun
                             WHERE 1=1
                                 AND tahun_nama LIKE '%".date('Y')."%'
                                 AND semester='".(date(n) <= 6? 1 : 2 )."'
+                                LIMIT 1
                         ");
-                        print_r($sql);
+                        foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                            echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
+                            echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
+                        }
                     ?>
-                    <select>
-                        <option value="husker">Husker</option>
-                        <option value="starbuck">Starbuck</option>
-                        <option value="hotdog">Hot Dog</option>
-                        <option value="apollo">Apollo</option>
-                    </select>
                 </div>
             </div>
             <button type="submit">Update Kelas</button>
