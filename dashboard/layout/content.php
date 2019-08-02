@@ -1,4 +1,7 @@
 <?php 
+	if( count($_GET) < 1){
+		echo 'fsadfasf';
+	}
 	if (isset($_GET['users'])) {
 		if ($_GET['users'] == 'admin') {
 			include 'model/admin.php';
