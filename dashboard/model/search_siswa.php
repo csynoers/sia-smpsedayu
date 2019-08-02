@@ -88,12 +88,22 @@
                 ?>                    
                 </tbody>
             </table>
-            <select>
-                <option value="husker">Husker</option>
-                <option value="starbuck">Starbuck</option>
-                <option value="hotdog">Hot Dog</option>
-                <option value="apollo">Apollo</option>
-            </select>
+            <div class="small-10">
+                <label for="">Pilih Kelas</label>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <label for="">Pilih Tahun Ajaran</label>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+            </div>
             <button type="submit">Update Kelas</button>
         </div>
         <!-- end .timeline -->
