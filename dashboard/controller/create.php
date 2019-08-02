@@ -1241,10 +1241,10 @@ if (isset($_POST['update_kelas_siswa'])) {
 		}
 		
 	}
-	echo '<pre>';
-	print_r($gagal);
+	echo '<div class="large-12"><pre>';
 	print_r($sukses);
-	echo '</pre>';
+	print_r($gagal);
+	echo '</pre></div>';
 }
 ?>
 
