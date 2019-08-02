@@ -125,8 +125,8 @@
                         ?>
                     </div>
                 </div>
-                <!-- <input type="hidden" name="update_kelas_siswa" value="1"> -->
-                <button type="submit" name="update_kelas_siswa">Update Kelas</button>
+                <input type="hidden" name="update_kelas_siswa" value="1">
+                <button type="submit">Update Kelas</button>
             </form>
         </div>
         <!-- end .timeline -->
