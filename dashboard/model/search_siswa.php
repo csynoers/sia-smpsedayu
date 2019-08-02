@@ -88,23 +88,25 @@
                 ?>                    
                 </tbody>
             </table>
-            <div class="small-6">
-                <label for="">Pilih Kelas</label>
-                <select>
-                    <option value="husker">Husker</option>
-                    <option value="starbuck">Starbuck</option>
-                    <option value="hotdog">Hot Dog</option>
-                    <option value="apollo">Apollo</option>
-                </select>
-            </div>
-            <div class="small-6">
-                <label for="">Pilih Tahun Ajaran</label>
-                <select>
-                    <option value="husker">Husker</option>
-                    <option value="starbuck">Starbuck</option>
-                    <option value="hotdog">Hot Dog</option>
-                    <option value="apollo">Apollo</option>
-                </select>
+            <div class="row">
+                <div class="small-6 columns">
+                    <label for="">Pilih Kelas</label>
+                    <select>
+                        <option value="husker">Husker</option>
+                        <option value="starbuck">Starbuck</option>
+                        <option value="hotdog">Hot Dog</option>
+                        <option value="apollo">Apollo</option>
+                    </select>
+                </div>
+                <div class="small-6 columns">
+                    <label for="">Pilih Tahun Ajaran</label>
+                    <select>
+                        <option value="husker">Husker</option>
+                        <option value="starbuck">Starbuck</option>
+                        <option value="hotdog">Hot Dog</option>
+                        <option value="apollo">Apollo</option>
+                    </select>
+                </div>
             </div>
             <button type="submit">Update Kelas</button>
         </div>
