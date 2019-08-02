@@ -92,11 +92,11 @@ if (!isset($_SESSION['username'])) {
 <div class="col-sm-6">
 <form method="POST" action="login.php" role="form">
 	<div class="form-group">
-		<input type="text" name="username" style="height:60px;width:100%;font-size:20px;color:#000;"
+		<input type="text" name="username" style="height:60px;width:100%;font-size:20px;color:#ddd;"
 		 class="video form-control" placeholder="Please Enter Username" required>
 	</div>
 	<div class="form-group">
-		<input type="password" name="password" style="height:60px;width:100%;font-size:20px;color:#000;"
+		<input type="password" name="password" style="height:60px;width:100%;font-size:20px;color:#ddd;"
 		 class="video form-control" placeholder="Please Enter Password" required>
 	</div>
 	<div class="form-group">
