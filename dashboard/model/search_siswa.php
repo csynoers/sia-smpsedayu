@@ -88,6 +88,7 @@
                 ?>                    
                 </tbody>
             </table>
+            <hr>
             <div class="row">
                 <div class="small-6 columns">
                     <label for="">Pilih Kelas</label>
