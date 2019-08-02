@@ -1234,11 +1234,11 @@ if (isset($_POST['update_kelas_siswa'])) {
 				INNER JOIN users
 					ON users.users_id=pbm.user_id
 			WHERE users_id='{$value}'");
-		$query= query_result($connect, $sql);
-		if ( $query['fetch_assoc'][0]['count_pbm'] > 0 ) {
-			array_push($gagal, "{$query['fetch_assoc']['0']['users_nama']} ({{$query['fetch_assoc']['0']['users_noinduk']}})");
+		$query= query_result($connect, $sql)['fetch_assoc'][0];
+		if ( $query['count_pbm'] > 0 ) {
+			array_push($gagal, "{$query['users_nama']} ({$query['users_noinduk']})");
 		} else {
-			array_push($sukses, "{$query['fetch_assoc']['0']['users_nama']} ({{$query['fetch_assoc']['0']['users_noinduk']}})");
+			array_push($sukses, "{$query['users_nama']} ({$query['users_noinduk']})");
 		}
 		
 	}
