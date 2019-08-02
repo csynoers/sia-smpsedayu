@@ -27,7 +27,7 @@
 
                 <tbody>
                 <?php 
-                    if (isset($_GET['search_siswa'])) {
+                    if (isset($_GET['search-siswa'])) {
                         $no = 1;
                         $sql = ("
                             SELECT
