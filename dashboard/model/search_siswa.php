@@ -93,10 +93,16 @@
                 <div class="small-6 columns">
                     <label for="">Pilih Kelas</label>
                     <select>
-                        <option value="husker">Husker</option>
-                        <option value="starbuck">Starbuck</option>
-                        <option value="hotdog">Hot Dog</option>
-                        <option value="apollo">Apollo</option>
+                    <?php
+                        $sql= ("
+                            SELECT *
+                            FROM kelas
+                            WHERE 1=1
+                        ");
+                        foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                            echo '<option value="'.$value['kelas_id'].'">'.$value['kelas_nama'].'</option>';
+                        }
+                    ?>
                     </select>
                 </div>
                 <div class="small-6 columns">
@@ -111,7 +117,6 @@
                                 AND semester='".(date('n') <= 6? 2 : 1 )."'
                                 LIMIT 1
                         ");
-                        // print_r($sql);
                         foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                             echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
                             echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
