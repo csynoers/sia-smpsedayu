@@ -61,7 +61,7 @@
                 ?>                    
                 </tbody>
             </table>
-            <a class="tiny radius button bg-black-solid"><b><span class="fontello-minefield"></span><button type="submit">Update Kelas</button></b></a>
+            <button type="submit">Update Kelas</button>
         </div>
         <!-- end .timeline -->
     </div>
