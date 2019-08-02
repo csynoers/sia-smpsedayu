@@ -1229,9 +1229,9 @@ if (isset($_POST['update_kelas_siswa'])) {
 	foreach ($_POST['user_id'] as $key => $value) {
 		$sql= ("SELECT * FROM pbm WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
 		// query_result($connect, $sql)['fetch_assoc'];
-		echo '<pre>';
+		// echo '<pre>';
 		print_r($sql);
-		echo '</pre>';
+		// echo '</pre>';
 	}
 }
 ?>
