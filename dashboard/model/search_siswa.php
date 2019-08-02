@@ -45,6 +45,7 @@
                                 AND pbm.kelas_id='{$_GET['search-siswa']}'
                             ORDER BY tahun.tahun_nama DESC
                         ");
+                        print_r($sql);
                         foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                             echo '
                                 <tr for="checkbox'.$no.'">
