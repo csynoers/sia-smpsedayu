@@ -158,7 +158,7 @@
                 </div>
             </table>
                                 <li>
-                                        <a id="menu-select" class="tooltip-tip" href="dashboard" title="Dashboard">
+                                        <a id="menu-select" class="tooltip-tip" href="<?php echo $_SERVER['SERVER_NAME'] ?>/dashboard" title="Dashboard">
                                             <i class="icon-home"></i>
                                             <span>Home</span>
                                         </a>
