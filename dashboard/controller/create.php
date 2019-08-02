@@ -1228,16 +1228,17 @@ if (isset($_POST['update_kelas_siswa'])) {
 	$gagal=[];
 	foreach ($_POST['user_id'] as $key => $value) {
 		$sql= ("
-			SELECT * FROM pbm
+			SELECT *
+				(SELECT COUNT(*) FROM pbm WHERE user_id=users.users_id AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}') AS count_pbm
+			FROM users
 				INNER JOIN users
 					ON users.users_id=pbm.user_id
-			WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
-		print_r($sql);
+			WHERE users_id='{$value}'");
 		$query= query_result($connect, $sql);
-		if ( $query['num_rows'] > 0 ) {
-			array_push($gagal, "{$query['fetch_assoc']['0']['users_nama']}");
+		if ( $query['fetch_assoc'][0]['count_pbm'] > 0 ) {
+			array_push($gagal, "{$query['fetch_assoc']['0']['users_nama']} ({{$query['fetch_assoc']['0']['users_noinduk']}})");
 		} else {
-			array_push($sukses, 'sukses');
+			array_push($sukses, "{$query['fetch_assoc']['0']['users_nama']} ({{$query['fetch_assoc']['0']['users_noinduk']}})");
 		}
 		
 	}
