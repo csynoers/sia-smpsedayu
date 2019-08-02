@@ -35,7 +35,7 @@
                             SELECT
                                 *,
                                 IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
-                                IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 )
+                                IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 ) AS pbm_status
                             FROM users
                                 INNER JOIN pbm
                                     ON pbm.user_id=users.users_id
@@ -51,7 +51,7 @@
                             echo '
                                 <tr for="checkbox'.$no.'">
                                     <td>'.$no.'</td>
-                                    <td><input id="checkbox'.$no.'" type="checkbox"></td>
+                                    <td>'.($value['pbm_status']==1? '<input id="checkbox'.$no.'" type="checkbox">' : '-' ).'</td>
                                     <td>'.$value['users_noinduk'].'</td>
                                     <td>'.$value['users_nama'].'</td>
                                     <td>'.$value['tahun_nama'].'</td>
