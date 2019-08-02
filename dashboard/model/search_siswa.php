@@ -10,7 +10,7 @@
                 </span>
             </div>
             <h3 class="box-title"><i class="fontello-th-large-outline"></i>
-                <span>Data Kelas</span>
+                <span>Data Siswa Kelas <?php echo $_GET['q'] ?></span>
             </h3>
         </div>
         <!-- /.box-header -->
