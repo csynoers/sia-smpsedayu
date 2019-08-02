@@ -1241,7 +1241,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 		}
 		
 	}
-	echo '<div class="large-12"><pre>';
+	echo '<div class="large-12 columns"><pre>';
 	print_r($sukses);
 	print_r($gagal);
 	echo '</pre></div>';
