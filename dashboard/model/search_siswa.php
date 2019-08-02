@@ -19,6 +19,7 @@
                 <thead>
                     <tr>
                         <th width="3%">No</th>
+                        <th>Action</th>
                         <th>NIS</th>
                         <th>Nama Siswa</th>
                         <th>Tahun Ajaran</th>
@@ -48,7 +49,8 @@
                         foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                             echo '
                                 <tr>
-                                    <td>'.$no.'</td>`
+                                    <td>'.$no.'</td>
+                                    <td><input type="checkbox"></td>
                                     <td>'.$value['users_noinduk'].'</td>
                                     <td>'.$value['users_nama'].'</td>
                                     <td>'.$value['tahun_nama'].'</td>
