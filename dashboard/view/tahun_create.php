@@ -22,6 +22,14 @@
                     </label>
                     <small class="error">Nama Tahun Harus Di Isi</small>
                 </div>
+                <div class="name-field">
+                    <label>Pilih Semester</label>
+                    <input type="radio" name="pokemon" value="1" id="pokemonRed" required="">
+                    <label for="pokemonRed">Ganjil</label>
+                    <input type="radio" name="pokemon" value="2" id="pokemonBlue" required="">
+                    <label for="pokemonBlue">Genap</label>
+                    <small class="error">Semester harus dipilih</small>
+                </div>
                 <button type="submit" class="tiny radius button bg-black-solid" name="tahun-create"><b><span class="fontello-minefield">
                     
                 </span> Create</b></button>
