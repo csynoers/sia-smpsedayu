@@ -1240,11 +1240,11 @@ if (isset($_POST['update_kelas_siswa'])) {
 			array_push($sukses, 'sukses');
 		}
 		
-		echo '<pre>';
-		print_r($sukses);
-		print_r($gagal);
-		echo '</pre>';
 	}
+	echo '<pre>';
+	print_r($sukses);
+	print_r($gagal);
+	echo '</pre>';
 }
 ?>
 
