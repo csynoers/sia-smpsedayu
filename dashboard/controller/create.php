@@ -1232,12 +1232,16 @@ if (isset($_POST['update_kelas_siswa'])) {
 				(SELECT COUNT(*) FROM pbm WHERE user_id=users.users_id AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}') AS count_pbm
 			FROM users
 			WHERE users_id='{$value}'");
-		print_r($sql);
+		// print_r($sql);
 		$query= query_result($connect, $sql)['fetch_assoc'][0];
 		if ( $query['count_pbm'] > 0 ) {
 			array_push($gagal, "{$query['users_nama']} ({$query['users_noinduk']})");
 		} else {
 			array_push($sukses, "{$query['users_nama']} ({$query['users_noinduk']})");
+			mysql_query("
+				INSERT INTO pbm('user_id','kelas_id','tahun_id')
+				VALUES ('{$_POST['user_id']}','{$_POST['kelas_id']}','{$_POST['tahun_id']}')
+			");
 		}
 		
 	}
@@ -1255,7 +1259,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body text-maroon" style="display: block;">
-				<ol>'.implode('<li>',$sukses).'</ol>
+				'.implode('<br>',$sukses).'
 			</div>
 			<!-- /.box-body -->
 		</div>
