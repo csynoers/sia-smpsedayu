@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>
                                         <center>
-                                            <a href="?guru-edit='.$value['users_id'].'"><span class="tiny radius fontello-edit button bg-black-solid" >Edit</span> </a>
+                                            <a href="?'.($value['users_level']!='siswa'? 'guru' : 'siswa' ).'-edit='.$value['users_id'].'"><span class="tiny radius fontello-edit button bg-black-solid" >Edit</span> </a>
                                         </center>
                                     </td>
                                     <td><b>Status</b></td>
