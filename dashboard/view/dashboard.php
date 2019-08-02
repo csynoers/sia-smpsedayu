@@ -25,7 +25,7 @@
                             <tbody>
                                 <tr>
                                     <td rowspan="4">
-                                        <center><img src="img/'.$value['users_foto_mod'].'" height="200px"></center>
+                                        <center><img src="img/'.$value['users_foto_mod'].'" style="height: 200px !important"></center>
                                     </td>
                                     <td><b>Nama</b></td>
                                     <td>: '.$value['users_nama'].'</td>
