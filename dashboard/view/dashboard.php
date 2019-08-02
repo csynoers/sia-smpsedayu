@@ -19,26 +19,30 @@
                     </div>
                     <!-- /.box-header -->
             
-                    <div class="box-body small-5" style="display: block;">
+                    <div class="box-body" style="display: block;">
                         <table style="width:100%;">
 
                             <tbody>
                                 <tr>
-                                    <td>Noel A. Rilley</td>
+                                    <td rowspan="4">Noel A. Rilley</td>
+                                    <td>Nama</td>
                                     <td>New member registered.</td>
-                                    <td>07:45 PM</td>
-                                    <td>Pending</td>
                                 </tr>
                                 <tr>
-                                    <td>Paul L. Williams</td>
-                                    <td>Getting job done , for task last night</td>
-                                    <td>12:00 AM</td>
+                                    <td>Alamat</td>
                                     <td>Verified</td>
                                 </tr>
                                 <tr>
-                                    <td>Jeniffer L. Hewwit</td>
-                                    <td>Joining new history class</td>
-                                    <td>20:23 PM</td>
+                                    <td>Telepon</td>
+                                    <td>Pending</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
+                                    <td>Pending</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="?guru-edit='.$value['users_id'].'"><span class="tiny radius fontello-edit button bg-black-solid" >Edit</span> </a></td>
+                                    <td>Status</td>
                                     <td>Pending</td>
                                 </tr>
                             </tbody>
