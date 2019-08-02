@@ -1241,10 +1241,51 @@ if (isset($_POST['update_kelas_siswa'])) {
 		}
 		
 	}
-	echo '<div class="large-12 columns"><pre>';
+	if ( count($sukses) > 0 ) {
+		echo '
+		<div class="box bg-light-green">
+			<div class="box-header bg-light-green ">
+				<!-- tools box -->
+				<div class="pull-right box-tools">
+					<span class="box-btn" data-widget="remove"><i class="icon-cross"></i></span>
+				</div>
+				<h3 class="box-title "><i class="text-white  icon-thumbs-up"></i>
+				<span class="text-white">Data siswa dibawah ini berhasil diupdate:</span>
+				</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body " style="display: block;">
+				'.implode('<br>',$sukses).'
+			</div>
+			<!-- /.box-body -->
+		</div>
+		';
+	}
+	
+	if ( count($gagal) > 0 ) {
+		echo '
+		<div class="box bg-yellow">
+			<div class="box-header bg-yellow">
+				<!-- tools box -->
+				<div class="pull-right box-tools">
+					<span class="box-btn" data-widget="remove"><i class="icon-cross"></i></span>
+				</div>
+				<h3 class="box-title "><i class="text-white fontello-warning"></i>
+				<span class="text-white">Data siswa dibawah ini gagal diupdate:</span>
+				</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body " style="display: block;">
+				'.implode('<br>',$gagal).'
+			</div>
+			<!-- /.box-body -->
+		</div>
+		';
+	}
+	/* echo '<div class="large-12 columns"><pre>';
 	print_r($sukses);
 	print_r($gagal);
-	echo '</pre></div>';
+	echo '</pre></div>'; */
 }
 ?>
 
