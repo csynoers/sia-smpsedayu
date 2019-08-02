@@ -1238,7 +1238,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 			array_push($gagal, "{$query['users_nama']} ({$query['users_noinduk']})");
 		} else {
 			array_push($sukses, "{$query['users_nama']} ({$query['users_noinduk']})");
-			mysql_query("
+			echo ("
 				INSERT INTO pbm('user_id','kelas_id','tahun_id')
 				VALUES ('{$value}','{$_POST['kelas_id']}','{$_POST['tahun_id']}')
 			");
