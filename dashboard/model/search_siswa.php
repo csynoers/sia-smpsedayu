@@ -40,6 +40,7 @@
                                     ON tahun.tahun_id=pbm.tahun_id
                             WHERE 1=1
                                 AND users.users_level='siswa'
+                                AND pbm.kelas_id='{$_GET['search-siswa']}'
                             ORDER BY tahun.tahun_nama DESC
                         ");
                         print_r($sql);
