@@ -1232,7 +1232,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 				INNER JOIN users
 					ON users.users_id=pbm.user_id
 			WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
-
+		print_r($sql);
 		$query= query_result($connect, $sql);
 		if ( $query['num_rows'] > 0 ) {
 			array_push($gagal, "{$query['fetch_assoc']['0']['users_nama']}");
