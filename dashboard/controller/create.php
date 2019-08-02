@@ -1234,17 +1234,18 @@ if (isset($_POST['update_kelas_siswa'])) {
 			WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
 
 		$query= query_result($connect, $sql);
-		if ( $query['num_rows'] > 0 ) {
-			array_push($gagal, "gagal");
-			// array_push($gagal, "{$query['fetch_assoc'][0]['users_nama']} ({$query['fetch_assoc'][0]['users_noinduk']})");
-		} else {
-			array_push($sukses, 'sukses');
-		}
+		// if ( $query['num_rows'] > 0 ) {
+		// 	array_push($gagal, "gagal");
+		// 	// array_push($gagal, "{$query['fetch_assoc'][0]['users_nama']} ({$query['fetch_assoc'][0]['users_noinduk']})");
+		// } else {
+		// 	array_push($sukses, 'sukses');
+		// }
+		print_r($query);
 		
 	}
 	echo '<pre>';
-	print_r($sukses);
 	print_r($gagal);
+	print_r($sukses);
 	echo '</pre>';
 }
 ?>
