@@ -37,8 +37,7 @@
                                         <td>'.$no.'</td>
                                         <td>'.$value['kelas_nama'].'</td>
                                         <td>
-                                            <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Edit</a>
-                                            <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Lihat Siswa Kelas Ini</a>
+                                            <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Edit</a>&nbsp||&nbsp<a href="?search-siswa='.$value['kelas_id'].'"><span class="fontello-search"></span> Lihat Siswa Kelas Ini</a>
                                             <!-- <a href="?kelas-delete='.$value['kelas_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
                                         </td>
                                     </tr>
