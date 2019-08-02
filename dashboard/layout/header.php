@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/foundation.css" />
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css"> -->
 
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="assets/css/style.css">
