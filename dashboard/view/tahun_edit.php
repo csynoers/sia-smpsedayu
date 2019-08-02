@@ -22,6 +22,14 @@
                     </label>
                     <small class="error">Nama Tahun Harus Di Isi</small>
                 </div>
+                <div class="name-field">
+                    <label>Pilih Semester</label>
+                    <input type="radio" name="semester" value="1" id="pokemonRed" required="" <?php echo ($row['semester']=='1'? 'checked' : NULL ) ?>>
+                    <label for="pokemonRed">Ganjil</label>
+                    <input type="radio" name="semester" value="2" id="pokemonBlue" required="" <?php echo ($row['semester']=='2'? 'checked' : NULL ) ?>>
+                    <label for="pokemonBlue">Genap</label>
+                    <small class="error">Semester harus dipilih</small>
+                </div>
                 <button type="submit" class="tiny radius button bg-black-solid" name="tahun-update"><b>
                 <span class="fontello-minefield">
                 </span> Update</b></button>
