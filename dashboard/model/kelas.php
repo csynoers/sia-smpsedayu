@@ -29,11 +29,20 @@
                 <?php 
                     if (isset($_GET['akademik'])) {
                         if ($_GET['akademik'] == 'kelas') {
-                            
-                            $no         =   1;
-                            $kelas      =   mysql_query("SELECT * FROM kelas WHERE kelas_nama");
-
-                            while ($row=mysql_fetch_array($kelas)) {
+                            $no = 1;
+                            $sql = ("SELECT * FROM kelas WHERE kelas_nama");
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo '
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$value['kelas_nama'].'</td>
+                                        <td>
+                                            <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Edit</a>
+                                            <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Lihat Siswa Kelas Ini</a>
+                                            <!-- <a href="?kelas-delete='.$value['kelas_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
+                                        </td>
+                                    </tr>
+                                ';
                 ?>
                     <tr>
                         <td><?php echo $no; ?></td>
@@ -47,8 +56,8 @@
                             ?>
                         </td>
                         <td>
-                            <a href="?kelas-edit=<?php echo $row['kelas_id']; ?>"><span class="fontello-edit"></span> Edit</a>
-                            <!-- <a href="?kelas-delete=<?php echo $row['kelas_id']; ?>" onclick="return confirm ('Apakah anda yakin ingin menghapus?')"><span class="fontello-trash"></span> Delete</a> -->
+                            <
+                            
                         </td>
                     </tr>
                 <?php
