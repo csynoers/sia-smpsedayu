@@ -43,25 +43,7 @@
                                         </td>
                                     </tr>
                                 ';
-                ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-                        <td>
-                            <?php
-                                if ($row['kelas_nama'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['kelas_nama'];
-                            ?>
-                        </td>
-                        <td>
-                            <
-                            
-                        </td>
-                    </tr>
-                <?php
-                            $no++;
+                                $no++;
                             }
                         }
                     }
