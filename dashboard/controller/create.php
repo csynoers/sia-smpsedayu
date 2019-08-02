@@ -1254,8 +1254,8 @@ if (isset($_POST['update_kelas_siswa'])) {
 				</h3>
 			</div>
 			<!-- /.box-header -->
-			<div class="box-body " style="display: block;">
-				'.implode('<br>',$sukses).'
+			<div class="box-body text-maroon" style="display: block;">
+				<ol>'.implode('<li>',$sukses).'</ol>
 			</div>
 			<!-- /.box-body -->
 		</div>
@@ -1275,7 +1275,7 @@ if (isset($_POST['update_kelas_siswa'])) {
 				</h3>
 			</div>
 			<!-- /.box-header -->
-			<div class="box-body " style="display: block;">
+			<div class="box-body text-maroon" style="display: block;">
 				'.implode('<br>',$gagal).'
 			</div>
 			<!-- /.box-body -->
