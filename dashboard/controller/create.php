@@ -348,45 +348,21 @@ if (isset($_POST['siswa-create'])) {
 <?php 
 	
 	if (isset($_POST['tahun-create'])) {
-		$nama 		=	$_POST['nama'];
-		$tahun 	 	=	mysql_query("INSERT INTO tahun (`tahun_id`, `tahun_nama`) 
-									VALUES (NULL, '$nama')");
-		if ($tahun) {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-green'>
-					<div class='box-header bg-light-green'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-							<span class='text-white'>SUCCESS</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?akademik=tahun'>";
+		$sql = ("
+			INSERT
+				INTO tahun (
+					`tahun_nama`,
+					`semester`
+					) 
+				VALUES (
+					'{$_POST['nama']}',
+					'{$_POST['semester']}'
+					)");
+		$query= mysql_query($sql);
+		if($query){
+			echo "<script>alert('Data informasi tahun ajaran berhasil ditambahkan'); window.history.go(-2);</script>";
 		}else {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-yellow'>
-					<div class='box-header bg-light-yellow'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-							<span class='text-white'>Warning</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Warning!</strong> Best check yo self, you're not looking too good.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?akademik=tahun'>";
+			echo "<script>alert('Data informasi tahun ajaran gagal ditambahkan'); window.history.back();</script>";
 		}
 	}
 ?>

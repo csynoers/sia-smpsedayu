@@ -24,9 +24,9 @@
                 </div>
                 <div class="name-field">
                     <label>Pilih Semester</label>
-                    <input type="radio" name="pokemon" value="1" id="pokemonRed" required="">
+                    <input type="radio" name="semester" value="1" id="pokemonRed" required="">
                     <label for="pokemonRed">Ganjil</label>
-                    <input type="radio" name="pokemon" value="2" id="pokemonBlue" required="">
+                    <input type="radio" name="semester" value="2" id="pokemonBlue" required="">
                     <label for="pokemonBlue">Genap</label>
                     <small class="error">Semester harus dipilih</small>
                 </div>
