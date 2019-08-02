@@ -20,8 +20,10 @@
                 <thead>
                     <tr>
                         <th width="3%">No</th>
-                        <th>Nama</th>
-                        <th width="30%">Action</th>
+                        <th>NIS</th>
+                        <th>Nama Siswa</th>
+                        <th>Tahun Ajaran</th>
+                        <th>Semester</th>
                     </tr>
                 </thead>
 
@@ -48,11 +50,10 @@
                             echo '
                                 <tr>
                                     <td>'.$no.'</td>`
-                                    <td>'.$value['kelas_nama'].'</td>
-                                    <td>
-                                        <a href="?kelas-edit='.$value['kelas_id'].'"><span class="fontello-edit"></span> Edit</a>&nbsp||&nbsp<a href="?search-siswa='.$value['kelas_id'].'"><span class="fontello-search"></span> Lihat Siswa Kelas Ini</a>
-                                        <!-- <a href="?kelas-delete='.$value['kelas_id'].'" onclick="return confirm (\'Apakah anda yakin ingin menghapus?\')"><span class="fontello-trash"></span> Delete</a> -->
-                                    </td>
+                                    <td>'.$value['users_noinduk'].'</td>
+                                    <td>'.$value['users_nama'].'</td>
+                                    <td>'.$value['tahun_nama'].'</td>
+                                    <td>'.$value['semester_mod'].'</td>
                                 </tr>
                             ';
                             $no++;
