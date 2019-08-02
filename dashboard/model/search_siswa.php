@@ -88,7 +88,7 @@
                 ?>                    
                 </tbody>
             </table>
-            <div class="small-10">
+            <div class="small-6">
                 <label for="">Pilih Kelas</label>
                 <select>
                     <option value="husker">Husker</option>
@@ -96,6 +96,8 @@
                     <option value="hotdog">Hot Dog</option>
                     <option value="apollo">Apollo</option>
                 </select>
+            </div>
+            <div class="small-6">
                 <label for="">Pilih Tahun Ajaran</label>
                 <select>
                     <option value="husker">Husker</option>
