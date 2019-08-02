@@ -586,8 +586,9 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}
 				
 		}
-	$datatahun	=	mysql_query("SELECT * FROM tahun WHERE tahun_id='$id'");
-	$row			=	mysql_fetch_assoc($datatahun);
+
+		$datatahun = mysql_query("SELECT * FROM tahun WHERE tahun_id='$id'");
+		$row = mysql_fetch_assoc($datatahun);
 	}
 ?>
 
