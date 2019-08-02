@@ -1227,10 +1227,23 @@ if (isset($_POST['update_kelas_siswa'])) {
 	$sukses=[];
 	$gagal=[];
 	foreach ($_POST['user_id'] as $key => $value) {
-		$sql= ("SELECT * FROM pbm WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
-		// echo '<pre>';
-		print_r(query_result($connect, $sql)['num_rows']);
-		// echo '</pre>';
+		$sql= ("
+			SELECT * FROM pbm
+				INNER JOIN users
+					ON users_id=pbm.users_id
+			WHERE user_id='{$value}' AND kelas_id='{$_POST['kelas_id']}' AND tahun_id='{$_POST['tahun_id']}' ");
+
+		$query= query_result($connect, $sql);
+		if ( $query['num_rows'] > 0 ) {
+			array_push($gagal, "{$query['fetch_assoc'][0]['users_nama']} ({$query['fetch_assoc'][0]['users_noinduk']})");
+		} else {
+			array_push($sukses, 'sukses');
+		}
+		
+		echo '<pre>';
+		print_r($sukses);
+		print_r($gagal);
+		echo '</pre>';
 	}
 }
 ?>
