@@ -1223,7 +1223,7 @@ if (isset($_POST['raport-proses'])) {
 	}
 }
 
-if (isset($_POST['update-kelas-siswa'])) {
+if (isset($_POST['update_kelas_siswa'])) {
 	$sukses=[];
 	$gagal=[];
 	// foreach ($_POST['user_id'] as $key => $value) {
