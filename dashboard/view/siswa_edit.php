@@ -16,7 +16,7 @@
         <!-- /.box-header -->
 
         <div class="box-body small-5" style="display: block;">
-            <form data-abide method="POST" action="" role="form"> 
+            <form data-abide method="POST" action="" enctype="multipart/form-data" role="form"> 
                 <div class="name-field">
                     <label>No Induk <small>required</small>
                     <input readonly="" type="text" name="noinduk" value="<?php echo $row['users_noinduk']; ?>" required>
@@ -67,6 +67,16 @@
                     </select>
                     </label>
                     <small class="error">Status Harus Di Isi</small>
+                </div>
+                <div class="name-field">
+                    <label>Foto</label>
+                    <center><img src="img/<?php echo $row['users_foto_mod'] ?>" style="height: 200px !important"></center>
+                </div>
+                <div class="name-field">
+                    <label>Ganti Foto <small>(type gambar .png or .jpg)</small>
+                        <input type="file" name="gambar">
+                    </label>
+                    
                 </div>
                 <button type="submit" class="tiny radius button bg-black-solid" name="siswa-update"><b><span class="fontello-minefield"></span> Update</b></button>
             </form>

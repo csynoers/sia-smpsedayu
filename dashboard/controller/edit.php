@@ -234,7 +234,13 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}
 		}
 
-		$datasiswa = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
+		$datasiswa = mysql_query("SELECT *,
+		CASE
+			WHEN users.users_foto IS NULL THEN 'no_image.png'
+			WHEN users.users_foto='' THEN 'no_image.png'
+			ELSE users.users_foto
+		END AS users_foto_mod
+		FROM users WHERE users_id='{$id}'");
 		$row = mysql_fetch_assoc($datasiswa);
 	}
 ?>
