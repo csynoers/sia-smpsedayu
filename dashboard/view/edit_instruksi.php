@@ -44,7 +44,7 @@
                 ?>">
                 <div class="name-field small-5">
                     <label>Tanggal Selesai
-                        <input type="date" name="tgl_selesai" required>
+                        <input value="<?php echo $row['tanggal_selesai'] ?>" type="date" name="tgl_selesai" required>
                     </label>
                 </div>
                 <div class="name-field small-12">
