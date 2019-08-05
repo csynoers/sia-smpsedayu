@@ -33,7 +33,7 @@
 					<?php
 						$sql = ("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='{$_SESSION['id']}'");
 						foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-							echo '<option value="'.$value['pelajaran_id'].'"> '.$value['pelajaran_nama'].' Kelas ('.$value['kelas_nama'].')</option>';
+							echo '<option value="'.$value['pelajaran_id'].'" '.(empty($_POST['pelajaran'])? NULL : ($_POST['pelajaran']==$value['pelajaran_id']? 'selected' : NULL ) ).'> '.$value['pelajaran_nama'].' Kelas ('.$value['kelas_nama'].')</option>';
 						}
 					?>
 				</select>
