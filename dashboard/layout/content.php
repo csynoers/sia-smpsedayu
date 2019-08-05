@@ -145,7 +145,7 @@
 	}
 
 
-		elseif (isset($_GET['instruksi'])) {
+	elseif (isset($_GET['instruksi'])) {
 		if ($_GET['instruksi'] == 'tampil_instruksi') {
 			include 'view/tampil_instruksi.php';
 		}elseif ($_GET['instruksi'] == 'upload_instgs') {
@@ -154,7 +154,7 @@
 		}
 		elseif ($_GET['instruksi'] == 'lihat_instruksi') {
 			include 'view/lihat_instruksi.php';
-		}
+	}
 	}elseif (isset($_GET['instruksi-edit'])) {
 		include 'controller/edit.php';
 		include 'view/edit_instruksi.php';

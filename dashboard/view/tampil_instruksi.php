@@ -15,11 +15,9 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body " style="display: block;">
-            <a href="?instruksi=upload_instgs" class="tiny radius button bg-black-solid"
-            <?php
-                $level  =   $_SESSION['level'];
-                if ($level == 'siswa') {echo 'style="display:none;"';}  ?> >
-                <b><span class="fontello-minefield"></span> Upload</b></a>
+            <a href="?instruksi=upload_instgs" class="tiny radius button bg-black-solid" <?php echo ($_SESSION['level']=='siswa' ? 'style="display:none;' : Null ) ?> >
+                <b><span class="fontello-minefield"></span> Upload</b>
+            </a>
            <?php 
            $level = $_SESSION['level'];
            if ($level == 'guru') {
@@ -45,54 +43,29 @@
                     if (isset($_GET['instruksi'])) {
                         if ($_GET['instruksi'] == 'tampil_instruksi') {
                             
-                            $id      = $_SESSION['id'];
-                            $no         =   1;
-                            $instgs      =   mysql_query("select * from pelajaran, instgs,kelas where pelajaran.kelas_id=kelas.kelas_id and pelajaran.pelajaran_id=instgs.pelajaran_id and pelajaran.users_id='$id' ");
-                            while ($row=mysql_fetch_array($instgs)) {
-                ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-                        <td>
-                            <?php
-                                 echo $row['judul'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $row['pelajaran_nama'] ?>
-                        </td>
-                        <td>
-                            <?php echo $row['kelas_nama']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['tanggal_buat']; ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['tanggal_selesai'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['username'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['info'];
-                            ?>
-                        </td>
-                        <td>
-                            <a href="?instruksi=lihat_instruksi"><span class="fontello-eye"></span> Tampil</a>
-                            <a href="?instruksi-edit=<?php echo $row['instgs_id']; ?>" <?php if ($level == 'siswa') {
-                                echo 'style="display:none;"';
-                            }  ?>><span class="fontello-edit"></span> Edit</a>
-                            <a href="?instruksi-delete=<?php echo $row['instgs_id']; ?>" <?php if ($level == 'siswa') {
-                                echo "style='display:none;'";
-                            } ?>><span class="fontello-trash"></span> Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                            $no++;
+                            $id = $_SESSION['id'];
+                            $no = 1;
+                            $sql = ("select * from pelajaran, instgs,kelas where pelajaran.kelas_id=kelas.kelas_id and pelajaran.pelajaran_id=instgs.pelajaran_id and pelajaran.users_id='$id' ");
+                            print_r($sql);
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo "
+                                    <tr>
+                                        <td>{$no}</td>
+                                        <td>{$value['judul']}</td>
+                                        <td>{$value['pelajaran_nama']}</td>
+                                        <td>{$value['kelas_nama']}</td>
+                                        <td>{$value['tanggal_buat']}</td>
+                                        <td>{$value['tanggal_selesai']}</td>
+                                        <td>{$value['username']}</td>
+                                        <td>{$value['info']}</td>
+                                        <td>{$value}
+                                            <a href='?instruksi=lihat_instruksi'><span class='fontello-eye'></span> Tampil</a>
+                                            <a href='?instruksi-edit={$row['instgs_id']}' ><span class='fontello-edit'></span> Edit</a>
+                                            <a href='?instruksi-delete={$row['instgs_id']}' ><span class='fontello-trash'></span> Delete</a>
+                                        </td>
+                                    </tr>
+                                ";
+                                $no++;
                             }
                         }
                     }
