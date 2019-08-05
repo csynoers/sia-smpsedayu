@@ -16,7 +16,7 @@
         <!-- /.box-header -->
 
         <div class="box-body small-5" style="display: block;">
-            <form data-abide method="POST" action="" role="form"> 
+            <form data-abide method="POST" enctype="multipart/form-data" action="" role="form"> 
                 <div class="name-field">
                     <label>No Induk <small>required</small>
                         <input type="text" name="noinduk" value="<?php echo $row['users_noinduk']; ?>" required="" readonly="">
