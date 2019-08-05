@@ -49,7 +49,7 @@
                 </div>
                 <div class="name-field">
                     <label>Telepon <small>required</small>
-                    <input type="text" name="telp" value="<?php echo $row['users_telp']; ?>" required>
+                    <input maxlength="15" onkeypress="return hanyaAngka(event)" type="text" name="telp" value="<?php echo $row['users_telp']; ?>" required>
                     </label>
                     <small class="error">Telepon Harus Di Isi</small>
                 </div>

@@ -18,7 +18,7 @@
             <form data-abide method="POST" enctype="multipart/form-data" action="" role="form"> 
                 <div class="name-field">
                     <label>No Induk Pengajar <small>required</small>
-                        <input type="text" name="noinduk" required>
+                        <input type="text" maxlength="20" onkeypress="return hanyaAngka(event)" name="noinduk" required>
                     </label>
                     <small class="error">No Induk Harus Di Isi</small>
                 </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="name-field">
                     <label>Telepon <small>required</small>
-                        <input type="text" name="telp" required>
+                        <input maxlength="15" onkeypress="return hanyaAngka(event)" type="text" name="telp" required>
                     </label>
                     <small class="error">Telepon Harus Di Isi</small>
                 </div>
