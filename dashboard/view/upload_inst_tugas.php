@@ -15,15 +15,15 @@
         </div>
         <!-- /.box-header -->
 
-        <div class="box-body small-5" style="display: block;">
+        <div class="box-body" style="display: block;">
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
-                <div class="name-field">
+                <div class="name-field small-5">
                     <label>Judul Instruksi<small> required</small>
                         <input type="text" name="judul" required>
                     </label>
                     <small class="error">Nama File Harus Di Isi</small>
                 </div>
-                <div class="name-field">
+                <div class="name-field small-5">
                     <label>Mata Pelajaran</label>
                     <select name="pelajaran" class="form-control" required>
                         <?php 
@@ -43,7 +43,7 @@
                                                         echo $_SESSION['nama'];
                                                      } 
                                                 ?>">
-                <div class="name-field"> 
+                <div class="name-field small-5"> 
                     <label>Kelas</label>
                     <select name="kelas" class="form-control">
                         <?php 
@@ -59,16 +59,16 @@
                         ?>
                     </select>
                 </div>
-                <div class="name-field">
+                <div class="name-field small-5">
                     <label>Tanggal Selesai
                         <input type="date" name="tgl_selesai" required>
                     </label>
                 </div>
-                <div class="name-field">
+                <div class="name-field small-12">
                     <label>Tanggal Selesai</label>
                     <textarea name="info"></textarea>
                 </div>
-
+                <hr>
                 <button type="submit" class="tiny radius button bg-black-solid" name="upload_instgs"><b><span class="fontello-minefield"></span> Upload</b></button>       
             </form>
         </div>
