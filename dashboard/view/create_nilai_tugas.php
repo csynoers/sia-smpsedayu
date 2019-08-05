@@ -50,9 +50,10 @@
 			if(isset($_POST['create-nilai'])) {
 				?>
 				<form role="form" method="post" >
-					<div class="form-group"> 
+					<div class="form-group small-6"> 
 						<label>Pilih Tugas</label>
 						<select name="tugas_id" class="form-control" required>
+							<option value="" selected disabled> -- Pilih Judul Tugas -- </option>
 							<?php
 								$sql = (" SELECT * FROM instgs WHERE instgs.pelajaran_id='{$_POST['pelajaran']}' ");
 								foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
