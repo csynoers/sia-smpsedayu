@@ -340,52 +340,23 @@ if (!empty($_FILES["file"]["tmp_name"]))
         	$username       = $_POST['username'];
 
 			$sql 		=	("UPDATE instgs 
-										SET 'judul' = '$judul', 'pelajaran_id' = '$pelajaran',  
-										'username' = '$username',  'info' = '$info'
-										WHERE instgs_id = '$id'");
-			print_r($sql);
-			die();
+								SET 
+									'judul' = '$judul',
+									'pelajaran_id' = '$pelajaran',  
+									'username' = '$username',
+									'tanggal_selesai' = '{$_POST['tgl_selesai']}',
+									'info' = '$info'
+							WHERE instgs_id = '$id'");
+			$query= mysql_query($sql);
+			if ( $query ) {
+				echo "<script>alert('Data informasi instruksi tugas Berhasil Diubah'); window.history.go(-2);</script>";
+			} else {
+				echo "<script>alert('Data informasi instruksi tugas Gagal Diubah'); window.history.back();</script>";
+			}
 
-			if ($instruksi) {
-				echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-green'>
-					<div class='box-header bg-light-green'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-							<span class='text-white'>SUCCESS</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?instruksi=tampil_instruksi'>";
-		}else {
-			echo "
-			<div class='large-12 columns'>
-				<div class='box bg-light-yellow'>
-					<div class='box-header bg-light-yellow'>
-						<div class='pull-right box-tools'>
-							<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-						</div>
-						<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-							<span class='text-white'>Warning</span>
-						</h3>
-					</div>
-					<div class='box-body ' style='display: block;'>
-						<p class='text-white'><strong>Warning!</strong> Best check yo self, you're not looking too good.</p>
-					</div>
-				</div>
-			</div>";
-			echo "<meta http-equiv='refresh' content='1;URL=?instruksi=tampil_instruksi'>";
-			}	
 		}
-	$datainstruksi 		=	mysql_query("SELECT * FROM instgs WHERE instgs_id='$id'");
-	$row				=	mysql_fetch_assoc($datainstruksi);
+		$datainstruksi 		=	mysql_query("SELECT * FROM instgs WHERE instgs_id='$id'");
+		$row				=	mysql_fetch_assoc($datainstruksi);
 	}
 ?>
 
