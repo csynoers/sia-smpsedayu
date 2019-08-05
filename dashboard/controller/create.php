@@ -838,11 +838,11 @@ if (isset($_POST['siswa-create'])) {
 
 <?php 
 	if (isset($_POST['nilai-tugas-create'])) {
-		print_r($_REQUEST);
+		// print_r($_REQUEST);
 		$value_sql= '';
 		foreach ($_POST['users'] as $key => $value) {
 			// $value .= "('{$value}', '{$_POST['pelajaran'][$key]}', '{$_POST['tugas_id']}','{$_POST['tahun'][$key]}', '{$_POST['nilai'][$key]}', '".date('Y-m-d')."'),";
-			$value .= "('{$value}')";
+			$value_sql .= "('{$value}')";
 		}
 		$value_sql= rtrim($value_sql,",");
 		print_r($value_sql);
