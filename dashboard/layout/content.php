@@ -21,7 +21,7 @@
 		elseif ($_GET['users'] == 'siswa') {
 			include 'model/siswa.php';
 		}elseif ($_GET['users'] == 'siswa-create') {
-			echo 'asd';
+			include '../lib/upload_helper.php';
 			include 'controller/create.php';
 			include 'view/siswa_create.php';
 		}

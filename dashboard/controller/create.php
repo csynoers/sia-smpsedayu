@@ -127,35 +127,44 @@ if (isset($_POST['siswa-create'])) {
 	if ( count(query_result($connect, $sql)['fetch_assoc']) > 0  ) {
 		echo "<script>alert('Maaf no induk siswa dan username sudah dipakai'); window.history.back();</script>";
 	} else {
-		$sql= ("
-		INSERT INTO users (
-			users_noinduk,
-			users_nama,
-			users_username,
-			users_password,
-			users_level,
-			users_telp,
-			users_alamat,
-			users_email,
-			users_status) 
-		VALUES (
-			'{$_POST['noinduk']}',
-			'{$_POST['nama']}',
-			'{$_POST['username']}',
-			md5('{$_POST['password']}'),
-			'siswa',
-			'{$_POST['telp']}',
-			'{$_POST['alamat']}',
-			'{$_POST['email']}',
-			'{$_POST['status']}'
-			)
-		");
-		$query= mysql_query($sql);
-		if($query){
-			echo "<script>alert('Data informasi siswa berhasil ditambahkan'); window.history.go(-2);</script>";
-		}else {
-			echo "<script>alert('Data informasi siswa gagal ditambahkan'); window.history.back();</script>";
+		$imageFileType= ['jpg','jpeg','png'];
+		if ( in_array(pathinfo(basename($_FILES["gambar"]["name"]),PATHINFO_EXTENSION), $imageFileType) ) {
+			$users_foto= img_resize($files=$_FILES["gambar"],$maxDim=250,$path_destination='./img/');
+			$sql= ("
+			INSERT INTO users (
+				users_noinduk,
+				users_nama,
+				users_username,
+				users_password,
+				users_level,
+				users_telp,
+				users_alamat,
+				users_email,
+				users_foto,
+				users_status) 
+			VALUES (
+				'{$_POST['noinduk']}',
+				'{$_POST['nama']}',
+				'{$_POST['username']}',
+				md5('{$_POST['password']}'),
+				'siswa',
+				'{$_POST['telp']}',
+				'{$_POST['alamat']}',
+				'{$_POST['email']}',
+				'{$users_foto}',
+				'{$_POST['status']}'
+				)
+			");
+			$query= mysql_query($sql);
+			if($query){
+				echo "<script>alert('Data informasi siswa berhasil ditambahkan'); window.history.go(-2);</script>";
+			}else {
+				echo "<script>alert('Data informasi siswa gagal ditambahkan'); window.history.back();</script>";
+			}
+		} else {
+			echo "<script>alert('Sorry, only JPG, JPEG & PNG files are allowed'); window.history.back();</script>";
 		}
+		
 	}	
 }
 ?>

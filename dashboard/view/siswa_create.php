@@ -67,12 +67,12 @@
                     </label>
                     <small class="error">Status Harus Di Isi</small>
                 </div>
-                <!-- <div class="name-field">
+                <div class="name-field">
                     <label>Pilih Foto <small>required</small>
-                        <input type="file" name="foto" required>
+                        <input type="file" name="gambar" required>
                     </label>
                     <small class="error">Foto Harus Di Isi</small>
-                </div> -->
+                </div>
                 <button type="submit" class="tiny radius button bg-black-solid" name="siswa-create"><b><span class="fontello-minefield"></span> Create</b></button>
             </form>
         </div>
