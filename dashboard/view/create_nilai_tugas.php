@@ -51,11 +51,11 @@
 				<label>Tahun Ajaran</label>
 				<select name="tahun" class="form-control" required>
 					<?php 
-						$tahun	=	mysql_query("SELECT * FROM tahun");
+						$tahun	=	mysql_query("SELECT *,IF(semester=1,'Ganjil','Genap') AS semester_mod FROM tahun");
 
 						while ($row=mysql_fetch_array($tahun)) {
 					?>
-						<option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama'].'('.$row['semester'].')'; ?></option>
+						<option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama'].'('.$row['semester_mod'].')'; ?></option>
 					<?php
 						}
 					?>
