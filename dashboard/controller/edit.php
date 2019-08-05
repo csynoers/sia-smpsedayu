@@ -85,7 +85,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 		$id= $_GET['guru-edit'];
 		if ( isset( $_POST['guru-update'] ) ) {
 			$sql= ("
-				SELECT * 
+				SELECT *
 				FROM users
 				WHERE users_username='{$_POST['username']}'
 					AND users_id != '{$id}'
@@ -137,7 +137,13 @@ if (!empty($_FILES["file"]["tmp_name"]))
 			}		
 		}
 
-		$dataguru = mysql_query("SELECT * FROM users WHERE users_id='{$id}'");
+		$dataguru = mysql_query("SELECT *,
+			CASE
+				WHEN users.users_foto IS NULL THEN 'no_image.png'
+				WHEN users.users_foto='' THEN 'no_image.png'
+				ELSE users.users_foto
+			END AS users_foto_mod 
+		FROM users WHERE users_id='{$id}'");
 		$row = mysql_fetch_assoc($dataguru);
 	}
 ?>
