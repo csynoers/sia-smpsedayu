@@ -32,7 +32,7 @@
 				</select>
 			</div>
 			<div class="form-group"> 
-				<label>Mata Pelajaran 1</label>
+				<label>Mata Pelajaran</label>
 				<select name="pelajaran" class="form-control" required>
 					<?php 
 					$iduser = $_SESSION['id'];
@@ -55,7 +55,7 @@
 
 						while ($row=mysql_fetch_array($tahun)) {
 					?>
-						<option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama']; ?></option>
+						<option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama'].'('.$row['semester'].')'; ?></option>
 					<?php
 						}
 					?>
