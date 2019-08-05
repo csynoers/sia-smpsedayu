@@ -441,7 +441,23 @@ if (isset($_POST['siswa-create'])) {
 <?php 
 	//Upload Materi
 	if(isset($_POST['upload'])){
-        $allowed_ext    = array('doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'rar', 'zip');
+		$fileType= ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'];
+
+		# filter type file
+		if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $imageFileType) ) {
+
+			# filter file size
+			if ( $_FILES['file']['size'] > (1024000*10) ) {
+				# code...
+			} else {
+				# code...
+			}
+			
+		}
+		echo '<div class="large-12 columns"><pre>';
+		print_r($_FILES);
+		echo '</pre></div>';
+		die();
         $file_name      = $_FILES['file']['name'];
         $file_ext       = strtolower(end(explode('.', $file_name)));
         $file_size      = $_FILES['file']['size'];
