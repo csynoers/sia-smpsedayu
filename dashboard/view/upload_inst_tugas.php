@@ -67,6 +67,7 @@
                 <div class="name-field small-12">
                     <label>Tanggal Selesai</label>
                     <textarea name="info"></textarea>
+                    <small class="error">Tanggal Selesai Harus Dipilih</small>
                 </div>
                 <hr>
                 <button type="submit" class="tiny radius button bg-black-solid" name="upload_instgs"><b><span class="fontello-minefield"></span> Upload</b></button>       
