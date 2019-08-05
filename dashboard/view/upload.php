@@ -28,17 +28,21 @@
                     <select name="pelajaran" class="form-control" required>
                         <?php 
                             $sql= ("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='{$_SESSION['id']}'");
-                            foreach ( query_result($connect, $sql)['fetch_asssoc'] as $key => $value) {
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                                 echo "<option value='{$value['pelajaran_id']}'> {$value['pelajaran_nama']} Kelas ({$value['kelas_nama']}) </option>";
                             }
                         ?>
                     </select>
                 </div>
                 <div class="name-field">
-                    <label>Pilih File<small>required</small>
+                    <label>Pilih File <small>required</small>
                         <input type="file" name="file" required>
                     </label>
-                    <small class="error">File Harus Di Isi</small>
+                    <small class="error">
+                        File Harus Di Isi <br>
+                        File type: .doc, .docx, .ppt, .pptx, .pdf & xls <br>
+                        File max: 10 MB 
+                    </small>
                 </div>
                 <input type="hidden" name="username" value="<?php echo (isset($_SESSION['nama'])? $_SESSION['nama'] : NULL ) ?>">
                 <button type="submit" class="tiny radius button bg-black-solid" name="upload"><b><span class="fontello-minefield"></span> Upload</b></button>
