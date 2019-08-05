@@ -153,7 +153,6 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						WHERE users_id = '{$id}'
 					");
 				}
-				print_r($sql);
 				$query= mysql_query($sql);
 				if ( $query ) {
 					echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
