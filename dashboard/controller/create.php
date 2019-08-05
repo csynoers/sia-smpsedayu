@@ -444,7 +444,7 @@ if (isset($_POST['siswa-create'])) {
 		$fileType= ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'];
 
 		# filter type file by extension
-		if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $FileType) ) {
+		if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $fileType) ) {
 
 			# filter type file by size
 			if ( $_FILES['file']['size'] > (1024000*1) ) {
