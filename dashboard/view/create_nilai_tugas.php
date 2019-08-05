@@ -87,7 +87,8 @@
 									WHERE 1=1
 										AND pelajaran.pelajaran_id='{$_POST['pelajaran']}'
 									)
-								HAVING kelas_id_mod=pbm_o.kelas_id 
+								HAVING kelas_id_mod=pbm_o.kelas_id
+							ORDER BY users.users_nama ASC 
 						");
 						foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $data) {
 					?>
