@@ -23,26 +23,28 @@
                     <small class="error">Nama Modul Harus Di Isi</small>
                 </div>
                 <div class="form-group"> 
-                 <label>Mata Pelajaran</label>
-                <select name="pelajaran" class="form-control" required>
-                    <?php 
-                    $iduser = $_SESSION['id'];
-                        $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='$iduser'");
-
-                        while ($row=mysql_fetch_array($pelajaran)) {
-                    ?>
-                        <option value="<?php echo $row['pelajaran_id']; ?>"><?php echo $row['pelajaran_nama']; ?> Kelas (<?php echo $row['kelas_nama']; ?>)</option>
-                    <?php
-                        }
-                    ?>
-                </select>
-            </div>
-                <div class="name-field">
-                    <label>Pilih file<small>required</small>
-                        <input type="file" name="file" required>
-                    </label>
-                    <!--<small class="error">File Harus Di Isi</small>-->
+                    <label>Mata Pelajaran</label>
+                    <select name="pelajaran" class="form-control" required>
+                        <?php
+                            $sql = ("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='{$_SESSION['id']}'");
+                            print_r($sql);
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo "<option value='{$value['pelajaran_id']}' > {$value['pelajaran_nama']} Kelas ({$value['kelas_nama']})</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
+                <div class="name-field">
+                    <label>Update File<small>&nbsp</small>
+                        <input type="file" name="file">
+                    </label>
+                    <small class="error" style="display:block">
+                        File Harus Di Isi <br>
+                        File type: .doc, .docx, .ppt, .pptx, .pdf & xls <br>
+                        File max: 10 MB 
+                    </small>
+                </div>
+                <input type="text" name="id" value="<?php echo $row['id'] ?>">
                 <button type="submit" class="tiny radius button bg-black-solid" name="modul-update"><b><span class="fontello-minefield"></span> Update</b></button>
             </form>
         </div>
