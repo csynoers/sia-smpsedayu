@@ -161,7 +161,7 @@ if (isset($_POST['siswa-create'])) {
 ?>
 
 <?php 
-	$cekdulu= "select * from kelas where kelas_nama='$_POST[nama]'"; //username dan $_POST[un] diganti sesuai dengan yang kalian gunakan
+	$cekdulu= "select * from kelas where kelas_nama='".(!empty($_POST['nama'])? $_POST['nama']: NULL)."'"; //username dan $_POST[un] diganti sesuai dengan yang kalian gunakan
 	$prosescek= mysql_query($cekdulu);
 	if (isset($_POST['kelas-create'])) {
 		if (mysql_num_rows($prosescek)>0) { //proses mengingatkan data sudah ada
