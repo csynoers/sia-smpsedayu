@@ -59,7 +59,8 @@
 	}
 ?>
 
-<?php 
+<?php
+	/* ====================Start Users: Guru ==================== */
 	if (isset($_POST['guru-create'])) {		
 		# cek already exist
 		$sql= ("
@@ -110,6 +111,7 @@
 			
 		}
 	}
+	/* ====================End Users: Guru ==================== */
 
 ?>
 
