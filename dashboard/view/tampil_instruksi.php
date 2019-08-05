@@ -45,7 +45,7 @@
                             $id = $_SESSION['id'];
                             $no = 1;
                             $sql = ("select *,DATE_FORMAT(instgs.tanggal_buat, '%W,  %d %b %Y') AS tanggal_buat_mod, DATE_FORMAT(instgs.tanggal_selesai, '%W,  %d %b %Y') AS tanggal_selesai_mod from pelajaran, instgs,kelas where pelajaran.kelas_id=kelas.kelas_id and pelajaran.pelajaran_id=instgs.pelajaran_id and pelajaran.users_id='$id' ");
-                            print_r($sql);
+                            // print_r($sql);
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                                 echo "
                                     <tr>
