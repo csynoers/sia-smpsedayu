@@ -36,6 +36,7 @@
                 <div class="name-field">
                     <label>File <a href="./files/<?php echo $row['file'] ?>"><?php echo $row['file'] ?></a></label>
                 </div>
+                <hr>
                 <div class="name-field">
                     <label>Update File<small>&nbsp</small>
                         <input type="file" name="file">
@@ -45,7 +46,7 @@
                         File max: 10 MB 
                     </small>
                 </div>
-                <input type="text" name="id" value="<?php echo $row['id'] ?>">
+                <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                 <button type="submit" class="tiny radius button bg-black-solid" name="modul-update"><b><span class="fontello-minefield"></span> Update</b></button>
             </form>
         </div>
