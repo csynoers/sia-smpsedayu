@@ -49,6 +49,13 @@
                                             INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
                                              ORDER BY pelajaran.pelajaran_nama='$iduser' ASC");
 
+                            print_r("
+                            SELECT * FROM modul 
+                                            INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
+                                            INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
+                                             ORDER BY pelajaran.pelajaran_nama='$iduser' ASC"
+                            );
+
                             while ($row=mysql_fetch_array($modul)) {
                 ?>
                     <tr>
