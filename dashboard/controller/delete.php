@@ -58,6 +58,16 @@
 		}
 	}elseif (isset($_GET['modul-delete'])) {
 		$id			=	$_GET['modul-delete'];
+		
+		# start unlink file
+		$sql= ("SELECT * FROM modul WHERE id = '{$id}' ");
+		$row= query_result($connect, $sql)['fetch_assoc'][0];
+		if ( ! empty($row['file']) ) {
+			if(file_exists('./files/' .$row['file'])){
+				unlink('./files/' .$row['file']);
+			}
+		}
+		# end unlink file
 
 		$delete 	=	mysql_query("DELETE FROM modul WHERE id = '$id'");
 		if ($delete) {
