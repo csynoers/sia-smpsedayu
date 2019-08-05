@@ -21,9 +21,8 @@
 						LIMIT 1
 					");
 					$row_tahun= query_result($connect, $sql)['fetch_assoc'][0];
-					print_r($row_tahun);
 				?>
-                <span>Input Penilaian Tugas Tahun <?php echo $row_tahun['tahun_nama'].'('.$row_tahun['semester_mod'].')' ?></span>
+                <span>Input Penilaian Tugas Tahun <?php echo $row_tahun['tahun_nama'].' ('.$row_tahun['semester_mod'].')' ?></span>
             </h3>
         </div>
         <div class="box-body small-5" style="display: block;">
