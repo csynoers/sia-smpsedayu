@@ -14,29 +14,13 @@
             </h3>
         </div>
         <div class="box-body small-5" style="display: block;">
-		<form role="form" method="POST"> 
-			<!-- <div class="form-group"> 
-				<label>Kelas</label>
-				<select name="kelas" class="form-control" required>
-				<option value="0">-- Pilih --</option>
-					<?php 
-					/* $idus= $_SESSION['id'];
-                        $kelas  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='$idus'");
-
-						while ($row=mysql_fetch_array($kelas)) { */
-					?>
-						<option value="<?php //echo $row['kelas_id']; ?>"><?php //echo $row['kelas_nama']; ?></option>
-					<?php
-						/* } */
-					?>
-				</select>
-			</div> -->
+		<form role="form" method="POST">
 			<div class="form-group"> 
 				<label>Mata Pelajaran</label>
 				<select name="pelajaran" class="form-control" required>
 					<?php
 						$sql = ("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='{$_SESSION['id']}'");
-						foreach ( query_result($connect, $sql) as $key => $value) {
+						foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
 							echo '<option value="'.$value['pelajaran_id'].'"> '.$value['pelajaran_nama'].' Kelas ('.$value['kelas_nama'].')</option>';
 						}
 					?>
@@ -47,7 +31,7 @@
 				<label>Tahun Ajaran</label>
 				<select name="tahun" class="form-control" required>
 					<?php 
-						$sql = mysql_query("SELECT *,IF(semester=1,'Ganjil','Genap') AS semester_mod FROM tahun");
+						$sql = ("SELECT *,IF(semester=1,'Ganjil','Genap') AS semester_mod FROM tahun");
 						foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
 							echo '<option value="'.$value['tahun_id'].'"> '.$value['tahun_nama'].' ('.$value['semester_mod'].') </option>';
 						}
