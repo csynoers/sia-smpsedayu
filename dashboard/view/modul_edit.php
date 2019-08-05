@@ -27,9 +27,8 @@
                     <select name="pelajaran" class="form-control" required>
                         <?php
                             $sql = ("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='{$_SESSION['id']}'");
-                            print_r($sql);
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo "<option value='{$value['pelajaran_id']}' > {$value['pelajaran_nama']} Kelas ({$value['kelas_nama']})</option>";
+                                echo "<option value='{$value['pelajaran_id']}' ".($value['pelajaran_id']==$row['pelajaran_id'] ? 'selected' : NULL)."> {$value['pelajaran_nama']} Kelas ({$value['kelas_nama']})</option>";
                             }
                         ?>
                     </select>
@@ -39,7 +38,6 @@
                         <input type="file" name="file">
                     </label>
                     <small class="error" style="display:block">
-                        File Harus Di Isi <br>
                         File type: .doc, .docx, .ppt, .pptx, .pdf & xls <br>
                         File max: 10 MB 
                     </small>
