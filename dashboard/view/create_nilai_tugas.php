@@ -22,7 +22,7 @@
 					");
 					$row_tahun= query_result($connect, $sql)['fetch_assoc'][0];
 				?>
-                <span>Input Penilaian Tugas Tahun <?php echo $row_tahun['tahun_nama'].' ('.$row_tahun['semester_mod'].')' ?></span>
+                <span>Input Penilaian Tugas Tahun Ajaran <?php echo $row_tahun['tahun_nama'].' (Semester '.$row_tahun['semester_mod'].')' ?></span>
             </h3>
         </div>
         <div class="box-body small-5" style="display: block;">
@@ -39,17 +39,6 @@
 				</select>
 			</div>
 			
-			<div class="form-group"> 
-				<label>Tahun Ajaran</label>
-				<select name="tahun" class="form-control" required>
-					<?php 
-						$sql = ("SELECT *,IF(semester=1,'Ganjil','Genap') AS semester_mod FROM tahun");
-						foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-							echo '<option value="'.$value['tahun_id'].'"> '.$value['tahun_nama'].' ('.$value['semester_mod'].') </option>';
-						}
-					?>
-				</select>
-			</div>
 			<button class="btn btn-primary" type="submit" name="create-nilai"><span class="fa fa-plus"></span> Tambah Nilai Tugas</button>
 		</form>
 	</div>
