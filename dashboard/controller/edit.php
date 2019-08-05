@@ -153,7 +153,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						WHERE users_id = '{$id}'
 					");
 				}
-				print_r($sql);
+				print_r($users_foto);
 				die();
 				// $query= mysql_query($sql);
 				// if ( $query ) {
