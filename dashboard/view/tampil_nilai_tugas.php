@@ -74,18 +74,6 @@ while ($data=mysql_fetch_array($sql)) {
                             }
                         ?>
                     </td>
-                    <!-- <td class="text-center" width="17%">
-                        <a href="?tugas-edit=<?php echo $data['nilai_id']; ?>"
-                        <?php if ($level == 'siswa') {
-                                echo 'style="display:none;"';
-                            }  ?>
-                        ><span class="fontello-edit"></span> Edit</a>
-                        <a href="?nilai=Ulangan1&&tampil=Ulangan1&&del-ulangan1=<?php echo $data['nilai_id']; ?>"
-                        <?php if ($level == 'siswa') {
-                                echo 'style="display:none;"';
-                            }  ?>
-                        ><span class="fontello-trash"></span> Delete</a>
-                    </td> -->
                 </tr>
                 <?php 
                     $no++;  
@@ -115,33 +103,23 @@ while ($data=mysql_fetch_array($sql)) {
             </h3>
         </div>
     <div class="box-body small-5" style="display: block;">
-            <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
-                <div class="name-field"> 
-                <label>Kelas</label>
-                <select name="kelas" class="form-control">
-                    <?php 
-                    $idus= $_SESSION['id'];
-                    
-                        $kelas  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='$idus'");
-
-                        while ($row=mysql_fetch_array($kelas)) {
-                    ?>
-                        <option value="<?php echo $row['kelas_id']; ?>"><?php echo $row['kelas_nama']; ?></option>
-                    <?php
-                        }
-                    ?>
-                </select>
-            </div>
+            <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">
             <div class="form-group"> 
                 <label>Mata Pelajaran</label>
                 <select name="pelajaran" class="form-control" required>
                     <?php 
-                    $iduser = $_SESSION['id'];
-                        $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='$iduser'");
-                        while ($row=mysql_fetch_array($pelajaran)) {
-                    ?>
-                        <option value="<?php echo $row['pelajaran_id']; ?>"><?php echo $row['pelajaran_nama']; ?> Kelas (<?php echo $row['kelas_nama']; ?>)</option>
-                    <?php
+                        $sql = ("
+                            SELECT *
+                            FROM nilai
+                                LEFT JOIN pelajaran
+                                    ON pelajaran.pelajaran_id=nilai.pelajaran_id
+                                LEFT JOIN kelas
+                                    ON kelas.kelas_id=pelajaran.kelas_id
+                            WHERE 1=1
+                                AND pelajaran.users_id='{$_SESSION['id']}'
+                        ");
+                        foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $row) {
+                            echo '<option value="'.$row['pelajaran_id'].'"> '.$row['pelajaran_nama'].' Kelas ('.$row['kelas_nama'].')</option>';
                         }
                     ?>
                 </select>
