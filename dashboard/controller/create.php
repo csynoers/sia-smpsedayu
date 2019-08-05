@@ -447,7 +447,7 @@ if (isset($_POST['siswa-create'])) {
 		if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $imageFileType) ) {
 
 			# filter type file by size
-			if ( $_FILES['file']['size'] > (1024000*10) ) {
+			if ( $_FILES['file']['size'] > (1024000*1) ) {
 				echo "<script>alert('Sorry, only size smaller than 10 MB files are allowed'); window.history.back();</script>";
 
 			} else {
