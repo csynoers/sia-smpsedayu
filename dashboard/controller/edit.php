@@ -766,17 +766,23 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						$file_size      = $_FILES['file']['size'];
 						$file_tmp       = $_FILES['file']['tmp_name'];
 
-						$sql= ("
-							UPDATE `modul`
-							SET
-								`tanggal_upload`='{$tgl}',
-								`nama_file`='{$nama}',
-								`pelajaran_id`='{$pelajaran}',
-								`tipe_file`='{$file_ext}',
-								`ukuran_file`='{$file_size}',
-								`file`='{$name}'
-							WHERE id = '{$id}'
-						");
+						# upload file
+						if (move_uploaded_file($_FILES['file']['tmp_name'] , $path_destination. $name)) {
+							$sql= ("
+								UPDATE `modul`
+								SET
+									`tanggal_upload`='{$tgl}',
+									`nama_file`='{$nama}',
+									`pelajaran_id`='{$pelajaran}',
+									`tipe_file`='{$file_ext}',
+									`ukuran_file`='{$file_size}',
+									`file`='{$name}'
+								WHERE id = '{$id}'
+							");
+						}else {
+							echo "<script>alert('Sorry, there was an error uploading your file.'); window.history.back();</script>";
+						}
+
 					}
 					
 				} else {
@@ -789,101 +795,14 @@ if (!empty($_FILES["file"]["tmp_name"]))
 					UPDATE `modul` SET `nama_file`='{$nama}',`pelajaran_id`='{$pelajaran}' WHERE id = '{$id}'
 				");
 			}
-			print_r($sql);
-			die();
+			// print_r($sql);
+			// die();
 			$query= mysql_query($sql);
 			if($query){
 				echo "<script>alert('Data informasi materi berhasil diubah'); window.history.go(-2);</script>";
 			}else {
 				echo "<script>alert('Data informasi materi gagal diubah'); window.history.back();</script>";
 			}
-			
-			$allowed_ext    = array('doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'rar', 'zip');
-	        $file_name      = $_FILES['file']['name'];
-	        $file_ext       = strtolower(end(explode('.', $file_name)));
-	        $file_size      = $_FILES['file']['size'];
-	        $file_tmp       = $_FILES['file']['tmp_name'];
-	        
-	        $nama           = $_POST['nama'];
-	        $tgl            = date("Y-m-d");
-
-			if(in_array($file_ext, $allowed_ext) === true){
-	            if($file_size > 20440700){
-	                $lokasi = 'files/'.$nama.'.'.$file_ext;
-	                move_uploaded_file($file_tmp, $lokasi);
-	                $in = mysql_query("UPDATE modul SET `tanggal_upload` = '$tgl', `nama_file` = '$nama', `tipe_file` = '$file_ext', `ukuran_file` = '$file_size', `file` = '$lokasi' WHERE id = '$id'");
-	                if($in){
-	                	echo "
-							<div class='large-12 columns'>
-								<div class='box bg-light-green'>
-									<div class='box-header bg-light-green'>
-										<div class='pull-right box-tools'>
-											<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-										</div>
-										<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-											<span class='text-white'>SUCCESS</span>
-										</h3>
-									</div>
-									<div class='box-body ' style='display: block;'>
-										<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-									</div>
-								</div>
-							</div>";
-	                    echo "<meta http-equiv='refresh' content='0;URL= ?modul=download '/>";
-	                }else{
-	                    echo "
-							<div class='large-12 columns'>
-								<div class='box bg-light-yellow'>
-									<div class='box-header bg-light-yellow'>
-										<div class='pull-right box-tools'>
-											<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-										</div>
-										<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-											<span class='text-white'>Warning</span>
-										</h3>
-									</div>
-									<div class='box-body ' style='display: block;'>
-										<p class='text-white'><strong>Warning!</strong> Data Gagal Di Upload.</p>
-									</div>
-								</div>
-							</div>";
-	                }
-	            }else{
-	                echo "
-					<div class='large-12 columns'>
-						<div class='box bg-light-yellow'>
-							<div class='box-header bg-light-yellow'>
-								<div class='pull-right box-tools'>
-									<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-								</div>
-								<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-									<span class='text-white'>Warning</span>
-								</h3>
-							</div>
-							<div class='box-body ' style='display: block;'>
-								<p class='text-white'><strong>Warning!</strong> Ukuran File Terlalu Besar !</p>
-							</div>
-						</div>
-					</div>";
-	            }
-	        }else{
-	            echo "
-					<div class='large-12 columns'>
-						<div class='box bg-light-yellow'>
-							<div class='box-header bg-light-yellow'>
-								<div class='pull-right box-tools'>
-									<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-								</div>
-								<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-									<span class='text-white'>Warning</span>
-								</h3>
-							</div>
-							<div class='box-body ' style='display: block;'>
-								<p class='text-white'><strong>Warning!</strong> Tipe File Tidak Di Izinkan !</p>
-							</div>
-						</div>
-					</div>";
-	        }	
 		}
 		$datamodul	=	mysql_query("SELECT * FROM modul WHERE id='$id'");
 		$row			=	mysql_fetch_assoc($datamodul);
