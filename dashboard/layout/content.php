@@ -13,7 +13,7 @@
 		elseif ($_GET['users'] == 'guru') {
 			include 'model/guru.php';
 		}elseif ($_GET['users'] == 'guru-create') {	
-			// include '../lib/upload_helper.php';
+			include '../lib/upload_helper.php';
 			include 'controller/create.php';
 			include 'view/guru_create.php';
 		}

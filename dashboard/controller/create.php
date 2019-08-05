@@ -106,7 +106,7 @@
 					echo "<script>alert('Data informasi guru gagal ditambahkan'); window.history.back();</script>";
 				}
 			} else {
-				echo "<script>alert('Sorry, only JPG, JPEG & PNG files are allowed'); window.history.back();</script>"
+				echo "<script>alert('Sorry, only JPG, JPEG & PNG files are allowed'); window.history.back();</script>";
 			}
 			
 		}
