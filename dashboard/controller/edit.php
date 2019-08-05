@@ -739,7 +739,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						# start unlink file
 						$sql= ("SELECT * FROM modul WHERE id = '{$id}' ");
 						$row= query_result($connect, $sql)['fetch_assoc'][0];
-						if ( ! empty($row['users_foto_mod']) ) {
+						if ( ! empty($row['file']) ) {
 							if(file_exists('./files/' .$row['file'])){
 								unlink('./files/' .$row['file']);
 							}
