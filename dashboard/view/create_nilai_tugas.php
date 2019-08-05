@@ -38,7 +38,7 @@
 					?>
 				</select>
 			</div>
-			
+
 			<button class="btn btn-primary" type="submit" name="create-nilai"><span class="fa fa-plus"></span> Tambah Nilai Tugas</button>
 		</form>
 	</div>
@@ -61,17 +61,35 @@
 					if(isset($_POST['create-nilai'])) {
 						
 						$no 			= 1;
-						$kelasnama 		= $_POST['kelas'];
-						$pelajarannama 	= $_POST['pelajaran'];
-						$semesternama 	= $_POST['semester'];
-						$jenisnama		= '1';
-						$tahunnama 		= $_POST['tahun'];
-						$sql 			= mysql_query("SELECT users.users_id, users.users_nama, kelas.kelas_id, kelas.kelas_nama 
-												FROM users
-												INNER JOIN kelas ON users.kelas_id=kelas.kelas_id
-												WHERE kelas.kelas_id=$kelasnama
-												");
-								while ($data=mysql_fetch_array($sql)) {
+						// $kelasnama 		= $_POST['kelas'];
+						// $pelajarannama 	= $_POST['pelajaran'];
+						// $semesternama 	= $_POST['semester'];
+						// $jenisnama		= '1';
+						// $tahunnama 		= $_POST['tahun'];
+						$sql 			= ("
+							SELECT
+								users.users_id,
+								users.users_nama,
+								pbm_o.kelas_id,
+								(
+									SELECT pbm.kelas_id
+									FROM pbm
+									WHERE pbm.user_id=pbm_o.user_id
+									ORDER BY pbm.pbm_id DESC LIMIT 1
+								) AS kelas_id_mod
+							FROM pbm AS pbm_o
+								INNER JOIN users
+									ON users.users_id=pbm_o.user_id
+							WHERE 1=1
+								AND pbm_o.kelas_id= (
+									SELECT pelajaran.kelas_id
+										FROM pelajaran
+									WHERE 1=1
+										AND pelajaran.pelajaran_id='{$_POST['pelajaran']}'
+									)
+								HAVING kelas_id_mod=pbm_o.kelas_id 
+						");
+						foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $data) {
 					?>
 				<tr>
 					<td class="text-center"><?php echo $no; ?></td>
@@ -80,9 +98,9 @@
 						<?php 
 							echo $data['users_nama'];
 						?>
-						<input type="hidden" name="pelajaran[]" id="pelajaran[]" value="<?php echo "$pelajarannama"; ?>">
-						<input type="hidden" name="jenis[]" id="jenis[]" value="<?php echo "$jenisnama"; ?>">
-						<input type="hidden" name="tahun[]" id="tahun[]" value="<?php echo "$tahunnama"; ?>">
+						<!-- <input type="hidden" name="pelajaran[]" id="pelajaran[]" value="<?php echo "$pelajarannama"; ?>"> -->
+						<!-- <input type="hidden" name="jenis[]" id="jenis[]" value="<?php echo "$jenisnama"; ?>"> -->
+						<!-- <input type="hidden" name="tahun[]" id="tahun[]" value="<?php echo "$tahunnama"; ?>"> -->
 					</td>
 					<td width="144" class="text-center">
 						<input type="text" class="form-control" name="nilai[]" id="nilai[]" />
