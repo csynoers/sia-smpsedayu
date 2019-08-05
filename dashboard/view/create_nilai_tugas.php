@@ -112,7 +112,7 @@
 											<input type="hidden" name="tahun[]" id="tahun[]" value="<?php echo $row_tahun['tahun_id'] ?>">
 										</td>
 										<td width="144" class="text-center">
-											<input type="number" min="0" max="100" class="form-control" name="nilai[]" id="nilai[]" />
+											<input type="number" min="0" max="100" class="form-control" name="nilai[]" id="nilai[]" value="90"/>
 										</td>
 									</tr>
 								<?php
