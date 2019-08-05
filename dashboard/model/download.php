@@ -41,92 +41,36 @@
                      $iduser = $_SESSION['id'];
                     if (isset($_GET['modul'])) {
                         if ($_GET['modul'] == 'download') {
-                            $iduser     =$_SESSION['id'];
-                            $Vkelas 		=$_SESSION['kelas_id'];
-                            $no         =   1;
-                            $modul      =   mysql_query("SELECT * FROM modul 
-                                            INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
-                                            INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
-                                             ORDER BY pelajaran.pelajaran_nama='$iduser' ASC");
+                            $iduser = $_SESSION['id'];
+                            $Vkelas = $_SESSION['kelas_id'];
+                            $no = 1;
+                            $sql = ("
+                                SELECT *
+                                FROM modul 
+                                    INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
+                                    INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
+                                WHERE 1=1
+                                    AND pelajaran.user_id='$iduser'
+                            ");
 
-                            print_r("
-                            SELECT * FROM modul 
-                                            INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
-                                            INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
-                                             ORDER BY pelajaran.pelajaran_nama='$iduser' ASC"
-                            );
-
-                            while ($row=mysql_fetch_array($modul)) {
-                ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-                        <td>
-                            <?php
-                                if ($row['nama_file'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['nama_file'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $row['pelajaran_nama'] ?>
-                        </td>
-                        <td>
-                            <?php echo $row['kelas_nama'] ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['tipe_file'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['tipe_file'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['ukuran_file'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['ukuran_file'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                if ($row['username'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-
-                                echo $row['username'];
-                            ?>
-                        </td>
-                        <!-- <td>
-                            <?php
-                                if ($row['status'] == NULL) {
-                                    echo "Data Kosong";
-                                }
-                                $level  =   $_SESSION['level'];
-                                if ($level == 'guru') {
-                                        echo "<a href='?modul-validasi=$row[id]'>" .$row['status']. "</a>";
-                                }elseif ($level = 'siswa') {
-                                    echo $row['status'];
-                                }
-                            ?>
-                        </td> -->
-                        <td>
-                            <a href="<?php echo $row['file']; ?>"><span class="fontello-download"></span> Download</a>
-                            <a href="?modul-edit=<?php echo $row['id']; ?>" <?php if ($level == 'siswa') {
-                                echo 'style="display:none;"';
-                            }  ?>><span class="fontello-edit"></span> Edit</a>
-                            <a href="?modul-delete=<?php echo $row['id']; ?>" <?php if ($level == 'siswa') {
-                                echo "style='display:none;'";
-                            } ?>><span class="fontello-trash"></span> Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                            $no++;
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo "
+                                    <tr>
+                                        <td>{$no}</td>
+                                        <td>{$value['nama_file']}</td>
+                                        <td>{$value['pelajaran_nama']}</td>
+                                        <td>{$value['kelas_nama']}</td>
+                                        <td>{$value['tipe_file']}</td>
+                                        <td>{$value['ukuran_file']}</td>
+                                        <td>{$value['username']}</td>
+                                        <td>
+                                            <a target='_bank' href='./files/{$value['file']}'><span class='fontello-download'></span> Download</a>
+                                            <a href='?modul-edit={$value['id']}' ".($level == 'siswa' ? "style='display:none'" : NULL )."><span class='fontello-edit'></span> Edit</a>
+                                            <a href='?modul-delete={$value['id']}' ".($level == 'siswa' ? "style='display:none'" : NULL )."><span class='fontello-trash'></span> Delete</a>
+                                        </td>
+                                    </tr>
+                                ";
+                                $no++;
                             }
                         }
                     }
