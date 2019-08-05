@@ -46,6 +46,7 @@
                         AND nilai.tahun_id='{$_POST['tahun']}'
                 ");
                 foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                    print_r($value);
                     echo "
                         <tr>
                             <td>{$no}</td>
