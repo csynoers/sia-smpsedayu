@@ -347,8 +347,6 @@ if (!empty($_FILES["file"]["tmp_name"]))
 									`username`='{$username}',
 									`info`='{$info}'
 							WHERE instgs_id = '$id'");
-			print_r($sql);
-			die();
 			$query= mysql_query($sql);
 			if ( $query ) {
 				echo "<script>alert('Data informasi instruksi tugas Berhasil Diubah'); window.history.go(-2);</script>";
