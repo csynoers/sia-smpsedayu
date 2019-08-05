@@ -50,7 +50,7 @@
                                     INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
                                     INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
                                 WHERE 1=1
-                                    AND pelajaran.user_id='$iduser'
+                                    AND pelajaran.users_id='$iduser'
                             ");
 
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
