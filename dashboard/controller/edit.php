@@ -154,7 +154,6 @@ if (!empty($_FILES["file"]["tmp_name"]))
 					");
 				}
 				print_r($sql);
-				die();
 				$query= mysql_query($sql);
 				if ( $query ) {
 					echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
