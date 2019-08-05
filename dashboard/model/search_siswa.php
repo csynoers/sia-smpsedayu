@@ -45,7 +45,7 @@
                                 WHERE 1=1
                                     AND users.users_level='siswa'
                                     AND pbm.kelas_id='{$_GET['search-siswa']}'
-                                ORDER BY tahun.tahun_nama DESC
+                                ORDER BY tahun.tahun_nama DESC,users.users_nama ASC
                             ");
                             // print_r($sql);
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
@@ -70,6 +70,7 @@
                             WHERE 1=1
                                 AND users.users_level='siswa'
                                 HAVING count_pbm < 1
+                                ORDER BY users.users_nama ASC
                             ");
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                                 echo '
