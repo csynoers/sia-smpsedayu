@@ -48,6 +48,7 @@
 	}elseif (isset($_GET['guru-delete'])) {
 		include 'controller/delete.php';
 	}elseif (isset($_GET['siswa-edit'])) {
+		include '../lib/upload_helper.php';
 		include 'controller/edit.php';
 		include 'view/siswa_edit.php';
 	}elseif (isset($_GET['siswa-delete'])) {
