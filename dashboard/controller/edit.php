@@ -338,12 +338,12 @@ if (!empty($_FILES["file"]["tmp_name"]))
         	$pelajaran 		= $_POST['pelajaran'];
         	$info           = $_POST['info'];
         	$username       = $_POST['username'];
-        	$tgl            = date("Y-m-d");
 
-			$instruksi 		=	mysql_query("UPDATE instgs 
-										SET 'judul' = '$judul', 'pelajaran_id' = '$pelajaran', 'tangal_buat'= '$tgl', 
+			$sql 		=	("UPDATE instgs 
+										SET 'judul' = '$judul', 'pelajaran_id' = '$pelajaran',  
 										'username' = '$username',  'info' = '$info'
 										WHERE instgs_id = '$id'");
+			print_r($sql);
 
 			if ($instruksi) {
 				echo "
