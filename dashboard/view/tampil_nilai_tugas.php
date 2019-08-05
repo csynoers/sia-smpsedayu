@@ -154,7 +154,7 @@ while ($data=mysql_fetch_array($sql)) {
 
                         while ($row=mysql_fetch_array($tahun)) {
                     ?>
-                        <option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama']; ?></option>
+                        <option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama'].'('.$row['semester'].')'; ?></option>
                     <?php
                         }
                     ?>
