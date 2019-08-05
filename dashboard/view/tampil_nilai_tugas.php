@@ -49,7 +49,13 @@
                     echo "
                         <tr>
                             <td>{$no}</td>
-                            <td>{$value['']}</td>
+                            <td>{$value['users_noinduk']}</td>
+                            <td>{$value['users_nama']}</td>
+                            <td>{$value['kelas_nama']}</td>
+                            <td>{$value['pelajaran_nama']}</td>
+                            <td>{$value['judul']}</td>
+                            <td>{$value['tahun_nama']}</td>
+                            <td>{$value['semester_mod']}</td>
                         </tr>
                     ";
                     $no++;  
