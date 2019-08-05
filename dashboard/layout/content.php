@@ -42,6 +42,7 @@
 	}elseif (isset($_GET['admin-delete'])) {
 		include 'controller/delete.php';
 	}elseif (isset($_GET['guru-edit'])) {
+		include '../lib/upload_helper.php';
 		include 'controller/edit.php';
 		include 'view/guru_edit.php';
 	}elseif (isset($_GET['guru-delete'])) {
