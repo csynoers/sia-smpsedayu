@@ -443,108 +443,76 @@ if (isset($_POST['siswa-create'])) {
 	if(isset($_POST['upload'])){
 		$fileType= ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'];
 
-		# filter type file
+		# filter type file by extension
 		if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $imageFileType) ) {
 
-			# filter file size
+			# filter type file by size
 			if ( $_FILES['file']['size'] > (1024000*10) ) {
-				# code...
+				echo "<script>alert('Sorry, only size smaller than 10 MB files are allowed'); window.history.back();</script>";
+
 			} else {
-				# code...
+				$path_destination= './files/';
+				# start generate name file exists
+				$name = $_FILES['file']['name'];
+				$rawBaseName = pathinfo( $name, PATHINFO_FILENAME );
+				$original_name = $rawBaseName;
+				$extension = pathinfo( $name, PATHINFO_EXTENSION );
+
+				$i = 1;
+				while( file_exists($path_destination.$rawBaseName.".".$extension ))
+				{           
+					$rawBaseName = ( string )$original_name.$i;
+					$name = $rawBaseName.".".$extension;
+					$i++;
+				}
+				# end generate name file exists
+
+				$file_ext       = $extension;
+				$file_size      = $_FILES['file']['size'];
+				$file_tmp       = $_FILES['file']['tmp_name'];
+				
+				$nama           = $_POST['nama'];
+				$username       = $_POST['username'];
+				$pelajaran 		= $_POST['pelajaran'];
+				$tgl            = date("Y-m-d");
+
+				# upload file
+				if (move_uploaded_file($_FILES['file']['tmp_name'] , $path_destination. $name)) {
+					$sql= ("
+						INSERT INTO `modul`(
+							`tanggal_upload`,
+							`nama_file`,
+							`pelajaran_id`,
+							`tipe_file`,
+							`ukuran_file`,
+							`file`,
+							`status`,
+							`username`)
+						VALUES (
+							'{$tgl}',
+							'{$nama}',
+							'{$pelajaran}',
+							'{$file_ext}',
+							'{$file_size}',
+							'{$name}',
+							'Belum Valid',
+							'{$username}'
+						)
+					");
+					print_r($sql);
+				} else {
+					echo "<script>alert('Sorry, there was an error uploading your file.'); window.history.back();</script>";
+
+				}
 			}
 			
+		}else {
+			echo "<script>alert('Sorry, only DOC, DOCX, XLS, PPT, PPTX & PDF files are allowed'); window.history.back();</script>";
 		}
 		echo '<div class="large-12 columns"><pre>';
 		print_r($_FILES);
 		echo '</pre></div>';
 		die();
-        $file_name      = $_FILES['file']['name'];
-        $file_ext       = strtolower(end(explode('.', $file_name)));
-        $file_size      = $_FILES['file']['size'];
-        $file_tmp       = $_FILES['file']['tmp_name'];
-        
-        $nama           = $_POST['nama'];
-        $username       = $_POST['username'];
-        $pelajaran 		= $_POST['pelajaran'];
-        $tgl            = date("Y-m-d");
-        
-        if(in_array($file_ext, $allowed_ext) === true){
-            if($file_size < 20440700){
-                $lokasi = 'files/'.$nama.'.'.$file_ext;
-                move_uploaded_file($file_tmp, $lokasi);
-                $in = mysql_query("INSERT INTO modul VALUES(NULL, '$tgl', '$nama','$pelajaran', '$file_ext', '$file_size', '$lokasi','Belum Valid','$username')");
-                if($in){
-                	echo "
-						<div class='large-12 columns'>
-							<div class='box bg-light-green'>
-								<div class='box-header bg-light-green'>
-									<div class='pull-right box-tools'>
-										<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-									</div>
-									<h3 class='box-title '><i class='text-white  icon-thumbs-up'></i>
-										<span class='text-white'>SUCCESS</span>
-									</h3>
-								</div>
-								<div class='box-body ' style='display: block;'>
-									<p class='text-white'><strong>Well done!</strong> You successfully read this important alert message.</p>
-								</div>
-							</div>
-						</div>";
-                    echo "<meta http-equiv='refresh' content='0;URL= ?modul=download '/>";
-                }else{
-                    echo "
-						<div class='large-12 columns'>
-							<div class='box bg-light-yellow'>
-								<div class='box-header bg-light-yellow'>
-									<div class='pull-right box-tools'>
-										<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-									</div>
-									<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-										<span class='text-white'>Warning</span>
-									</h3>
-								</div>
-								<div class='box-body ' style='display: block;'>
-									<p class='text-white'><strong>Warning!</strong> Data Gagal Di Upload.</p>
-								</div>
-							</div>
-						</div>";
-                }
-            }else{
-                echo "
-				<div class='large-12 columns'>
-					<div class='box bg-light-yellow'>
-						<div class='box-header bg-light-yellow'>
-							<div class='pull-right box-tools'>
-								<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-							</div>
-							<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-								<span class='text-white'>Warning</span>
-							</h3>
-						</div>
-						<div class='box-body ' style='display: block;'>
-							<p class='text-white'><strong>Warning!</strong> Ukuran File Terlalu Besar !</p>
-						</div>
-					</div>
-				</div>";
-            }
-        }else{
-            echo "
-				<div class='large-12 columns'>
-					<div class='box bg-light-yellow'>
-						<div class='box-header bg-light-yellow'>
-							<div class='pull-right box-tools'>
-								<span class='box-btn' data-widget='remove'><i class='icon-cross'></i></span>
-							</div>
-							<h3 class='box-title '><i class='text-white  fontello-warning'></i>
-								<span class='text-white'>Warning</span>
-							</h3>
-						</div>
-						<div class='box-body ' style='display: block;'>
-							<p class='text-white'><strong>Warning!</strong> Tipe File Tidak Di Izinkan !</p>
-						</div>
-					</div>
-				</div>";
-        }
     }
 ?>
 
