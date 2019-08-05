@@ -92,7 +92,7 @@ if ($level=='guru') {
                         </td>
                         
                         <td>
-                            <a href="<?php echo $row['file']; ?>" <?php if ($level == 'siswa') {
+                            <a href="./files/<?php echo $row['file']; ?>" <?php if ($level == 'siswa') {
                                 echo 'style="display:none;"';
                             }  ?>><span class="fontello-download"></span> Download</a>
                             
