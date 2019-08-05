@@ -18,37 +18,29 @@
         <div class="box-body small-5" style="display: block;">
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
                 <div class="name-field">
-                        <input type="hidden" name="username" value="<?php 
-                                                    if (isset($_SESSION['nama'])) {
-                                                        echo $_SESSION['nama'];
-                                                     } 
-                                                ?>">        
                     <label>Nama File<small>required</small>
                         <input type="text" name="nama" required>
                     </label>
                     <small class="error">Nama File Harus Di Isi</small>
                 </div>
                 <div class="form-group"> 
-                 <label>Mata Pelajaran</label>
-                <select name="pelajaran" class="form-control" required>
-                    <?php 
-                    $iduser = $_SESSION['id'];
-                        $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='$iduser'");
-
-                        while ($row=mysql_fetch_array($pelajaran)) {
-                    ?>
-                        <option value="<?php echo $row['pelajaran_id']; ?>"><?php echo $row['pelajaran_nama']; ?> Kelas (<?php echo $row['kelas_nama']; ?>)</option>
-                    <?php
-                        }
-                    ?>
-                </select>
-            </div>
+                    <label>Mata Pelajaran</label>
+                    <select name="pelajaran" class="form-control" required>
+                        <?php 
+                            $sql= ("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='{$_SESSION['id']}'");
+                            foreach ( query_result($connect, $sql)['fetch_asssoc'] as $key => $value) {
+                                echo "<option value='{$value['pelajaran_id']}'> {$value['pelajaran_nama']} Kelas ({$value['kelas_nama']}) </option>";
+                            }
+                        ?>
+                    </select>
+                </div>
                 <div class="name-field">
                     <label>Pilih File<small>required</small>
                         <input type="file" name="file" required>
                     </label>
                     <small class="error">File Harus Di Isi</small>
                 </div>
+                <input type="hidden" name="username" value="<?php echo (isset($_SESSION['nama'])? $_SESSION['nama'] : NULL ) ?>">
                 <button type="submit" class="tiny radius button bg-black-solid" name="upload"><b><span class="fontello-minefield"></span> Upload</b></button>
             </form>
         </div>
