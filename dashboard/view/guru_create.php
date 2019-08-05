@@ -68,17 +68,11 @@
                     <small class="error">Status Harus Di Isi</small>
                 </div> 
 				<div class="name-field">
-                    <label>Foto <small>required</small>
+                    <label>Foto <small>required (type gambar .png or jpeg)</small>
                         <input type="file" name="gambar" required>
                     </label>
                     
                 </div>
-                <!-- <div class="name-field">
-                    <label>Pilih Foto <small>required</small>
-                        <input type="file" name="foto" required>
-                    </label>
-                    <small class="error">Foto Harus Di Isi</small>
-                </div> -->
                 <button type="submit" class="tiny radius button bg-black-solid" name="guru-create"><b><span class="fontello-minefield"></span> Create</b></button>
             </form>
         </div>
