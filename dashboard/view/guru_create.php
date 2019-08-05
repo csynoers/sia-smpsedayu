@@ -68,7 +68,7 @@
                     <small class="error">Status Harus Di Isi</small>
                 </div> 
 				<div class="name-field">
-                    <label>Foto <small>required (type gambar .png or jpeg)</small>
+                    <label>Foto <small>required (type gambar .png or .jpg)</small>
                         <input type="file" name="gambar" required>
                     </label>
                     
