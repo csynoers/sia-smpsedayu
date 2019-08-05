@@ -73,11 +73,6 @@
 						</thead>
 						<?php
 							$no 			= 1;
-							// $kelasnama 		= $_POST['kelas'];
-							// $pelajarannama 	= $_POST['pelajaran'];
-							// $semesternama 	= $_POST['semester'];
-							// $jenisnama		= '1';
-							// $tahunnama 		= $_POST['tahun'];
 							$sql 			= ("
 								SELECT
 									users.users_id,
@@ -109,13 +104,12 @@
 										<td class="text-center"><?php echo $no; ?></td>
 										<td class="text-center"><?php echo $data['users_noinduk']; ?></td>
 										<td>
-											<input type="hidden" class="form-control" name="users[]" id="users[]" value="<?php echo $data['users_id']; ?>">
 											<?php 
 												echo $data['users_nama'];
 											?>
-											<!-- <input type="hidden" name="pelajaran[]" id="pelajaran[]" value="<?php echo "$pelajarannama"; ?>"> -->
-											<!-- <input type="hidden" name="jenis[]" id="jenis[]" value="<?php echo "$jenisnama"; ?>"> -->
-											<!-- <input type="hidden" name="tahun[]" id="tahun[]" value="<?php echo "$tahunnama"; ?>"> -->
+											<input type="hidden" class="form-control" name="users[]" id="users[]" value="<?php echo $data['users_id']; ?>">
+											<input type="hidden" name="pelajaran[]" id="pelajaran[]" value="<?php echo $_POST['pelajaran'] ?>">
+											<input type="hidden" name="tahun[]" id="tahun[]" value="<?php echo $row_tahun['tahun_id'] ?>">
 										</td>
 										<td width="144" class="text-center">
 											<input type="number" min="0" max="100" class="form-control" name="nilai[]" id="nilai[]" />
