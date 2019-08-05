@@ -340,12 +340,12 @@ if (!empty($_FILES["file"]["tmp_name"]))
         	$username       = $_POST['username'];
 
 			$sql 		=	("UPDATE instgs 
-								SET 
-									'judul' = '$judul',
-									'pelajaran_id' = '$pelajaran',  
-									'username' = '$username',
-									'tanggal_selesai' = '{$_POST['tgl_selesai']}',
-									'info' = '$info'
+								SET
+									`judul`='{$judul}',
+									`pelajaran_id`='{$pelajaran}',
+									`tanggal_selesai`='{$_POST['tgl_selesai']}',
+									`username`='{$username}',
+									`info`='{$info}'
 							WHERE instgs_id = '$id'");
 			print_r($sql);
 			die();
