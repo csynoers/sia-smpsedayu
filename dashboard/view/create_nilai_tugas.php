@@ -10,7 +10,19 @@
                 </span>
             </div>
             <h3 class="box-title"><i class="fontello-th-large-outline"></i>
-                <span>Input Penilaian Tugas</span>
+				<?php
+					$sql= ("
+					SELECT *,
+						IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
+					FROM tahun
+					WHERE 1=1
+						AND tahun_nama LIKE '%".date('Y')."%'
+						AND semester='".(date('n') <= 6? 2 : 1 )."'
+						LIMIT 1
+					");
+					$row_tahun= query_result($connect, $sql)['fetch_assoc'][0];
+				?>
+                <span>Input Penilaian Tugas Tahun <?php echo $value['tahun_nama'].'('.$value['semester_mod'].')' ?></span>
             </h3>
         </div>
         <div class="box-body small-5" style="display: block;">
@@ -55,9 +67,8 @@
 					<th style="width: 17%;" class="text-center">Nilai Poin</th>
 				</tr>
 			</thead>	
-			<form role="form" method="post" />
+			<form role="form" method="post" >
 				<?php
-					
 					if(isset($_POST['create-nilai'])) {
 						
 						$no 			= 1;
