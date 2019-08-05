@@ -34,6 +34,9 @@
                     </select>
                 </div>
                 <div class="name-field">
+                    <label>File <a href="./files/<?php echo $row['file'] ?>"><?php echo $row['file'] ?></a></label>
+                </div>
+                <div class="name-field">
                     <label>Update File<small>&nbsp</small>
                         <input type="file" name="file">
                     </label>
