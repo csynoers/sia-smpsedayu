@@ -153,14 +153,12 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						WHERE users_id = '{$id}'
 					");
 				}
-				print_r($sql);
-				die();
-				// $query= mysql_query($sql);
-				// if ( $query ) {
-				// 	echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
-				// } else {
-				// 	echo "<script>alert('Maaf data gagal diubah'); window.history.back();</script>";
-				// }
+				$query= mysql_query($sql);
+				if ( $query ) {
+					echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
+				} else {
+					echo "<script>alert('Maaf data gagal diubah'); window.history.back();</script>";
+				}
 				
 
 			}		
