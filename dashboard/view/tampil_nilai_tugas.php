@@ -56,6 +56,7 @@
                             <td>{$value['judul']}</td>
                             <td>{$value['tahun_nama']}</td>
                             <td>{$value['semester_mod']}</td>
+                            <td>{$value['nilai_poin']}</td>
                         </tr>
                     ";
                     $no++;  
