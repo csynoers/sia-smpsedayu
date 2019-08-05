@@ -118,7 +118,7 @@
 											<!-- <input type="hidden" name="tahun[]" id="tahun[]" value="<?php echo "$tahunnama"; ?>"> -->
 										</td>
 										<td width="144" class="text-center">
-											<input type="text" class="form-control" name="nilai[]" id="nilai[]" />
+											<input type="number" min="0" max="100" class="form-control" name="nilai[]" id="nilai[]" />
 										</td>
 									</tr>
 								<?php
