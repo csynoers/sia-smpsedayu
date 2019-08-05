@@ -22,7 +22,7 @@
             <form role="form" method="post" >
             <?php
                 $no = 1;
-                $sql = mysql_query("
+                $sql = ("
                     SELECT nilai.*,
                         users.users_noinduk,
                         users.users_nama,
