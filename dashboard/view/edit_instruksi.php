@@ -72,7 +72,7 @@
             }
             else
             {
-                var editor = CKEDITOR.replace( 'info' );    
+                var editor = CKEDITOR.replace( '' );    
 
                 
                 CKFinder.setupCKEditor( editor, '' ) ;
