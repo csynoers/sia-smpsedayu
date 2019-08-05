@@ -59,10 +59,15 @@
                     <small class="error">Alamat Harus Di Isi</small>
                 </div>
                 <div class="name-field">
-                    <label>Thumbnail</label>
+                    <label>Foto</label>
                     <center><img src="img/<?php echo $row['users_foto_mod'] ?>" style="height: 200px !important"></center>
                 </div>
-
+                <div class="name-field">
+                    <label>Ganti Foto <small>(type gambar .png or .jpg)</small>
+                        <input type="file" name="gambar">
+                    </label>
+                    
+                </div>
                 
                 <button type="submit" class="tiny radius button bg-black-solid" name="guru-update"><b><span class="fontello-minefield"></span> Update</b></button>
 
