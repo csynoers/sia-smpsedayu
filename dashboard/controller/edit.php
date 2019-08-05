@@ -95,6 +95,32 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				echo "<script>alert('Maaf username sudah digunakan'); window.history.back();</script>";
 
 			} else {
+				if ( !empty($_FILES['gambar']['tmp_name']) ) {
+					$sql= ("
+						SELECT *,
+							CASE
+								WHEN users.users_foto IS NULL THEN 'no_image.png'
+								WHEN users.users_foto='' THEN 'no_image.png'
+								ELSE users.users_foto
+							END AS users_foto_mod 
+						FROM users
+						WHERE 1=1
+							AND users_id = '{$id}'
+					");
+					$row= query_result($connect, $sql)['fetch_assoc'][0];
+					if ( $row['users_foto_mod'] !='no_image.png' ) {
+						if(file_exists('./img/' .$row['users_foto_mod'])){
+							unlink('./img/' .$row['users_foto_mod']);
+						}
+					}
+					$imageFileType= ['jpg','jpeg','png'];
+					if ( in_array(pathinfo(basename($_FILES["gambar"]["name"]),PATHINFO_EXTENSION), $imageFileType) ) {
+						$users_foto= img_resize($files=$_FILES["gambar"],$maxDim=250,$path_destination='./img/');
+					}else {
+						echo "<script>alert('Sorry, only JPG, JPEG & PNG files are allowed'); window.history.back();</script>";
+					}
+				}
+				
 
 				if( empty($_POST['password']) ){ # jika password kosong
 					$sql= ("
@@ -106,6 +132,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 							`users_username` = '{$_POST['username']}',
 							`users_telp` = '{$_POST['telp']}',
 							`users_alamat` = '{$_POST['alamat']}',
+							".(!empty($users_foto)? "`users_foto`='{$users_foto}'": NULL)."
 							`users_email` = '{$_POST['email']}'
 						WHERE users_id = '{$id}'
 					");
@@ -121,6 +148,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 							`users_password` = '".md5($_POST['password'])."',
 							`users_telp` = '{$_POST['telp']}',
 							`users_alamat` = '{$_POST['alamat']}',
+							".(!empty($users_foto)? "`users_foto`='{$users_foto}'": NULL)."
 							`users_email` = '{$_POST['email']}'
 						WHERE users_id = '{$id}'
 					");
