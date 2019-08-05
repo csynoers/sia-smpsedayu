@@ -344,6 +344,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 										'username' = '$username',  'info' = '$info'
 										WHERE instgs_id = '$id'");
 			print_r($sql);
+			die();
 
 			if ($instruksi) {
 				echo "
