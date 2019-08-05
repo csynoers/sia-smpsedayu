@@ -25,7 +25,7 @@
                         if ($_GET['instruksi'] == 'lihat_instruksi') {
                             
                             $no         =   1;
-                            $instgs      =   mysql_query("select * from instgs order by instgs_id DESC limit 1");
+                            $instgs      =   mysql_query("select * from instgs WHERE instgs_id='{$_GET['id']}' ");
 
                             while ($row=mysql_fetch_array($instgs)) {
                 ?>
