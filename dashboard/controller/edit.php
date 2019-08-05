@@ -132,7 +132,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 							`users_username` = '{$_POST['username']}',
 							`users_telp` = '{$_POST['telp']}',
 							`users_alamat` = '{$_POST['alamat']}',
-							".(!empty($users_foto)? "`users_foto`='{$users_foto}'": NULL)."
+							".(!empty($users_foto)? "`users_foto`='{$users_foto}',": NULL)."
 							`users_email` = '{$_POST['email']}'
 						WHERE users_id = '{$id}'
 					");
@@ -148,7 +148,7 @@ if (!empty($_FILES["file"]["tmp_name"]))
 							`users_password` = '".md5($_POST['password'])."',
 							`users_telp` = '{$_POST['telp']}',
 							`users_alamat` = '{$_POST['alamat']}',
-							".(!empty($users_foto)? "`users_foto`='{$users_foto}'": NULL)."
+							".(!empty($users_foto)? "`users_foto`='{$users_foto}',": NULL)."
 							`users_email` = '{$_POST['email']}'
 						WHERE users_id = '{$id}'
 					");
