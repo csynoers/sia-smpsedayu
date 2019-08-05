@@ -52,6 +52,7 @@
 			<thead class="no-border">
 				<tr>
 					<th style="width: 5%;" class="text-center">No</th>
+					<th style="width: 5%;" class="text-center">NIS</th>
 					<th >Nama</th>
 					<th style="width: 17%;" class="text-center">Nilai Poin</th>
 				</tr>
@@ -69,6 +70,7 @@
 						$sql 			= ("
 							SELECT
 								users.users_id,
+								users.users_noinduk,
 								users.users_nama,
 								pbm_o.kelas_id,
 								(
@@ -94,6 +96,7 @@
 					?>
 				<tr>
 					<td class="text-center"><?php echo $no; ?></td>
+					<td class="text-center"><?php echo $data['users_noinduk']; ?></td>
 					<td>
 						<input type="hidden" class="form-control" name="users[]" id="users[]" value="<?php echo $data['users_id']; ?>">
 						<?php 
