@@ -844,8 +844,18 @@ if (isset($_POST['siswa-create'])) {
 			$value_sql .= "('{$value}', '{$_POST['pelajaran'][$key]}', '{$_POST['tugas_id']}','{$_POST['tahun'][$key]}', '{$_POST['nilai'][$key]}', '".date('Y-m-d')."'),";
 		}
 		$value_sql= rtrim($value_sql,",");
-		print_r($value_sql);
-		die();
+		$sql= ("
+			INSERT INTO nilai(users_id,pelajaran_id,instgs_id,tahun_id,nilai_poin,tanggal) VALUES {$value_sql}
+		");
+
+		$query= mysql_query($sql);
+
+		if($query){
+			echo "<script>alert('Data nilai berhasil ditambahkan'); window.history.go(-2);</script>";
+		}else {
+			echo "<script>alert('Data nilai gagal ditambahkan'); window.history.back();</script>";
+		}
+
 
 
 	/* for($x=0;$x<$jumlahdata;$x++) {
