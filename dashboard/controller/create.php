@@ -447,7 +447,7 @@ if (isset($_POST['siswa-create'])) {
 		if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $fileType) ) {
 
 			# filter type file by size
-			if ( $_FILES['file']['size'] > (1024000*1) ) {
+			if ( $_FILES['file']['size'] > (1024000*10) ) {
 				echo "<script>alert('Sorry, only size smaller than 10 MB files are allowed'); window.history.back();</script>";
 
 			} else {
@@ -499,7 +499,12 @@ if (isset($_POST['siswa-create'])) {
 							'{$username}'
 						)
 					");
-					print_r($sql);
+					$query= mysql_query($sql);
+					if($query){
+						echo "<script>alert('Data informasi materi berhasil ditambahkan'); window.history.go(-2);</script>";
+					}else {
+						echo "<script>alert('Data informasi materi gagal ditambahkan'); window.history.back();</script>";
+					}
 				} else {
 					echo "<script>alert('Sorry, there was an error uploading your file.'); window.history.back();</script>";
 
@@ -509,10 +514,6 @@ if (isset($_POST['siswa-create'])) {
 		}else {
 			echo "<script>alert('Sorry, only DOC, DOCX, XLS, PPT, PPTX & PDF files are allowed'); window.history.back();</script>";
 		}
-		echo '<div class="large-12 columns"><pre>';
-		print_r($_FILES);
-		echo '</pre></div>';
-		die();
     }
 ?>
 
