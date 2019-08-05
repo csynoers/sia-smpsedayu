@@ -95,8 +95,6 @@ if (!empty($_FILES["file"]["tmp_name"]))
 				echo "<script>alert('Maaf username sudah digunakan'); window.history.back();</script>";
 
 			} else {
-				print_r($_FILES);
-				die();
 				if ( !empty($_FILES['gambar']['tmp_name']) ) {
 					$sql= ("
 						SELECT *,
@@ -155,6 +153,8 @@ if (!empty($_FILES["file"]["tmp_name"]))
 						WHERE users_id = '{$id}'
 					");
 				}
+				print_r($sql);
+				die();
 				// $query= mysql_query($sql);
 				// if ( $query ) {
 				// 	echo "<script>alert('Data berhasil diubah'); window.history.go(-2);</script>";
