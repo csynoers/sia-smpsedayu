@@ -51,7 +51,10 @@ if ($level=='guru') {
                             $no         =   1;
                             $users      =   $_GET['siswa'];
 
-                            $tugas      =   mysql_query("SELECT *, pelajaran.pelajaran_nama, users.users_nama, kelas.kelas_nama
+                            $tugas      =   mysql_query("SELECT *, 
+                                                pelajaran.pelajaran_nama,
+                                                users.users_nama, kelas.kelas_nama,
+                                                DATE_FORMAT(tugas.tanggal_tugas, '%W,  %d %b %Y') AS tanggal_tugas_mod
                                             FROM tugas 
                                             INNER JOIN pelajaran on pelajaran.pelajaran_id=tugas.pelajaran_id
                                             INNER JOIN users on users.users_id=tugas.users_id 
@@ -84,7 +87,7 @@ if ($level=='guru') {
                         </th>
                         <td>
                             <?php
-                                echo $row['tanggal_tugas'];
+                                echo $row['tanggal_tugas_mod'];
                             ?>
                         </td>
                         
