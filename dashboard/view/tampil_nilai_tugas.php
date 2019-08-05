@@ -29,7 +29,8 @@
                         pelajaran.pelajaran_nama,
                         kelas.kelas_nama,
                         tahun.tahun_nama,
-                        IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
+                        IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
+                        instgs.judul
                     FROM nilai
                         LEFT JOIN users
                             ON users.users_id=nilai.users_id
