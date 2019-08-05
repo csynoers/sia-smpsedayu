@@ -719,9 +719,85 @@ if (!empty($_FILES["file"]["tmp_name"]))
 <?php 
 
 	if (isset($_GET['modul-edit'])) {
-		$id 		=	$_GET['modul-edit'];
+		$id = $_GET['modul-edit'];
 
 		if (isset($_POST['modul-update'])) {
+			$fileType= ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'];
+			$nama = $_POST['nama'];
+			$pelajaran = $_POST['pelajaran'];
+			$tgl= date("Y-m-d");
+			
+			# cek file input
+			if ( ! empty($_FILES['file']['tmp_name']) ) {
+				# filter type file by extension
+				if ( in_array(pathinfo(basename($_FILES["file"]["name"]),PATHINFO_EXTENSION), $fileType) ) {
+					# filter type file by size
+					if ( $_FILES['file']['size'] > (1024000*10) ) {
+						echo "<script>alert('Sorry, only size smaller than 10 MB files are allowed'); window.history.back();</script>";
+					
+					} else {
+						# start unlink file
+						$sql= ("SELECT * FROM modul WHERE id = '{$id}' ");
+						$row= query_result($connect, $sql)['fetch_assoc'][0];
+						if ( ! empty($row['users_foto_mod']) ) {
+							if(file_exists('./files/' .$row['file'])){
+								unlink('./files/' .$row['file']);
+							}
+						}
+						# end unlink file
+
+						$path_destination= './files/';
+						# start generate name file exists
+						$name = $_FILES['file']['name'];
+						$rawBaseName = pathinfo( $name, PATHINFO_FILENAME );
+						$original_name = $rawBaseName;
+						$extension = pathinfo( $name, PATHINFO_EXTENSION );
+
+						$i = 1;
+						while( file_exists($path_destination.$rawBaseName.".".$extension ))
+						{           
+							$rawBaseName = ( string )$original_name.$i;
+							$name = $rawBaseName.".".$extension;
+							$i++;
+						}
+						# end generate name file exists
+
+						$file_ext       = $extension;
+						$file_size      = $_FILES['file']['size'];
+						$file_tmp       = $_FILES['file']['tmp_name'];
+
+						$sql= ("
+							UPDATE `modul`
+							SET
+								`tanggal_upload`='{$tgl}',
+								`nama_file`='{$nama}',
+								`pelajaran_id`='{$pelajaran}',
+								`tipe_file`='{$file_ext}',
+								`ukuran_file`='{$file_size}',
+								`file`='{$name}'
+							WHERE id = '{$id}'
+						");
+					}
+					
+				} else {
+					echo "<script>alert('Sorry, only DOC, DOCX, XLS, PPT, PPTX & PDF files are allowed'); window.history.back();</script>";
+				}
+				
+
+			} else {
+				$sql= ("
+					UPDATE `modul` SET `nama_file`='{$nama}',`pelajaran_id`='{$pelajaran}' WHERE id = '{$id}'
+				");
+			}
+			print_r($sql);
+			die();
+			$query= mysql_query($sql);
+			if($query){
+				echo "<script>alert('Data informasi materi berhasil diubah'); window.history.go(-2);</script>";
+			}else {
+				echo "<script>alert('Data informasi materi gagal diubah'); window.history.back();</script>";
+			}
+			
 			$allowed_ext    = array('doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'rar', 'zip');
 	        $file_name      = $_FILES['file']['name'];
 	        $file_ext       = strtolower(end(explode('.', $file_name)));
@@ -809,8 +885,8 @@ if (!empty($_FILES["file"]["tmp_name"]))
 					</div>";
 	        }	
 		}
-	$datamodul	=	mysql_query("SELECT * FROM modul WHERE id='$id'");
-	$row			=	mysql_fetch_assoc($datamodul);
+		$datamodul	=	mysql_query("SELECT * FROM modul WHERE id='$id'");
+		$row			=	mysql_fetch_assoc($datamodul);
 	}
 ?>
 
