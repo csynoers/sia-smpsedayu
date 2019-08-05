@@ -61,7 +61,7 @@
                                         <td>{$value['pelajaran_nama']}</td>
                                         <td>{$value['kelas_nama']}</td>
                                         <td>{$value['tipe_file']}</td>
-                                        <td>{$value['ukuran_file']}</td>
+                                        <td>".round(($value['ukuran_file'] / (1024*1000)))." MB</td>
                                         <td>{$value['username']}</td>
                                         <td>
                                             <a target='_bank' href='./files/{$value['file']}'><span class='fontello-download'></span> Download</a>
