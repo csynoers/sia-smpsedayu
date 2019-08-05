@@ -58,7 +58,7 @@
                                         <td>{$value['tanggal_selesai_mod']}</td>
                                         <td>{$value['username']}</td>
                                         <td>{$value['info']}</td>
-                                        <td>{$value}
+                                        <td>
                                             <a href='?instruksi=lihat_instruksi'><span class='fontello-eye'></span> Tampil</a>
                                             <a href='?instruksi-edit={$row['instgs_id']}' ><span class='fontello-edit'></span> Edit</a>
                                             <a href='?instruksi-delete={$row['instgs_id']}' ><span class='fontello-trash'></span> Delete</a>
