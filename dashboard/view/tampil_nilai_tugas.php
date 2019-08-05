@@ -8,76 +8,52 @@
         <table class="no-border blue">
             <thead class="no-border">
                 <tr>
-                    <th style="width: 5%;" class="text-center">No</th>
-                    <th width="15%">Nama</th>
-                    <th width="5%">Kelas</th>
-                    <th width="7%">Mata Pelajaran</th>
-                    <!--<th width="7%">Tahun</th>-->
-                    <th style="width: 7%;" class="text-center">Nilai Poin</th>
-                    <!-- <th class="text-center" 
-                    <?php $level  =   $_SESSION['level'];
-                            if ($level == 'siswa') {
-                                echo 'style="display:none;"';
-                            }  ?>
-                    >Action</th> -->
+                    <th class="text-center">No</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>Mata Pelajaran</th>
+                    <th>Judul Tugas</th>
+                    <th>Tahun</th>
+                    <th>Semester</th>
+                    <th class="text-center">Nilai Poin</th>
                 </tr>
             </thead>    
-            <form role="form" method="post" />
-<?php
-
-$no = 1;
-$kelasnama = $_POST['kelas'];
-$pelajarannama = $_POST['pelajaran'];
-
-$jenisnama      =   '1';
-$tahunnama = $_POST['tahun'];
-$sql = mysql_query("SELECT nilai.nilai_id, nilai.nilai_poin, users.users_id, users.users_nama, 
-                            kelas.kelas_id, kelas.kelas_nama, pelajaran.pelajaran_id, 
-                            pelajaran.pelajaran_nama, 
-                            jenis.jenis_id, jenis.jenis_nama
+            <form role="form" method="post" >
+            <?php
+                $no = 1;
+                $sql = mysql_query("
+                    SELECT nilai.*,
+                        users.users_noinduk,
+                        users.users_nama,
+                        pelajaran.pelajaran_nama,
+                        kelas.kelas_nama,
+                        tahun.tahun_nama,
+                        IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
                     FROM nilai
-                    INNER JOIN users ON nilai.users_id=users.users_id
-                    INNER JOIN kelas ON users.kelas_id=kelas.kelas_id
-                    INNER JOIN pelajaran ON nilai.pelajaran_id=pelajaran.pelajaran_id
-                    
-                    INNER JOIN tahun ON nilai.tahun_id=tahun.tahun_id
-                    INNER JOIN jenis ON nilai.jenis_id=jenis.jenis_id
-                    WHERE kelas.kelas_id=$kelasnama 
-                            AND pelajaran.pelajaran_id=$pelajarannama
-                            AND jenis.jenis_id=$jenisnama
-                    ");
-while ($data=mysql_fetch_array($sql)) {
-?>
-                <tr>
-                    <td class="text-center"><?php echo $no; ?></td>
-                    <td>                        
-                        <?php 
-                            echo $data['users_nama'];
-                        ?>                      
-                    </td>
-                    <td>
-                        <?php 
-                            echo $data['kelas_nama'];
-                        ?>
-                    </td>
-                    <td>
-                        <?php 
-                            echo $data['pelajaran_nama'];
-                        ?>
-                    </td>
-                    <td class="text-center">
-                        <?php  
-                            if ($data['nilai_poin'] == 0) {
-                                echo "0";
-                            }else {
-                                echo $data['nilai_poin'];
-                            }
-                        ?>
-                    </td>
-                </tr>
-                <?php 
+                        LEFT JOIN users
+                            ON users.users_id=nilai.users_id
+                        LEFT JOIN tahun
+                            ON tahun.tahun_id=nilai.tahun_id
+                        LEFT JOIN pelajaran
+                            ON pelajaran.pelajaran_id=nilai.pelajaran_id
+                        LEFT JOIN kelas
+                            ON kelas.kelas_id=pelajaran.kelas_id
+                        LEFT JOIN instgs
+                            ON instgs.instgs_id=nilai.instgs_id
+                    WHERE 1=1
+                        AND nilai.pelajaran_id='{$_POST['pelajaran']}'
+                        AND nilai.tahun_id='{$_POST['tahun']}'
+                ");
+                foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                    echo "
+                        <tr>
+                            <td>{$no}</td>
+                            <td>{$value['']}</td>
+                        </tr>
+                    ";
                     $no++;  
-                    }
+                }
                 ?>
             </form>
         </table>
