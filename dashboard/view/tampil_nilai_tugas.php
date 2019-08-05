@@ -117,6 +117,7 @@ while ($data=mysql_fetch_array($sql)) {
                                     ON kelas.kelas_id=pelajaran.kelas_id
                             WHERE 1=1
                                 AND pelajaran.users_id='{$_SESSION['id']}'
+                                GROUP BY nilai.pelajaran_id
                         ");
                         foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $row) {
                             echo '<option value="'.$row['pelajaran_id'].'"> '.$row['pelajaran_nama'].' Kelas ('.$row['kelas_nama'].')</option>';
@@ -128,12 +129,22 @@ while ($data=mysql_fetch_array($sql)) {
                 <label>Tahun Ajaran</label>
                 <select name="tahun" class="form-control" required>
                     <?php 
-                        $tahun  =   mysql_query("SELECT * FROM tahun");
-
-                        while ($row=mysql_fetch_array($tahun)) {
-                    ?>
-                        <option value="<?php echo $row['tahun_id']; ?>"><?php echo $row['tahun_nama'].'('.$row['semester'].')'; ?></option>
-                    <?php
+                        $sql = ("
+                            SELECT *,
+                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
+                            FROM nilai
+                                LEFT JOIN pelajaran
+                                    ON pelajaran.pelajaran_id=nilai.pelajaran_id
+                                LEFT JOIN kelas
+                                    ON kelas.kelas_id=pelajaran.kelas_id
+                                LEFT JOIN tahun
+                                    ON tahun.tahun_id=nilai.tahun_id
+                            WHERE 1=1
+                                AND pelajaran.users_id='31'
+                                GROUP BY nilai.tahun_id
+                        ");
+                        foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $row) {
+                            echo '<option value="'.$row['tahun_id'].'"> '.$row['tahun_nama'].' ('.$row['semester_mod'].')</option>';
                         }
                     ?>
                 </select>
