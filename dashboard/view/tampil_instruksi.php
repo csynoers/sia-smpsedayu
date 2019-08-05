@@ -32,7 +32,6 @@
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Selesai</th>
                         <th>Nama Guru</th>
-                        <th>Info</th>
                         <th width="30%">Action</th>
                     </tr>
                 </thead>
@@ -57,7 +56,6 @@
                                         <td>{$value['tanggal_buat_mod']}</td>
                                         <td>{$value['tanggal_selesai_mod']}</td>
                                         <td>{$value['username']}</td>
-                                        <td>{$value['info']}</td>
                                         <td>
                                             <a href='?instruksi=lihat_instruksi&id={$value['instgs_id']}'><span class='fontello-eye'></span> Tampil</a>
                                             <a href='?instruksi-edit={$value['instgs_id']}' ><span class='fontello-edit'></span> Edit</a>
