@@ -93,6 +93,7 @@
 						<thead>
 							<tr>
 								<th >No</th>
+								<th >NIS</th>
 								<th >Nama</th>
 								<th >Nilai Poin</th>
 							</tr>
@@ -109,9 +110,10 @@
 									{
 										echo '
 											<tr align="center">
-												<td class="text-center">'.$no.'</td>
-												<td align="left">'.$data['users_nama'].'</td>
-												<td class="text-center">'.($data['nilai_poin'] == 0 ? "Data Kosong" : $data['nilai_poin'] ).'</td>
+												<td >'.$no.'</td>
+												<td >'.$data['users_noinduk'].'</td>
+												<td >'.$data['users_nama'].'</td>
+												<td >'.($data['nilai_poin'] == 0 ? "Data Kosong" : $data['nilai_poin'] ).'</td>
 											</tr>
 										';
 										$no++;  
