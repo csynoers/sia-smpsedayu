@@ -92,10 +92,10 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th >No</th>
-								<th >NIS</th>
-								<th >Nama</th>
-								<th >Nilai Poin</th>
+								<th align="left">No</th>
+								<th align="left">NIS</th>
+								<th align="left">Nama</th>
+								<th align="left">Nilai Poin</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -109,11 +109,11 @@
 									while ($data=mysql_fetch_array($sql))
 									{
 										echo '
-											<tr align="center">
-												<td >'.$no.'</td>
-												<td >'.$data['users_noinduk'].'</td>
-												<td >'.$data['users_nama'].'</td>
-												<td >'.($data['nilai_poin'] == 0 ? "Data Kosong" : $data['nilai_poin'] ).'</td>
+											<tr>
+												<td align="left">'.$no.'</td>
+												<td align="left">'.$data['users_noinduk'].'</td>
+												<td align="left">'.$data['users_nama'].'</td>
+												<td align="left">'.($data['nilai_poin'] == 0 ? "Data Kosong" : $data['nilai_poin'] ).'</td>
 											</tr>
 										';
 										$no++;  
