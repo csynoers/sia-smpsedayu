@@ -43,22 +43,6 @@
                                                         echo $_SESSION['nama'];
                                                      } 
                                                 ?>">
-                <div class="name-field small-5"> 
-                    <label>Kelas</label>
-                    <select name="kelas" class="form-control">
-                        <?php 
-                        $idus= $_SESSION['id'];
-                        
-                            $kelas  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE kelas.kelas_id=pelajaran.kelas_id AND pelajaran.users_id='$idus'");
-
-                            while ($row=mysql_fetch_array($kelas)) {
-                        ?>
-                            <option value="<?php echo $row['kelas_id']; ?>"><?php echo $row['kelas_nama']; ?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </div>
                 <div class="name-field small-5">
                     <label>Tanggal Selesai
                         <input type="date" name="tgl_selesai" required>
