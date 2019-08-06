@@ -15,7 +15,6 @@
         </div>
         <!-- /.box-header -->
 
-
         <div class="box-body small-5" style="display: block;">
             <!-- tambah topik -->
             <form data-abide method="POST" action="" role="form" enctype="multipart/form-data">                 
@@ -24,21 +23,24 @@
                         <input type="text" name="judul" required>
                     </label>
                     <small class="error">Nama File Harus Di Isi</small>
-                     <label>Mata Pelajaran</label>
-                <select name="pelajaran" class="form-control" required>
-                    <?php 
-                    $iduser = $_SESSION['id'];
-                        $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='$iduser'");
+                </div>
+                <div class="name-field">
+                    <label>Mata Pelajaran</label>
+                    <select name="pelajaran" class="form-control" required>
+                        <?php 
+                        $iduser = $_SESSION['id'];
+                            $pelajaran  =   mysql_query("SELECT * FROM pelajaran, kelas WHERE pelajaran.kelas_id=kelas.kelas_id AND pelajaran.users_id='$iduser'");
 
-                        while ($row=mysql_fetch_array($pelajaran)) {
-                    ?>
-                        <option value="<?php echo $row['pelajaran_id']; ?>"><?php echo $row['pelajaran_nama']; ?> Kelas (<?php echo $row['kelas_nama']; ?>)</option>
-                    <?php
-                        }
-                    ?>
-                </select>
-            </div>
-                <label>Kelas</label>
+                            while ($row=mysql_fetch_array($pelajaran)) {
+                        ?>
+                            <option value="<?php echo $row['pelajaran_id']; ?>"><?php echo $row['pelajaran_nama']; ?> Kelas (<?php echo $row['kelas_nama']; ?>)</option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                </div>
+                <div class="name-field">
+                    <label>Kelas</label>
                     <select name="kelas" class="form-control" >
                     <?php 
                     $idus= $_SESSION['id'];
@@ -50,16 +52,24 @@
                     <?php
                         }
                     ?>
-                </select>
-				 <label>Tanggal Selesai<small> required</small>
-                        <input type="date" name="tgl_selesai" required>
+                    </select>
+                </div>
+                <div class="name-field">
+                    <label>Tanggal Selesai<small> required</small>
+                    <input type="date" name="tgl_selesai" required>
                     </label>
-					 <label>Jam<small> required</small>
-                        <input type="text" name="jam" required>
+                </div>
+                <div class="name-field">
+                    <label>Jam<small> required</small>
+                    <input type="text" name="jam" required>
                     </label>
-					 <label>Menit<small> required</small>
-                        <input type="text" name="menit" required>
+                </div>
+                <div class="name-field">
+                    <label>Menit<small> required</small>
+                    <input type="text" name="menit" required>
                     </label>
+                </div>
+                <div class="name-field">
 					 <label>Detik<small> required</small>
                         <input type="text" name="detik" required>
                     </label>
@@ -71,10 +81,10 @@
                 </div>
         </div>
         <div class="box-body small-12" style="display: block;">
-                <tr><td colspan="2" width="100%" style="padding:10px;">Topik Kuis</td></tr>
-                <tr><td style="padding:50px;"><textarea name="info"></textarea></td></tr>
+            <tr><td colspan="2" width="100%" style="padding:10px;">Topik Kuis</td></tr>
+            <tr><td style="padding:50px;"><textarea name="info"></textarea></td></tr>
 
-                <button type="submit" class="tiny radius button bg-black-solid" name="upload_topik"><b><span class="fontello-minefield"></span> Upload</b></button>
+            <button type="submit" class="tiny radius button bg-black-solid" name="upload_topik"><b><span class="fontello-minefield"></span> Upload</b></button>
         </div>        
             </form>
             <!-- end tambah topik -->
