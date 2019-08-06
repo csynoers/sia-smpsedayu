@@ -54,7 +54,6 @@
                 <hr>
                 <button type="submit" class="tiny radius button bg-black-solid" name="update_instgs"><b><span class="fontello-minefield"></span> Update</b></button>
             </form>
-            <?php print_r($row) ?>
         </div>    
         <!-- end .timeline -->
     </div>
