@@ -25,14 +25,14 @@
              <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th width="3%">No</th>
+                        <th>No</th>
                         <th>Judul</th>
                         <th>Pelajaran</th>
                         <th>kelas</th>
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Selesai</th>
                         <th>Nama Guru</th>
-                        <th width="30%">Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <form role="form" method="post" />
