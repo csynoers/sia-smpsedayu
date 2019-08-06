@@ -44,7 +44,7 @@
                                 {
                                     $iduser = $_SESSION['id'];
                                     $no         =   1;
-                                    $topik_kuis      =   mysql_query("select * from topik_kuis, pelajaran, kelas where topik_kuis.pelajaran_id=pelajaran.pelajaran_id and topik_kuis.kelas_id=kelas.kelas_id and pelajaran.users_id='$iduser'");
+                                    $topik_kuis      =   mysql_query("select *,DATE_FORMAT(topik_kuis.tanggal_buat, '%W,  %d %b %Y') AS tanggal_buat_mod,DATE_FORMAT(topik_kuis.tanggal_selesai, '%W,  %d %b %Y') AS tanggal_selesai_mod from topik_kuis, pelajaran, kelas where topik_kuis.pelajaran_id=pelajaran.pelajaran_id and topik_kuis.kelas_id=kelas.kelas_id and pelajaran.users_id='$iduser'");
 
                                     while ($row=mysql_fetch_assoc($topik_kuis)) {
                                         echo '
@@ -53,8 +53,8 @@
                                                 <td>'.$row['judul'].'</td>
                                                 <td>'.$row['pelajaran_nama'].'</td>
                                                 <td>'.$row['kelas_nama'].'</td>
-                                                <td>'.$row['tanggal_buat'].'</td>
-                                                <td>'.$row['tanggal_selesai'].'</td>
+                                                <td>'.$row['tanggal_buat_mod'].'</td>
+                                                <td>'.$row['tanggal_selesai_mod'].'</td>
                                                 <td>'.$row['username'].'</td>
                                                 <td>'.$row['info'].'</td>
                                                 <td> 
