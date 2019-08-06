@@ -7,7 +7,7 @@
 <div class="large-12 columns">
     <div class="box">
         <div class="box-body " style="display: block;">
-            <table id="example" class="display" style="width:100%">
+            <table id="exampleX" class="display" style="width:100%">
                 <?php
                     $sql= ("SELECT pelajaran.pelajaran_nama,kelas.kelas_nama,(SELECT tahun.tahun_nama FROM tahun WHERE tahun_id='{$_POST['tahun']}') AS tahun_nama,(SELECT IF(tahun.semester='1','Ganjil','Genap') FROM tahun WHERE tahun_id='{$_POST['tahun']}') AS semester FROM pelajaran INNER JOIN kelas ON kelas.kelas_id=pelajaran.kelas_id WHERE pelajaran.pelajaran_id='{$_POST['pelajaran']}'");
                     $row= query_result($connect, $sql)['fetch_assoc'][0];
