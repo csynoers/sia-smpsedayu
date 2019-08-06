@@ -83,7 +83,7 @@
         <div class="box-body small-12" style="display: block;">
             <tr><td colspan="2" width="100%" style="padding:10px;">Topik Kuis</td></tr>
             <tr><td style="padding:50px;"><textarea name="info"></textarea></td></tr>
-
+            <hr>
             <button type="submit" class="tiny radius button bg-black-solid" name="upload_topik"><b><span class="fontello-minefield"></span> Upload</b></button>
         </div>        
             </form>
