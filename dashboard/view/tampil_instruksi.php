@@ -32,7 +32,7 @@
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Selesai</th>
                         <th>Nama Guru</th>
-                        <th>Action</th>
+                        <th style="width:120px !important">Action</th>
                     </tr>
                 </thead>
                 <form role="form" method="post" />
