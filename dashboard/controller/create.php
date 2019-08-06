@@ -526,7 +526,7 @@ if (isset($_POST['siswa-create'])) {
         $info           = $_POST['info'];
 		$username       = $_POST['username'];
 		/* get informasi kelas */
-		$sql= ("SELECT * FROM pelajaran WHERE id_pelajaran='{$pelajaran}' ");
+		$sql= ("SELECT * FROM pelajaran WHERE pelajaran_id='{$pelajaran}' ");
 		$row_pelajaran= query_result($connect, $sql)['fecth_assoc'][0];
         $kls 			= $row_pelajaran['kelas_id'];
         $tgl            = date("Y-m-d");
