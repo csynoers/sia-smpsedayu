@@ -19,7 +19,8 @@
 	/* query untuk mendapatkan tahun ajaran */
 	$sql_2= "
 		SELECT
-			tahun.tahun_nama
+			tahun.tahun_nama,
+			IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
 		FROM tahun
 		WHERE 1=1
 			AND tahun.tahun_id='{$_POST["tahun"]}'
@@ -29,6 +30,10 @@
 
 	/* mendapatkan nama guru */
 	$row_guru= $_SESSION;
+
+	/* mendapatkan informasi tugas */
+	$sql= ("SELECT * FROM instgs WHERE instgs_id='{$_POST['tugas_id']}' ");
+	$tugas= query_result($connect, $sql)['fetch_assoc'][0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +69,13 @@
 										<td width="20%">Tahun Ajaran</td>
 										<td width="30%"> : <?php echo $row_2["tahun_nama"] ?></td>
 									</tr>
+									<tr>
+										<td width="20%">Judul Tugas</td>
+										<td width="30%"> : <?php echo $tugas["judul"] ?></td>
+										<td width="20%">Semester</td>
+										<td width="30%"> : <?php echo $row_2["semester_mod"] ?></td>
+									</tr>
+									<tr>
 										<td>Kelas</td>
 										<td> : <?php echo $row_1["kelas_nama"] ?></td>
 										<td>Nama Guru</td>
