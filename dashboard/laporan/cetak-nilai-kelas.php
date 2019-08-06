@@ -101,33 +101,10 @@
 							<?php 
 								if (isset($_POST['cetak-nilai'])) {
 									$no 		=	1;
-									$pelajaran 	=	$_POST['pelajaran'];
-									$jenis 		=	$_POST['jenis'];
-									$tahun 		=	$_POST['tahun'];
-									$sql 		=	mysql_query("
-										SELECT
-											users.users_nama,
-											pelajaran.pelajaran_nama,
-											nilai.nilai_poin,
-											jenis.jenis_nama,
-											tahun.tahun_nama,
-											kelas.kelas_id,
-											kelas.kelas_nama 
-										FROM nilai
-											INNER JOIN users
-												ON nilai.users_id=users.users_id
-											INNER JOIN kelas
-												ON users.kelas_id=kelas.kelas_id
-											INNER JOIN pelajaran
-												ON nilai.pelajaran_id=pelajaran.pelajaran_id
-											INNER JOIN jenis
-												ON nilai.jenis_id=jenis.jenis_id
-											INNER JOIN tahun
-												ON nilai.tahun_id=tahun.tahun_id
-										WHERE jenis.jenis_id='$jenis' 
-											AND tahun.tahun_id='$tahun' 
-											AND pelajaran.pelajaran_id='$pelajaran'
-											GROUP BY users.users_nama");
+									$pelajaran_id 	=	$_POST['pelajaran'];
+									$instgs_id 		=	$_POST['tugas_id'];
+									$tahun_id 		=	$_POST['tahun'];
+									$sql= mysql_query("SELECT * FROM nilai LEFT JOIN users ON users.users_id=nilai.users_id WHERE nilai.pelajaran_id='{$pelajaran_id}' AND nilai.instgs_id='{$instgs_id}' AND nilai.tahun_id='{$tahun_id}' ");
 									while ($data=mysql_fetch_array($sql))
 									{
 										echo '
