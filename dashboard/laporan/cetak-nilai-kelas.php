@@ -128,12 +128,12 @@
 		</div>
 		<!-- end /#DivIdToPrint -->
 		<script>
-			/* var printContents = document.getElementById('DivIdToPrint').innerHTML;
+			var printContents = document.getElementById('DivIdToPrint').innerHTML;
 			var originalContents = document.body.innerHTML;
 			document.body.innerHTML = printContents;
 			window.print();
 			document.body.innerHTML = originalContents;
-			setTimeout(function(){window.close();},10); */
+			setTimeout(function(){window.close();},10);
 		</script>
 	</body>
 </html>
