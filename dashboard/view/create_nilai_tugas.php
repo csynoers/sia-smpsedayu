@@ -55,7 +55,7 @@
 						<select name="tugas_id" class="form-control" required>
 							<option value="" selected disabled> -- Pilih Judul Tugas -- </option>
 							<?php
-								$sql = (" SELECT * FROM instgs WHERE instgs.pelajaran_id='{$_POST['pelajaran']}' ");
+								$sql = (" SELECT *,(SELECT COUNT(nilai.nilai_id) FROM nilai WHERE nilai.pelajaran_id=instgs.pelajaran_id AND nilai.instgs_id=instgs.instgs_id) AS count_nilai FROM instgs WHERE instgs.pelajaran_id='{$_POST['pelajaran']}' HAVING count_nilai < 1 ");
 								foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
 									echo '<option value="'.$value['instgs_id'].'" > '.$value['judul'].'</option>';
 								}

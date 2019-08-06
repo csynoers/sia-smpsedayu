@@ -851,7 +851,7 @@ if (isset($_POST['siswa-create'])) {
 		$query= mysql_query($sql);
 
 		if($query){
-			echo "<script>alert('Data nilai berhasil ditambahkan'); window.history.go(-2);</script>";
+			echo "<script>alert('Data nilai berhasil ditambahkan'); window.location.assign(\"{$_SERVER['HTTP_HOST']}/dashboard/?nilai=nilai-tugas&&tampil=nilai-tugas\");</script>";
 		}else {
 			echo "<script>alert('Data nilai gagal ditambahkan'); window.history.back();</script>";
 		}

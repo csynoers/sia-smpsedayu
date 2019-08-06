@@ -1,4 +1,5 @@
 <?php 
+	print_r("{$_SERVER['HTTP_HOST']}/dashboard/?nilai=nilai-tugas&&tampil=nilai-tugas");
 	if( count($_GET) < 1){
 		include_once('view/dashboard.php');
 	}
