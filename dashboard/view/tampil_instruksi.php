@@ -59,7 +59,7 @@
                                         <td>
                                             <a href='?instruksi=lihat_instruksi&id={$value['instgs_id']}'><span class='fontello-eye'></span> Tampil</a>
                                             <a href='?instruksi-edit={$value['instgs_id']}' ><span class='fontello-edit'></span> Edit</a>
-                                            <a href='?instruksi-delete={$value['instgs_id']}' ><span class='fontello-trash'></span> Delete</a>
+                                            <!--<a href='?instruksi-delete={$value['instgs_id']}' ><span class='fontello-trash'></span> Delete</a>-->
                                         </td>
                                     </tr>
                                 ";
