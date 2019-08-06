@@ -44,14 +44,26 @@
                             $iduser = $_SESSION['id'];
                             $Vkelas = $_SESSION['kelas_id'];
                             $no = 1;
-                            $sql = ("
-                                SELECT *
-                                FROM modul 
-                                    INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
-                                    INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
-                                WHERE 1=1
-                                    AND pelajaran.users_id='$iduser'
-                            ");
+                            if ( $level=='guru' ) {
+                                $sql = ("
+                                    SELECT *
+                                    FROM modul 
+                                        INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
+                                        INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
+                                    WHERE 1=1
+                                        AND pelajaran.users_id='$iduser'
+                                ");
+                            } elseif ( $level='siswa' ) {
+                                $sql = ("
+                                    SELECT *
+                                    FROM modul 
+                                        INNER JOIN pelajaran on pelajaran.pelajaran_id=modul.pelajaran_id
+                                        INNER JOIN kelas on pelajaran.kelas_id=kelas.kelas_id
+                                    WHERE 1=1
+                                        AND pelajaran.kelas_id=(SELECT kelas_id FROM pbm WHERE pbm.user_id='{$iduser}' ORDER BY pbm.pbm_id DESC LIMIT 1)
+                                ");
+                            }
+                            
 
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
                                 echo "
