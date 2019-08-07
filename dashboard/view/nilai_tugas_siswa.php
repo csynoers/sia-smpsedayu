@@ -104,10 +104,10 @@
                             <div class="name-field"> 
                                 <label>Tahun Ajaran</label>
                                 <select name="tahun" class="form-control" required>';
-                                    $tahun  =   mysql_query("SELECT * FROM tahun");
+                                    $tahun  =   mysql_query("SELECT *,IF(tahun.semester='1','Ganjil','Genap') AS semester_mod FROM nilai LEFT JOIN pelajaran ON pelajaran.pelajaran_id=nilai.pelajaran_id LEFT JOIN kelas ON kelas.kelas_id=pelajaran.kelas_id LEFT JOIN tahun ON tahun.tahun_id=nilai.tahun_id WHERE 1=1 AND nilai.users_id='{$_SESSION["id"]}' GROUP BY pelajaran.pelajaran_nama");
                                     while ($row=mysql_fetch_assoc($tahun))
                                     {
-                                        echo '<option value="'.$row['tahun_id'].'"> '.$row['tahun_nama'].'</option>';
+                                        echo '<option value="'.$row['tahun_id'].'"> '.$row['tahun_nama'].' (Semester '.$row['semester_mod'].')'.'</option>';
                                     }
                                     echo '
                                 </select>
