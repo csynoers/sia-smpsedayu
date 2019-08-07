@@ -83,8 +83,8 @@
                                     <th>Action</th>
                                     <th>NIS</th>
                                     <th>Nama Siswa</th>
-                                    <th>Tahun Ajaran</th>
-                                    <th>Semester</th>
+                                    <!-- <th>Tahun Ajaran</th>
+                                    <th>Semester</th> -->
                                 </tr>
                             </thead>
 
