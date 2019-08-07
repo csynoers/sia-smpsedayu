@@ -67,10 +67,10 @@
                         $htmls .= '
                         <table id="exampleX" class="display large-12">
                             <tr>
-                                <td><b>Kelas</b></td>
-                                <td>: '.$header['kelas_nama'].'</td>
-                                <td><b>Tahun Ajaran</b></td>
-                                <td>: Tahun '.$header['tahun_nama'].' (Semester '.$header['semester_mod'].')</td>
+                                <td width="25%"><b>Kelas</b></td>
+                                <td width="25%">: '.$header['kelas_nama'].'</td>
+                                <td width="25%"><b>Tahun Ajaran</b></td>
+                                <td width="25%">: '.$header['tahun_nama'].' (Semester '.$header['semester_mod'].')</td>
                             </tr>
                         </table>
                         ';
