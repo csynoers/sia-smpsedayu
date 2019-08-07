@@ -1,4 +1,9 @@
 <?php
+    $pelajaran= '';
+    $sql= ("SELECT DISTINCT pelajaran.pelajaran_nama FROM pelajaran WHERE pelajaran.users_id='{{$_SESSION['id']}}' ");
+    foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+        $pelajaran .= "<span class='fontello-ok tooltipstered'> {$value['pelajaran_nama']} </span>";
+    }
     $sql= ("SELECT *,IF(users_foto='','no_image.png',users_foto) AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
     foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
         echo '
@@ -24,7 +29,7 @@
 
                             <tbody>
                                 <tr>
-                                    <td rowspan="4">
+                                    <td rowspan="6">
                                         <center><img src="img/'.$value['users_foto_mod'].'" style="height: 200px !important"></center>
                                     </td>
                                     <td><b>Nama</b></td>
@@ -41,6 +46,10 @@
                                 <tr>
                                     <td><b>E-mail</b></td>
                                     <td>: '.$value['users_email'].'</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Pelajaran yang diampu</b></td>
+                                    <td> '.$pelajaran.'</td>
                                 </tr>
                                 <tr>
                                     <td>
