@@ -63,7 +63,7 @@
                         $sql = ("SELECT *, IF(tahun.semester='1','Ganjil','Genap') AS semester_mod, IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 ) AS pbm_status FROM users INNER JOIN pbm ON pbm.user_id=users.users_id INNER JOIN tahun ON tahun.tahun_id=pbm.tahun_id INNER JOIN kelas ON kelas.kelas_id=pbm.kelas_id WHERE 1=1 AND users.users_level='siswa' AND pbm.kelas_id='{$_GET['search-siswa']}' ORDER BY tahun.tahun_nama DESC,users.users_nama ASC");
                         // print_r($sql);
                         
-                        $header= query_result($connect, $sql)['fecth_assoc'][0];
+                        $header= query_result($connect, $sql)['fetch_assoc'][0];
                         $htmls .= '
                         <table id="exampleX" class="display">
                             <tr>
