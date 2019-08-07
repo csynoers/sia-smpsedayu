@@ -58,23 +58,23 @@
                 
                 <?php 
                     if (isset($_GET['search-siswa'])) {
+                        $htmls = '';
                         $no = 1;
-                        $sql = ("
-                            SELECT
-                                *,
-                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
-                                IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 ) AS pbm_status
-                            FROM users
-                                INNER JOIN pbm
-                                    ON pbm.user_id=users.users_id
-                                INNER JOIN tahun
-                                    ON tahun.tahun_id=pbm.tahun_id
-                            WHERE 1=1
-                                AND users.users_level='siswa'
-                                AND pbm.kelas_id='{$_GET['search-siswa']}'
-                            ORDER BY tahun.tahun_nama DESC,users.users_nama ASC
-                        ");
-                        print_r($sql);
+                        $sql = ("SELECT *, IF(tahun.semester='1','Ganjil','Genap') AS semester_mod, IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 ) AS pbm_status FROM users INNER JOIN pbm ON pbm.user_id=users.users_id INNER JOIN tahun ON tahun.tahun_id=pbm.tahun_id INNER JOIN kelas ON kelas.kelas_id=pbm.kelas_id WHERE 1=1 AND users.users_level='siswa' AND pbm.kelas_id='{$_GET['search-siswa']}' ORDER BY tahun.tahun_nama DESC,users.users_nama ASC");
+                        // print_r($sql);
+                        
+                        $header= query_result($connect, $sql)['fecth_assoc'][0];
+                        $html .= '
+                        <table id="exampleX" class="display">
+                            <tr>
+                                <td>Kelas</td>
+                                <td>: Kelas '.$header['kelas_nama'].'</td>
+                                <td>Tahun Ajaran</td>
+                                <td>: Tahun '.$header['tahun_nama'].' ('.$header['semester_mod'].')</td>
+                            </tr>
+                        </table>
+                        ';
+
                         $htmls .= '
                         <table id="example" class="display">
                             <thead>
@@ -132,6 +132,7 @@
                             </tbody>
                         </table> 
                         ';
+                        echo $htmls;
 
                     }
                 ?>                    
