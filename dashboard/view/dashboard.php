@@ -18,7 +18,7 @@
         /* get informasi kelas dan tahun dari data pbm */
         $kelas= '';
         $tahun= '';
-        $sql= ("SELECT *,IF(tahun.semester='1','Semester Ganjil','Semester Genap') AS semester_mod FROM pbm LEFT JOIN users ON users.users_id=pbm.user_id LEFT JOIN tahun ON tahun.tahun_id=pbm.tahun_id LEFT JOIN kelas ON kelas.kelas_id=pbm.kelas_id WHERE 1=1 AND pbm.user_id='{$_SESSION['id']}' ORDER BY tahun.tahun_nama,pbm.pbm_id DESC LIMIT 1");
+        $sql= ("SELECT *,IF(tahun.semester='1','Ganjil','Genap') AS semester_mod FROM pbm LEFT JOIN users ON users.users_id=pbm.user_id LEFT JOIN tahun ON tahun.tahun_id=pbm.tahun_id LEFT JOIN kelas ON kelas.kelas_id=pbm.kelas_id WHERE 1=1 AND pbm.user_id='{$_SESSION['id']}' ORDER BY tahun.tahun_nama,pbm.pbm_id DESC LIMIT 1");
         foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
             $kelas .= "{$value['kelas_nama']}";
             $tahun .= "{$value['tahun_nama']} (Semester {$value['semester_mod']})";
