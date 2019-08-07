@@ -1,9 +1,18 @@
 <?php
+    /* get informasi pelajaran yang diampu */
     $pelajaran= '';
     $sql= ("SELECT DISTINCT pelajaran.pelajaran_nama FROM pelajaran WHERE pelajaran.users_id='{$_SESSION['id']}' ");
     foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
         $pelajaran .= "<span class='fontello-ok tooltipstered'> {$value['pelajaran_nama']} </span>";
     }
+
+    /* get informasi tahun */
+    $tahun= '';
+    $sql= ("SELECT *,IF(tahun.semester='1','Ganjil','Genap') AS semester_mod FROM tahun WHERE 1=1 AND tahun_nama LIKE '%".date('Y')."%' AND semester='".(date('n') <= 6? 2 : 1 )."' LIMIT 1 ");
+    foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+        $tahun .= "{$value['tahun_nama]} (Semester {$value['semester_mod]})";
+    }
+
     $sql= ("SELECT *,IF(users_foto='','no_image.png',users_foto) AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
     foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
         echo '
@@ -29,7 +38,7 @@
 
                             <tbody>
                                 <tr>
-                                    <td rowspan="6">
+                                    <td rowspan="4">
                                         <center><img src="img/'.$value['users_foto_mod'].'" style="height: 200px !important"></center>
                                     </td>
                                     <td><b>Nama</b></td>
@@ -61,8 +70,8 @@
                                     <td> '.$pelajaran.'</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Pelajaran yang diampu</b></td>
-                                    <td>: '.$pelajaran.'</td>
+                                    <td><b>Tahun Ajaran</b></td>
+                                    <td>: '.$tahun.'</td>
                                 </tr>
                             </tbody>
                         </table>
