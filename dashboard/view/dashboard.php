@@ -1,6 +1,6 @@
 <?php
     $pelajaran= '';
-    $sql= ("SELECT DISTINCT pelajaran.pelajaran_nama FROM pelajaran WHERE pelajaran.users_id='{{$_SESSION['id']}}' ");
+    $sql= ("SELECT DISTINCT pelajaran.pelajaran_nama FROM pelajaran WHERE pelajaran.users_id='{$_SESSION['id']}' ");
     print_r($sql);
     foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
         print_r($value);
