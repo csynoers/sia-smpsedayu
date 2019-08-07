@@ -19,29 +19,7 @@
                         </thead>
                         ';
                         $no = 1;
-                        $sql = "
-                            SELECT
-                                nilai.nilai_id,
-                                nilai.nilai_poin,
-                                users.users_nama,
-                                kelas.kelas_nama,
-                                pelajaran.pelajaran_nama,
-                                tahun.tahun_nama
-                            FROM nilai
-                                LEFT JOIN users
-                                    ON nilai.users_id=users.users_id
-                                LEFT JOIN kelas
-                                    ON users.kelas_id=kelas.kelas_id
-                                LEFT JOIN pelajaran
-                                    ON kelas.kelas_id=pelajaran.kelas_id
-                                LEFT JOIN tahun
-                                    ON nilai.tahun_id=tahun.tahun_id
-                            WHERE 1=1
-                                AND users.users_id='{$_SESSION["id"]}'
-                                AND nilai.pelajaran_id='{$_POST["pelajaran"]}'
-                                AND nilai.tahun_id='{$_POST["tahun"]}'
-                                GROUP BY nilai.nilai_id
-                        ";
+                        $sql = ("SELECT *,IF(tahun.semester='1','Ganjil','Genap') AS semester_mod FROM nilai LEFT JOIN pelajaran ON pelajaran.pelajaran_id=nilai.pelajaran_id LEFT JOIN kelas ON kelas.kelas_id=pelajaran.kelas_id LEFT JOIN tahun ON tahun.tahun_id=nilai.tahun_id LEFT JOIN instgs ON instgs.instgs_id=nilai.instgs_id WHERE 1=1 AND nilai.users_id='{$_SESSION["id"]}' AND pelajaran.pelajaran_id='{$_POST["pelajaran"]}' AND tahun.tahun_id='{$_POST["tahun"]}'");
 
                         $sql = mysql_query( $sql );
                         while ($data=mysql_fetch_assoc($sql))
