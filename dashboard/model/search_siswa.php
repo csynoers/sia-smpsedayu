@@ -64,7 +64,7 @@
                         // print_r($sql);
                         
                         $header= query_result($connect, $sql)['fecth_assoc'][0];
-                        $html .= '
+                        $htmls .= '
                         <table id="exampleX" class="display">
                             <tr>
                                 <td>Kelas</td>
