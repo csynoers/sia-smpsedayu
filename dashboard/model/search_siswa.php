@@ -41,13 +41,14 @@
                                 FROM tahun
                                 WHERE 1=1
                                     AND tahun_nama LIKE '%".date('Y')."%'
-                                    AND semester='".(date('n') <= 6? 2 : 1 )."'
-                                    LIMIT 1
                             ");
+                            $tahun= '';
+                            $tahun .= '<select name="tahun_id" required >';
                             foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
-                                echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
+                                $tahun .= "<option value='{$value['tahun_id']}'>{$value['tahun_nama']} (Semester {$value['semester_mod']})</option>";
                             }
+                            $tahun .= '</select>';
+                            echo $tahun;
                         ?>
                     </div>
                 </div>
