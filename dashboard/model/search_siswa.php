@@ -52,7 +52,7 @@
                                 echo '
                                     <tr for="checkbox'.$no.'">
                                         <td>'.$no.'</td>
-                                        <td>'.($value['pbm_status']==1? '<input name="user_id[]" value="'.$value['users_id'].'" id="checkbox'.$no.'" type="checkbox">' : '-' ).'</td>
+                                        <td>'.($value['pbm_status']==1? '<input name="user_id[]" value="'.$value['users_id'].'" id="checkbox'.$no.'" type="checkbox" checked>' : '-' ).'</td>
                                         <td>'.$value['users_noinduk'].'</td>
                                         <td>'.$value['users_nama'].'</td>
                                         <td>'.$value['tahun_nama'].'</td>

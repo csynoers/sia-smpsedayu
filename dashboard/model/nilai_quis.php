@@ -73,12 +73,6 @@ else{
             </h3>
         </div>
         <!-- /.box-header -->
-        <!-- <div class="box-body " style="display: block;">
-            <a href="?kuis=tambah_topik" class="tiny radius button bg-black-solid"
-            <?php
-                $level  =   $_SESSION['level'];
-                if ($level == 'siswa') {echo 'style="display:none;"';}  ?> >
-                <b><span class="fontello-minefield"></span> Tambah</b></a> -->
             <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
