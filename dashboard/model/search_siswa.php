@@ -68,9 +68,9 @@
                         <table id="exampleX" class="display large-12">
                             <tr>
                                 <td><b>Kelas</b></td>
-                                <td>: Kelas '.$header['kelas_nama'].'</td>
+                                <td>: '.$header['kelas_nama'].'</td>
                                 <td><b>Tahun Ajaran</b></td>
-                                <td>: Tahun '.$header['tahun_nama'].' ('.$header['semester_mod'].')</td>
+                                <td>: Tahun '.$header['tahun_nama'].' (Semester '.$header['semester_mod'].')</td>
                             </tr>
                         </table>
                         ';
