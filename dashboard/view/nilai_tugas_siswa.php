@@ -93,20 +93,7 @@
                             <div class="form-group"> 
                                 <label>Mata Pelajaran</label>
                                 <select name="pelajaran" class="form-control" required>';
-                                    $pelajaran = mysql_query("
-                                        SELECT
-                                            pelajaran.pelajaran_id,
-                                            pelajaran.pelajaran_nama,
-                                            kelas.kelas_nama
-                                        FROM pelajaran
-                                            INNER JOIN kelas
-                                                ON pelajaran.kelas_id=kelas.kelas_id
-                                            INNER JOIN users
-                                                ON kelas.kelas_id=users.kelas_id
-                                        WHERE 1=1
-                                            AND users.users_id='{$_SESSION["id"]}'
-                                            GROUP BY kelas.kelas_id,pelajaran.pelajaran_id
-                                    ");
+                                    $pelajaran = mysql_query("SELECT * FROM nilai LEFT JOIN pelajaran ON pelajaran.pelajaran_id=nilai.pelajaran_id LEFT JOIN kelas ON kelas.kelas_id=pelajaran.kelas_id WHERE 1=1 AND nilai.users_id='{$_SESSION["id"]}' GROUP BY pelajaran.pelajaran_nama");
                                     while ($row=mysql_fetch_assoc($pelajaran))
                                     {
                                         echo '<option value="'.$row['pelajaran_id'].'"> '.$row['pelajaran_nama'].' Kelas ('.$row['kelas_nama'].')</option>';
