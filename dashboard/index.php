@@ -48,12 +48,12 @@
                      </th>
                 </label>
                 <?php
-                echo '<pre>';
+                /* echo '<pre>';
                 print_r([
                     'get'=> $_GET,
                     'post'=> $_POST,
                 ]);
-                echo '</pre>';
+                echo '</pre>'; */
                 ?>
             </form>
 		

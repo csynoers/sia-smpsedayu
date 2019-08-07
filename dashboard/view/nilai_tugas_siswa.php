@@ -7,7 +7,7 @@
         echo '
             <div class="block-flat no-padding">
                 <div class="content">
-                    <table>
+                    <table class="large-12">
                         <tr>
                             <td><b>Mata Pelajaran</b></td>
                             <td>: '.$header['pelajaran_nama'].'</td>
