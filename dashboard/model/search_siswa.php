@@ -16,6 +16,44 @@
         <!-- /.box-header -->
         <div class="box-body " style="display: block;">
             <form action="" method="post">
+                <div class="row">
+                    <div class="small-6 columns">
+                        <label for="">Pilih Kelas</label>
+                        <select name="kelas_id" required="">
+                        <?php
+                            $sql= ("
+                                SELECT *
+                                FROM kelas
+                                WHERE 1=1
+                            ");
+                            foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo '<option value="'.$value['kelas_id'].'">'.$value['kelas_nama'].'</option>';
+                            }
+                        ?>
+                        </select>
+                    </div>
+                    <div class="small-6 columns">
+                        <label for="">Tahun Ajaran</label>
+                        <?php
+                            $sql= ("
+                                SELECT *,
+                                    IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
+                                FROM tahun
+                                WHERE 1=1
+                                    AND tahun_nama LIKE '%".date('Y')."%'
+                                    AND semester='".(date('n') <= 6? 2 : 1 )."'
+                                    LIMIT 1
+                            ");
+                            foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
+                                echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
+                                echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
+                            }
+                        ?>
+                    </div>
+                </div>
+                <input type="hidden" name="update_kelas_siswa" value="1">
+                <button type="submit">Update Kelas</button>
+                <hr>
                 <table id="example" class="display">
                     <thead>
                         <tr>
@@ -89,45 +127,7 @@
                         }
                     ?>                    
                     </tbody>
-                </table>
-                <hr>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <label for="">Pilih Kelas</label>
-                        <select name="kelas_id" required="">
-                        <?php
-                            $sql= ("
-                                SELECT *
-                                FROM kelas
-                                WHERE 1=1
-                            ");
-                            foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo '<option value="'.$value['kelas_id'].'">'.$value['kelas_nama'].'</option>';
-                            }
-                        ?>
-                        </select>
-                    </div>
-                    <div class="small-6 columns">
-                        <label for="">Tahun Ajaran</label>
-                        <?php
-                            $sql= ("
-                                SELECT *,
-                                    IF(tahun.semester='1','Ganjil','Genap') AS semester_mod
-                                FROM tahun
-                                WHERE 1=1
-                                    AND tahun_nama LIKE '%".date('Y')."%'
-                                    AND semester='".(date('n') <= 6? 2 : 1 )."'
-                                    LIMIT 1
-                            ");
-                            foreach (query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo '<input name="tahun_id" type="hidden" value="'.$value['tahun_id'].'">';   
-                                echo '<input type="text" value="'.$value['tahun_nama'].' (Semester '.$value['semester_mod'].')" readonly="">';   
-                            }
-                        ?>
-                    </div>
-                </div>
-                <input type="hidden" name="update_kelas_siswa" value="1">
-                <button type="submit">Update Kelas</button>
+                </table>                
             </form>
         </div>
         <!-- end .timeline -->
