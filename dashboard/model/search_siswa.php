@@ -55,47 +55,51 @@
                 <input type="hidden" name="update_kelas_siswa" value="1">
                 <button type="submit">Update Kelas</button>
                 <hr>
-                <table id="example" class="display">
-                    <thead>
-                        <tr>
-                            <th width="3%">No</th>
-                            <th>Action</th>
-                            <th>NIS</th>
-                            <th>Nama Siswa</th>
-                            <th>Tahun Ajaran</th>
-                            <th>Semester</th>
-                        </tr>
-                    </thead>
+                
+                <?php 
+                    if (isset($_GET['search-siswa'])) {
+                        $no = 1;
+                        $sql = ("
+                            SELECT
+                                *,
+                                IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
+                                IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 ) AS pbm_status
+                            FROM users
+                                INNER JOIN pbm
+                                    ON pbm.user_id=users.users_id
+                                INNER JOIN tahun
+                                    ON tahun.tahun_id=pbm.tahun_id
+                            WHERE 1=1
+                                AND users.users_level='siswa'
+                                AND pbm.kelas_id='{$_GET['search-siswa']}'
+                            ORDER BY tahun.tahun_nama DESC,users.users_nama ASC
+                        ");
+                        print_r($sql);
+                        $htmls .= '
+                        <table id="example" class="display">
+                            <thead>
+                                <tr>
+                                    <th width="3%">No</th>
+                                    <th>Action</th>
+                                    <th>NIS</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Tahun Ajaran</th>
+                                    <th>Semester</th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                    <?php 
-                        if (isset($_GET['search-siswa'])) {
-                            $no = 1;
-                            $sql = ("
-                                SELECT
-                                    *,
-                                    IF(tahun.semester='1','Ganjil','Genap') AS semester_mod,
-                                    IF( (SELECT pbm_id FROM pbm WHERE pbm.user_id=users.users_id ORDER BY pbm.pbm_id DESC LIMIT 1)=pbm.pbm_id, 1, 0 ) AS pbm_status
-                                FROM users
-                                    INNER JOIN pbm
-                                        ON pbm.user_id=users.users_id
-                                    INNER JOIN tahun
-                                        ON tahun.tahun_id=pbm.tahun_id
-                                WHERE 1=1
-                                    AND users.users_level='siswa'
-                                    AND pbm.kelas_id='{$_GET['search-siswa']}'
-                                ORDER BY tahun.tahun_nama DESC,users.users_nama ASC
-                            ");
-                            // print_r($sql);
+                            <tbody>
+                            ';
+
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo '
+                                $htmls .= '
                                     <tr for="checkbox'.$no.'">
                                         <td>'.$no.'</td>
                                         <td>'.($value['pbm_status']==1? '<input name="user_id[]" value="'.$value['users_id'].'" id="checkbox'.$no.'" type="checkbox" checked>' : '-' ).'</td>
                                         <td>'.$value['users_noinduk'].'</td>
                                         <td>'.$value['users_nama'].'</td>
-                                        <td>'.$value['tahun_nama'].'</td>
-                                        <td>'.$value['semester_mod'].'</td>
+                                        <!-- <td>'.$value['tahun_nama'].'</td>
+                                        <td>'.$value['semester_mod'].'</td> -->
                                     </tr>
                                 ';
                                 $no++;
@@ -112,23 +116,26 @@
                                 ORDER BY users.users_nama ASC
                             ");
                             foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-                                echo '
+                                $htmls .= '
                                     <tr for="checkbox'.$no.'">
                                         <td>'.$no.'</td>
                                         <td><input name="user_id[]" value="'.$value['users_id'].'" id="checkbox'.$no.'" type="checkbox"></td>
                                         <td>'.$value['users_noinduk'].'</td>
                                         <td>'.$value['users_nama'].'</td>
-                                        <td> - </td>
-                                        <td> - </td>
+                                        <!-- <td> - </td>
+                                        <td> - </td> -->
                                     </tr>
                                 ';
                                 $no++;
                             }
+                            $htmls .= '
+                            </tbody>
+                        </table> 
+                        ';
 
-                        }
-                    ?>                    
-                    </tbody>
-                </table>                
+                    }
+                ?>                    
+                                   
             </form>
         </div>
         <!-- end .timeline -->
