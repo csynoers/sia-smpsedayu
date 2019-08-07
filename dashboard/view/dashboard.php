@@ -10,7 +10,7 @@
     $tahun= '';
     $sql= ("SELECT *,IF(tahun.semester='1','Ganjil','Genap') AS semester_mod FROM tahun WHERE 1=1 AND tahun_nama LIKE '%".date('Y')."%' AND semester='".(date('n') <= 6? 2 : 1 )."' LIMIT 1 ");
     foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-        $tahun .= "{$value['tahun_nama]} (Semester {$value['semester_mod]})";
+        $tahun .= "{$value['tahun_nama']} (Semester {$value['semester_mod']})";
     }
 
     $sql= ("SELECT *,IF(users_foto='','no_image.png',users_foto) AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
