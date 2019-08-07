@@ -7,7 +7,7 @@
         echo '
             <div class="block-flat no-padding">
                 <div class="content">
-                    <table class="no-border blue">
+                    <table>
                         <tr>
                             <td><b>Mata Pelajaran</b></td>
                             <td>: '.$header['pelajaran_nama'].'</td>
@@ -20,6 +20,8 @@
                             <td><b>Semester</b></td>
                             <td>: '.$header['semester_mod'].'</td>
                         </tr>
+                    </table>
+                    <table class="no-border blue">
                         <thead class="no-border">
                             <tr>
                                 <th>No</th>
