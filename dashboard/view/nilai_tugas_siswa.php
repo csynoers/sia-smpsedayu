@@ -3,11 +3,23 @@
     if(isset($_POST['cek-nilai'])) {
         /* get informasi header */
         $sql = ("SELECT *,IF(tahun.semester='1','Ganjil','Genap') AS semester_mod FROM nilai LEFT JOIN pelajaran ON pelajaran.pelajaran_id=nilai.pelajaran_id LEFT JOIN kelas ON kelas.kelas_id=pelajaran.kelas_id LEFT JOIN tahun ON tahun.tahun_id=nilai.tahun_id LEFT JOIN instgs ON instgs.instgs_id=nilai.instgs_id LEFT JOIN users ON users.users_id=nilai.users_id WHERE 1=1 AND nilai.users_id='{$_SESSION["id"]}' AND pelajaran.pelajaran_id='{$_POST["pelajaran"]}' AND tahun.tahun_id='{$_POST["tahun"]}' ORDER BY nilai.nilai_id ASC LIMIT 1");
-        $query= query_result($connect, $sql)['fetch_assoc'][0]; 
+        $header= query_result($connect, $sql)['fetch_assoc'][0]; 
         echo '
             <div class="block-flat no-padding">
                 <div class="content">
                     <table class="no-border blue">
+                        <tr>
+                            <td><b>Mata Pelajaran</b></td>
+                            <td>: '.$header['pelajaran_nama'].'</td>
+                            <td><b>Tahun Ajaran</b></td>
+                            <td>: '.$header['tahun_nama'].'</td>
+                        </tr>
+                        <tr>
+                            <td><b>Nama Guru</b></td>
+                            <td>: '.$header['username'].'</td>
+                            <td><b>Semester</b></td>
+                            <td>: '.$header['semester_mod'].'</td>
+                        </tr>
                         <thead class="no-border">
                             <tr>
                                 <th>No</th>
@@ -30,7 +42,7 @@
                                     <td>'.$data['users_nama'].'</td>
                                     <td>'.$data['judul'].'</td>
                                     <td class="text-center">'.($data['nilai_poin'] == 0 ? '0' : $data['nilai_poin'] ).'</td>
-                                    '.($_SESSION['level']=='siswa'
+                                    '.($_SESSION['level']!='siswa'
                                         ?
                                             '
                                                 <td class="text-center" width="17%">
