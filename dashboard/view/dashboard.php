@@ -1,9 +1,7 @@
 <?php
     $pelajaran= '';
     $sql= ("SELECT DISTINCT pelajaran.pelajaran_nama FROM pelajaran WHERE pelajaran.users_id='{$_SESSION['id']}' ");
-    print_r($sql);
     foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $value) {
-        print_r($value);
         $pelajaran .= "<span class='fontello-ok tooltipstered'> {$value['pelajaran_nama']} </span>";
     }
     $sql= ("SELECT *,IF(users_foto='','no_image.png',users_foto) AS users_foto_mod FROM users WHERE users_id = '{$_SESSION['id']}'");
@@ -50,7 +48,7 @@
                                     <td>: '.$value['users_email'].'</td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td rowspan="3">
                                         <center>
                                             <a href="?'.($value['users_level']!='siswa'? 'guru' : 'siswa' ).'-edit='.$value['users_id'].'"><span class="tiny radius fontello-edit button bg-black-solid" >Edit</span> </a>
                                         </center>
@@ -61,6 +59,10 @@
                                 <tr>
                                     <td><b>Pelajaran yang diampu</b></td>
                                     <td> '.$pelajaran.'</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Pelajaran yang diampu</b></td>
+                                    <td>: '.$pelajaran.'</td>
                                 </tr>
                             </tbody>
                         </table>
