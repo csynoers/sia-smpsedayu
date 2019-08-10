@@ -81,7 +81,6 @@
                         <th>kelas</th>
                         <th>Tanggal Buat</th>
                         <th>Nama Guru</th>
-                        <th>Info</th>
                         <th width="30%">Action</th>
                     </tr>
                 </thead>
@@ -110,17 +109,12 @@
                         </td>
                         <td>
                             <?php
-                                echo $row['tanggal_buat'];
+                                echo $row['tanggal_buat_mod'];
                             ?>
                         </td>
                         <td>
                             <?php
                                 echo $row['username'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                echo $row['info'];
                             ?>
                         </td>
                         <td>
