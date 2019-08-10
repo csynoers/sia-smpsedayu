@@ -97,21 +97,9 @@
                             {
                                 if ($_GET['kuis'] == 'tampil_topik')
                                 {
-                                    $iduser = $_SESSION['id'];
-                                    $no     =   1;
-                                    $topik_kuis      =   mysql_query("SELECT *
-                                                                    FROM topik_kuis,
-                                                                         kelas,
-                                                                         pelajaran,
-                                                                         users
-                                                                          
-                                                                    WHERE topik_kuis.kelas_id=kelas.kelas_id
-                                                                        AND topik_kuis.pelajaran_id=pelajaran.pelajaran_id 
-                                                                        AND kelas.kelas_id=users.kelas_id
-                                                                        AND users.users_id='$iduser' ");
-            
-                                    while ($row=mysql_fetch_assoc($topik_kuis))
-                                    {
+                                    $no =1;
+                                    $sql      =   ("SELECT *,DATE_FORMAT(topik_kuis.tanggal_buat, '%W,  %d %b %Y') AS tanggal_buat_mod,DATE_FORMAT(topik_kuis.tanggal_selesai, '%W,  %d %b %Y') AS tanggal_selesai_mod FROM topik_kuis INNER JOIN pelajaran ON pelajaran.pelajaran_id=topik_kuis.pelajaran_id WHERE 1 AND topik_kuis.kelas_id=(SELECT pbm.kelas_id FROM pbm WHERE pbm.user_id='{$_SESSION['id']}' ORDER BY pbm.tahun_id DESC LIMIT 1) ");
+                                    foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $row) {
                                         echo '
                                         <tr>
                                             <td>'.$no.'</td>
