@@ -118,7 +118,7 @@
                             ?>
                         </td>
                         <td>
-                            <a href="?instruksi=lihat_instruksi"><span class="fontello-eye"></span> Tampil</a>
+                            <a href="?instruksi=lihat_instruksi&id=<?php echo $row['instgs_id'] ?>"><span class="fontello-eye"></span> Tampil</a>
                         </td>
                     </tr>
                 <?php
