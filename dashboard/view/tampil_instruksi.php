@@ -91,8 +91,8 @@
                 <?php 
                     if (isset($_GET['instruksi'])) {
                         if ($_GET['instruksi'] == 'tampil_instruksi') {
-                            
                             $idu      = $_SESSION['id'];
+                            print_r($_SESSION['id']);
                             $a = mysql_query("select * from users, kelas where users.kelas_id=kelas.kelas_id and users.users_id='$idu'");
                             $b = mysql_fetch_array($a);
                             $no         =   1;
@@ -129,12 +129,6 @@
                         </td>
                         <td>
                             <a href="?instruksi=lihat_instruksi"><span class="fontello-eye"></span> Tampil</a>
-                            <a href="?instruksi-edit=<?php echo $row['instgs_id']; ?>" <?php if ($level == 'siswa') {
-                                echo 'style="display:none;"';
-                            }  ?>><span class="fontello-edit"></span> Edit</a>
-                            <a href="?instruksi-delete=<?php echo $row['instgs_id']; ?>" <?php if ($level == 'siswa') {
-                                echo "style='display:none;'";
-                            } ?>><span class="fontello-trash"></span> Delete</a>
                         </td>
                     </tr>
                 <?php
