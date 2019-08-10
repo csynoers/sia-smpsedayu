@@ -91,13 +91,9 @@
                 <?php 
                     if (isset($_GET['instruksi'])) {
                         if ($_GET['instruksi'] == 'tampil_instruksi') {
-                            $idu      = $_SESSION['id'];
-                            print_r($_SESSION['id']);
-                            $a = mysql_query("select * from users, kelas where users.kelas_id=kelas.kelas_id and users.users_id='$idu'");
-                            $b = mysql_fetch_array($a);
                             $no         =   1;
-                           $instgs      =   mysql_query("select * from pelajaran, instgs,kelas where pelajaran.kelas_id=kelas.kelas_id and pelajaran.pelajaran_id=instgs.pelajaran_id and kelas.kelas_id='$b[kelas_id]' ");
-                            while ($row=mysql_fetch_array($instgs)) {
+                            $sql      = ("select *,DATE_FORMAT(instgs.tanggal_buat, '%W,  %d %b %Y') AS tanggal_buat_mod, DATE_FORMAT(instgs.tanggal_selesai, '%W,  %d %b %Y') AS tanggal_selesai_mod from pelajaran, instgs,kelas where pelajaran.kelas_id=kelas.kelas_id and pelajaran.pelajaran_id=instgs.pelajaran_id AND kelas.kelas_id=(SELECT pbm.kelas_id FROM pbm WHERE pbm.user_id='{$_SESSION['id']}' ORDER BY pbm.tahun_id DESC LIMIT 1) ");
+                            foreach ( query_result($connect, $sql)['fetch_assoc'] as $key => $row) {
                 ?>
                     <tr>
                         <td><?php echo $no; ?></td>
