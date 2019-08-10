@@ -106,8 +106,8 @@
                                             <td>'.$row['judul'].'</td>
                                             <td>'.$row['pelajaran_nama'].'</td>
                                             <td>'.$row['kelas_nama'].'</td>
-                                            <td>'.$row['tanggal_buat'].'</td>
-                                            <td>'.$row['tanggal_selesai'].'</td>
+                                            <td>'.$row['tanggal_buat_mod'].'</td>
+                                            <td>'.$row['tanggal_selesai_mod'].'</td>
                                             <td>'.$row['username'].'</td>
                                             <td>'.$row['info'].'</td>
                                             <td> 
